@@ -16,8 +16,8 @@ import cv
 
 GOOGLE_SCHOLAR = False
 FORMAT_STYLE = "latex"
-FIRSTNAME = "Arjun"
-LASTNAME = "Savel"
+FIRSTNAME = "Isaac"
+LASTNAME = "Malsky"
 
 cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")

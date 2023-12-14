@@ -14,20 +14,20 @@ import requests
 
 import cv
 
+# Set the ADS API key from the environment variable
+ads.config.token = os.environ.get('ADS_DEV_KEY')
+
 cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")
 
 cv_path = inspect.getfile(cv).split("__init")[0]
 here = os.path.join(cv_path, "scripts")
-# here = os.path.abspath("")
+
 spec = importlib.util.spec_from_file_location(
     "utf8totex", os.path.join(here, "utf8totex.py")
 )
 utf8totex = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(utf8totex)
-
-# need to add ADS token as env variable
-
 
 def get_papers(author):
     """
@@ -109,14 +109,12 @@ def get_papers(author):
 if __name__ == "__main__":
     # tries once more if there's a timeout error
     try:
-        paper_dict = get_papers("Savel, Arjun Baliga")
-        paper_dict += get_papers("Baliga Savel, Arjun")
+        paper_dict = get_papers("Malsky, Isaac")
     except requests.Timeout as err:
         print("Timeout error")
         print(err)
         time.sleep(60)
-        paper_dict = get_papers("Savel, Arjun Baliga")
-        paper_dict += get_papers("Baliga Savel, Arjun")
+        paper_dict = get_papers("Malsky, Isaac")
 
     print(paper_dict)
     with open(os.path.join(data_path, "ads_scrape.json"), "w") as f:
