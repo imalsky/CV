@@ -109,14 +109,14 @@ def get_papers(author):
 if __name__ == "__main__":
     # tries once more if there's a timeout error
     try:
-        paper_dict = get_papers("Malsky, Isaac")
-        paper_dict += get_papers("Malsky, Isaac")
+        paper_dict = get_papers("Savel, Arjun Baliga")
+        paper_dict += get_papers("Baliga Savel, Arjun")
     except requests.Timeout as err:
         print("Timeout error")
         print(err)
         time.sleep(60)
-        paper_dict = get_papers("Malsky, Isaac")
-        paper_dict += get_papers("Malsky, Isaac")
+        paper_dict = get_papers("Savel, Arjun Baliga")
+        paper_dict += get_papers("Baliga Savel, Arjun")
 
     print(paper_dict)
     with open(os.path.join(data_path, "ads_scrape.json"), "w") as f:
