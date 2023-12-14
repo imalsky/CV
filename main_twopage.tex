@@ -16,39 +16,11 @@
 \usepackage{verbatim}
 \usepackage[margin=1in]{geometry}
 \usepackage{readarray}
-
-% \usepackage[usenames,dvipsnames]{color}
-
 \usepackage{enumitem}
-% \usepackage[pdftex, hidelinks]{hyperref}
 \usepackage{fancyhdr}
-
 \usepackage[utf8]{inputenc}
 \input{src/supp_tex/cvstyle}
-
-
-% \renewcommand{\headrulewidth}{0pt}
-% % \pagestyle{fancy}
-% \lhead{\deemph{Isaac Baliga Malsky}}
-% \chead{\deemph{Curriculum Vitae}}
-% \rhead{\deemph{\thepage}}
-
 \usepackage[charter]{mathdesign} % Bitstream Charter
-% \usepackage{newpxtext,newpxmath} % Palatino
-
-% \pagestyle{fancy}
-% \fancyhf{} % clear all header and footer fields
-% \fancyfoot{}
-% \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-% \addtolength{\oddsidemargin}{-0.50in}
-% \addtolength{\evensidemargin}{-0.50in}
-% \addtolength{\textwidth}{1in}
-% \addtolength{\topmargin}{-.5in}
-% \addtolength{\textheight}{1.0in}
-
 \urlstyle{same}
 
 \raggedbottom
@@ -59,6 +31,9 @@
 \titleformat{\section}{
   \vspace{-6pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+
 
 %-------------------------
 % Custom commands
@@ -82,18 +57,12 @@
     \end{tabular*}\vspace{-5pt}
 }
 
-
-
 \newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
-
 \renewcommand{\labelitemii}{$\circ$}
-
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-% custom commands
 \newcommand{\shorterSection}[1]{\vspace{-10pt}\section{#1}}
 
 \titleformat{\subsection}{
@@ -102,8 +71,6 @@
 
 \newcommand{\shortershorterSection}[1]{\vspace{-10pt}\subsection{#1}}
 
-
-
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -111,12 +78,28 @@
 
 \begin{document}\thispagestyle{empty}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %----------HEADING-----------------
 \begin{center}
   \small \textbf{\large Isaac B. Malsky} \\
   \textsf{\small \href{href="mailto:isaacmalsky@gmail.com"}{isaacmalsky@gmail.com}} $\vert$  \orcidlink{0000-0002-2454-768X} \href{https://orcid.org/0000-0003-0217-3880/}{0000-0003-0217-3880} $\vert$ \href{https://imalsky.github.io/}{https://imalsky.github.io/}
 \end{center}
 \vspace{-20pt}
+
+
 %-----------EDUCATION-----------------
 \shorterSection{Education}
   \resumeSubHeadingListStart
@@ -126,18 +109,27 @@
     }
     \vspace{-37pt}
     \resumeSubheading
-    {}{}{M.S., Astronomy $\vert$ Advisor: Eliza M.-R. Kempton}{2022}{
+    {}{}{M.S., Astronomy $\vert$ Advisor: Emily Rauscher}{2022}{
     }
     \vspace{-20pt}
     \resumeSubheading
-      {University of California, Berkeley}{Berkeley, CA}
-      {B.A., Astrophysics; B.A., Physics $\vert$ Advisor: Courtney D. Dressing}{2020}{
+      {The University of Chicago}{Chicago, IL}
+      {B.A., Physics $\vert$ Advisor: Leslie Rogers}{2018}{
     }
   \resumeSubHeadingListEnd
-
-
-%-----------RESEARCH INTERESTS-----------------
 \vspace{-12pt}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %------------PUBLICATIONS-------------------
@@ -145,15 +137,12 @@
 \shorterSection{Publications}
 \input{src/supp_tex/pubs_summary}
 \shortershorterSection{\underline{Refereed Publications}}
-% \resumeSubHeadingListStart
 \small
 \begin{list}{}{\cvlist}
     \input{src/supp_tex/pubs_ref_short}
   \end{list}
-% \resumeSubHeadingListEnd
 
 \shortershorterSection{\underline{Under review}}
-% \resumeSubHeadingListStart
 \small
 \begin{list}{}{\cvlist}
     \input{src/supp_tex/pubs_submitted.tex}
@@ -174,84 +163,18 @@
 \shortershorterSection{\underline{Invited talks}}
 \small
   \begin{list}{}{\cvlist}
-
   \item[{\color{numcolor}\scriptsize3}] \textbf{Isaac Malsky}, 2023. College of Mathematical and Natural Sciences Board of Visitors. University of Maryland, College Park, MD.
-
-  
-
-  \item[{\color{numcolor}\scriptsize2}] \textbf{Isaac Malsky}, 2023. "Knowing when to know: bridging data-driven and physics-driven modeling for exoplanet atmospheres." Center for Theory and Computation Lunch Talk, Department of Astronomy, University of Maryland, College Park, MD.
-
-   \item[{\color{numcolor}\scriptsize1}] \textbf{Isaac Malsky}, 2021. ``No umbrella needed: Confronting the hypothesis of iron rain on WASP-76b with post-processed general circulation models'', ExoCoffee, MPIA Heidelberg.
-
-
   \end{list}
 
-\shortershorterSection{\underline{Contributed Talks}}
-
-\small
-  \begin{list}{}{\cvlist}
-  
-
-  \item[{\color{numcolor}\scriptsize9}] \textbf{Isaac Malsky}, 2023. "Peering into the black box: 
-the uncertainty budget of high-resolution spectroscopy of exoplanet atmospheres." Flatiron CCA Pre-doctoral Symposium, New York, NY.
-
-\item[{\color{numcolor}\scriptsize8}] \textbf{Isaac Malsky}, 2022. ``Phase-resolved asymmetries of (ultra)hot Jupiters in high-resolution transmission: drivers and diagnostics'', Flatiron Exoplanet Atmospheres Symposium, New York, NY.
-
-  \item[{\color{numcolor}\scriptsize7}] \textbf{Isaac Malsky}, 2022. ``Modeling Lorentz drag in an ultra-hot Jupiter over a range of atmospheric parameters'', Burgers Program Research Symposium on Environmental and Applied Fluid Dynamics, The George Washington University.
-
-     \item[{\color{numcolor}\scriptsize6}] \textbf{Isaac Malsky}, 2022. ``Phase-resolved asymmetries of (ultra)hot Jupiters in high-resolution transmission: drivers and diagnostics'', Exoplanets IV, Las Vegas, CA.
-
-
-   \item[{\color{numcolor}\scriptsize5}] \textbf{Isaac Malsky}, 2022. ``Phase-resolved asymmetries of (ultra)hot Jupiters in high-resolution transmission: drivers and diagnostics'', Bay Area Exoplanet Meeting \#40, NASA Ames.
-
-
-\item[{\color{numcolor}\scriptsize4}] \textbf{Isaac Malsky}, 2021. ``No umbrella needed: Confronting the hypothesis of iron rain on WASP-76b with post-processed general circulation models'', Astronomy and Space Physics Seminar, University of Kansas.
-
-
-
-\item[{\color{numcolor}\scriptsize3}] \textbf{Isaac Malsky}, Courtney D. Dressing, Lea Hirsch, David Ciardi, Jordan P.C. Fleming, Steven Giacalone, Andrew W. Mayo, Jessie L. Christiansen, 2019. “A Closer Look at Exoplanet Occurrence Rates: Considering the Multiplicity of Stars without Detected Planets”, Bay Area Exoplanet Meeting \#31, NASA Ames
-
-\item[{\color{numcolor}\scriptsize2}] \textbf{Isaac Malsky}, Courtney D. Dressing, Lea Hirsch, David Ciardi, Jordan P.C. Fleming, Steven Giacalone, Andrew W. Mayo, Jessie L. Christiansen, 2019. “A Closer Look at Exoplanet Occurrence Rates: The Impact of Stars Without Exoplanets”, Bay Area Planetary Sciences Meeting, Stanford University.
-
-\item[{\color{numcolor}\scriptsize1}] \textbf{Isaac Malsky}, 2019. “Earth: Rare or Regular?”, Undergraduate Seminars, UC Berkeley.
-
-\end{list}
-
-\shorterSection{Research Mentoring}
-\small
-  \begin{list}{}{\cvlist}  
-  \item[{\color{numcolor}}]Kenneth Ellis Arnold III, UMD, College Park (with Prof. Eliza M.-R. Kempton), 2022--present \\
-  \textit{Modeling limb asymmetries of cloudy hot Jupiter atmospheres}
-  \item[{\color{numcolor}}]Holden Gill, UC Berkeley (with Asst. Prof. Courtney D. Dressing), 2020--2022 \\
-    \textit{Ground-based imaging follow-up of K2 planet hosts}
-
-
-  \end{list}
-
-\shorterSection{Misc. Mentoring}
+\shorterSection{Mentoring}
 \small
   \begin{list}{}{\cvlist}
   \item[{\color{numcolor}}]Cole Smith, UMD, College Park, via Undergrad--Grad Mentorship Program, 2023
-  \item[{\color{numcolor}}]Yash Gursahani, UMD, College Park, via Astro Grad Buddy Program, 2023
-  \item[{\color{numcolor}}]Serena Cronin, UMD, College Park, via Astro Grad Buddy Program, 2021 
-  \item[{\color{numcolor}}]Lawrence Edmond IV, UC Berkeley, via Astronomy Buddy Program, 2019
-
-
   \end{list} 
 
-  \shorterSection{Selected Community Involvement}
+ \shorterSection{Selected Community Involvement}
  \begin{list}{}{\cvlist}
-\item Graduate student website committee member, University of Maryland, College Park (2023--present)
-\item Lead author / maintainer: \href{https://www.IsaacMalsky.com/hires_papers.html}{High-resolution literature database} (2022--present)
-\item Graduation Gift Organizer, University of Maryland, College Park (2022--2023)
-\item GRAD-MAP Team Co-Lead, University of Maryland, College Park (2022--present)
-\item BANG! Seminar Organizing Committee, University of Maryland, College Park (2021--2022)
-\item ``Hot Papers'' journal club organizer, University of Maryland, College Park (2020--2022)
-\item Reviewer, Journal of Open Source Software (3 projects reviewed) (2020--present)
-\item Equity, Diversity, and Inclusion Committee, University of Maryland, College Park (2020--2022)
-\item Public Liaison for Prof. Alex Filippenko (2019--2022)
-\item Undergraduate Representative, Astronomy Department, UC Berkeley (2019-2020)
-\item Director of Physics and Astronomy, Undergraduate Lab at Berkeley (ULAB) (2018-2019)
+ \item Graduate student website committee member, University of Maryland, College Park (2023--present)
  \end{list} 
 
 \end{document}
