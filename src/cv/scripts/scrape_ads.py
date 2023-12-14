@@ -8,10 +8,8 @@ import json
 import os
 import time
 from operator import itemgetter
-
 import ads
 import requests
-
 import cv
 
 # Set the ADS API key from the environment variable
@@ -21,7 +19,9 @@ cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")
 
 cv_path = inspect.getfile(cv).split("__init")[0]
-here = os.path.join(cv_path, "scripts")
+
+# Get the directory of the current script
+here = os.path.dirname(os.path.realpath(__file__))
 
 spec = importlib.util.spec_from_file_location(
     "utf8totex", os.path.join(here, "utf8totex.py")
