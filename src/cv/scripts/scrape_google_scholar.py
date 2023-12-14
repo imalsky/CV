@@ -1,7 +1,7 @@
 """
 Module to scrape google scholar information. Inspired by dfm/cv/update-astro-pubs
 
-author: @arjunsavel
+author: @imalsky
 """
 import inspect
 import json
@@ -99,8 +99,7 @@ def get_scrape_google_scholar(author):
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9"
     }
-    # url = f"""https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q={author.replace(' ', '+')}&pagesize=80"""
-    url = "https://scholar.google.com/citations?user=EddVpbYAAAAJ&hl=en&oi=ao&cstart=0&pagesize=80"
+    url = "https://scholar.google.com/citations?user=8UH3LhoAAAAJ&hl=en&oi=ao&cstart=0&pagesize=80"
 
     response = requests.post(url, headers=headers)
     soup = BeautifulSoup(response.content, "html.parser")

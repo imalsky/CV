@@ -1,7 +1,7 @@
 """
 Module to scrape the public JOSS reviewers sheet.
 
-author: @arjunsavel
+author: @imalsky
 """
 import inspect
 import os

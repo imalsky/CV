@@ -1,7 +1,7 @@
 """
 Counts the number of submitted and unreviewed pubs.
 
-author: @arjunsavel
+author: @imalsky
 """
 
 import inspect
