@@ -440,17 +440,14 @@ def format_pub(args):
     matching_authors = [i for i in range(len(pub["authors"])) if LASTNAME in pub["authors"][i]]
     if matching_authors:
         n = matching_authors[0]  # Use the index of the first matching author
+        pub["authors"][n] = "\\textbf{{{0}}}".format(LASTNAME) + ", \\textbf{{{0}}}".format(
+            FIRSTNAME)
     else:
         # Handle the case when there are no matching authors
-        n = None  # You can set n to a default value or handle it as needed
-
-    
-    pub["authors"][n] = "\\textbf{{{0}}}".format(LASTNAME) + ", \\textbf{{{0}}}".format(
-        FIRSTNAME
-    )
+        # You can set n to a default value or handle it as needed
+        n = None
 
     pub = format_for_students(pub)
-
     pub_title = format_title(pub["title"])
 
     fmt = format_authors(fmt, pub["authors"], short, n)
