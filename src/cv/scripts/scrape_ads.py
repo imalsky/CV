@@ -114,10 +114,13 @@ if __name__ == "__main__":
     # tries once more if there's a timeout error
     try:
         paper_dict = get_papers("Malsky, Isaac")
+
+        print(paper_dict)
     except requests.Timeout as err:
         print("Timeout error")
         print(err)
         time.sleep(60)
         paper_dict = get_papers("Malsky, Isaac")
-    with open(os.path.join(data_path, "ads_scrape.json"), "w") as f:
+    with open("src/cv/scripts/ads_scrape.json", "w") as f:
         json.dump(paper_dict, f, sort_keys=True, indent=2, separators=(",", ": "))
+
