@@ -15,6 +15,11 @@ import cv
 # Set the ADS API key from the environment variable
 ads.config.token = os.environ.get('BASE_ENV')
 
+if not ads.config.token:
+    raise ValueError("ADS API key is not set. Check BASE_ENV environment variable.")
+else:
+    print("ADS API key is set.")
+
 cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")
 
@@ -115,7 +120,5 @@ if __name__ == "__main__":
         print(err)
         time.sleep(60)
         paper_dict = get_papers("Malsky, Isaac")
-
-    print(paper_dict)
     with open(os.path.join(data_path, "ads_scrape.json"), "w") as f:
         json.dump(paper_dict, f, sort_keys=True, indent=2, separators=(",", ": "))
