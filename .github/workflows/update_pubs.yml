@@ -24,7 +24,10 @@ jobs:
       - name: Scrape publications
         env:
           ADS_DEV_KEY: ${{ secrets.ADS_SECRET }}
-          BASE_ENV: ${{ secrets.base_env }}  # Add this line
+        run: |
+          echo "Checking if API key is set..."
+          if [ -z "${ADS_DEV_KEY}" ]; then echo "ADS_DEV_KEY is not set"; else echo "ADS_DEV_KEY is set"; fi
+          python3 src/cv/scripts/scrape_ads.py
         run: |
           python3 -m pip install --upgrade pip
           pip3 install --upgrade setuptools
