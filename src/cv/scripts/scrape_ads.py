@@ -13,7 +13,7 @@ import requests
 import cv
 
 # Set the ADS API key from the environment variable
-ads.config.token = os.environ.get('BASE_ENV')
+ads.config.token = os.environ.get('base_env')
 
 if not ads.config.token:
     raise ValueError("ADS API key is not set. Check BASE_ENV environment variable.")
