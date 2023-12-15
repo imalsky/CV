@@ -437,7 +437,14 @@ def format_pub(args):
     pub = pub.copy()
 
     fmt = format_index(ind)
-    n = [i for i in range(len(pub["authors"])) if LASTNAME in pub["authors"][i]][0]
+    matching_authors = [i for i in range(len(pub["authors"])) if LASTNAME in pub["authors"][i]]
+    if matching_authors:
+        n = matching_authors[0]  # Use the index of the first matching author
+    else:
+        # Handle the case when there are no matching authors
+        n = None  # You can set n to a default value or handle it as needed
+
+    
     pub["authors"][n] = "\\textbf{{{0}}}".format(LASTNAME) + ", \\textbf{{{0}}}".format(
         FIRSTNAME
     )
@@ -542,7 +549,7 @@ if __name__ == "__main__":
 
     if nfirst_submit > 0:
         summary += ", {0} under review".format(nfirst_submit)
-        
+
     # Get the directory of the current script
     script_directory = os.path.dirname(os.path.abspath(__file__))
 
