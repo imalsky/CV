@@ -23,7 +23,7 @@ jobs:
           
       - name: Scrape publications
         env:
-          BASE_ENV: ${{ secrets.ADS_SECRET }}
+          base_env: ${{ secrets.ADS_SECRET }}
         run: |
           python3 -m pip install --upgrade pip
           pip3 install --upgrade setuptools
