@@ -13,7 +13,7 @@ import requests
 import cv
 
 # Set the ADS API key from the environment variable
-ads.config.token = os.environ.get('ADS_DEV_KEY')
+ads.config.token = os.environ.get('BASE_ENV')
 
 cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")
