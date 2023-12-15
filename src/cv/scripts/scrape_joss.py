@@ -10,12 +10,20 @@ import sys
 import numpy as np
 import pandas as pd
 from gsheets import Sheets
-from cv.scripts.format_pubs import *
+
+
+#from cv.scripts.format_pubs import *
+
+from .scripts import format_pubs
+
 
 import cv
 
 cv_root = inspect.getfile(cv).split("cv")[0]
 data_path = os.path.join(cv_root, "data")
+
+
+
 
 
 def get_joss_table(data):
@@ -57,7 +65,7 @@ def count_num_reviews(joss_table):
     -------
         :num_reviews: (int) number of reviews.
     """
-    my_username = "arjunsavel"
+    my_username = "imalsky"
 
     review_col = "Review count(all time)"
     num_reviews = int(

@@ -574,9 +574,7 @@ if __name__ == "__main__":
     # todo: refactor. this is gross.
     short = [True for i in range(len(ref))]
     ref_short = list(map(format_pub, zip(range(len(ref_list), 0, -1), ref_list, short)))
-    unref_short = list(
-        map(format_pub, zip(range(len(unref_list), 0, -1), unref_list, short))
-    )
+    unref_short = list(map(format_pub, zip(range(len(unref_list), 0, -1), unref_list, short)))
 
     # for now, written to tex files even if they're gonna be used in a text file.
     write_tex_file("pubs_ref.tex", ref)
