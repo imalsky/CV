@@ -444,8 +444,7 @@ def format_pub(args):
             FIRSTNAME)
     else:
         # Handle the case when there are no matching authors
-        # You can set n to a default value or handle it as needed
-        n = None
+        n = 0  # You can set n to a default value or handle it as needed
 
     pub = format_for_students(pub)
     pub_title = format_title(pub["title"])
