@@ -22,8 +22,6 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
           
       - name: Scrape publications
-        #env:
-        #  ADS_DEV_KEY: ${{ secrets.ADS_SECRET }}
         run: |
           python3 -m pip install --upgrade pip
           pip3 install --upgrade setuptools

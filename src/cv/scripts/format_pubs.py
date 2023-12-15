@@ -25,16 +25,44 @@ supp_tex_path = os.path.join(cv_root, "supp_tex")
 
 cv_path = inspect.getfile(cv).split("__init")[0]
 here = os.path.join(cv_path, "scripts")
-spec = importlib.util.spec_from_file_location(
-    "utf8totex", os.path.join(here, "utf8totex.py")
-)
+spec = importlib.util.spec_from_file_location("utf8totex", os.path.join(here, "utf8totex.py"))
+
+# Get the directory of the current script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Specify the relative path to the utf8totex.py file in the same directory
+utf8totex_file_path = os.path.join(script_directory, "utf8totex.py")
+
+# Load the utf8totex module
+spec = importlib.util.spec_from_file_location("utf8totex", utf8totex_file_path)
 utf8totex = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(utf8totex)
 
-with open(os.path.join(data_path, "journal_map.json")) as f:
+# Get the directory of the current script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Set the relative path to the journal_map.json file
+relative_path = "../../data/journal_map.json"
+
+# Combine the script directory and relative path to get the full file path
+json_file_path = os.path.normpath(os.path.join(script_directory, relative_path))
+
+# Open the JSON file
+with open(json_file_path) as f:
     JOURNAL_MAP = json.load(f)
 
-with open(os.path.join(data_path, "in_press.txt")) as f:
+
+# Get the directory of the current script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Set the relative path to the in_press.txt file
+relative_path = "../../data/in_press.txt"
+
+# Combine the script directory and relative path to get the full file path
+in_press_file_path = os.path.normpath(os.path.join(script_directory, relative_path))
+
+# Open the file
+with open(in_press_file_path) as f:
     in_press = f.readlines()
 
 
@@ -55,7 +83,26 @@ def write_tex_file(filename, contents):
     ------------
         Creates or overwrites the file it says it'll write to.
     """
-    with open(os.path.join(supp_tex_path, filename), "w") as f:
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Set the relative path to the supp_tex directory
+    relative_path = "../../supp_tex/"
+
+    # Combine the script directory and relative path to get the full directory path
+    supp_tex_directory = os.path.normpath(os.path.join(script_directory, relative_path))
+
+    # Specify the filename
+    filename = "your_filename_here.txt"
+
+    # Combine the directory and filename to get the full file path
+    file_path = os.path.join(supp_tex_directory, filename)
+
+    # Contents to write to the file
+    contents = ["line1", "line2", "line3"]
+
+    # Write the contents to the file
+    with open(file_path, "w") as f:
         f.write("\n\n".join(contents))
 
 
@@ -201,8 +248,23 @@ def format_for_students(pub):
     formats a publication to add students in first 5 authors.
     """
 
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Set the relative path to the data directory
+    relative_path = "../../data/"
+
+    # Combine the script directory and relative path to get the full directory path
+    data_directory = os.path.normpath(os.path.join(script_directory, relative_path))
+
+    # Specify the filename
+    filename = "students.json"
+
+    # Combine the directory and filename to get the full file path
+    file_path = os.path.join(data_directory, filename)
+
     # Opening JSON file.
-    with open(os.path.join(data_path, "students.json")) as f:
+    with open(file_path) as f:
         data = json.load(f)
 
     for student_name in data.keys():
@@ -452,8 +514,25 @@ if __name__ == "__main__":
     # Compute citation stats
     hindex, ncitations, nfirst = calc_hindex(ref_list, pubs)
 
-    with open(os.path.join(supp_tex_path, "n_first_submit.tex")) as f:
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Set the relative path to the supp_tex directory
+    relative_path = "../../supp_tex/"
+
+    # Combine the script directory and relative path to get the full directory path
+    supp_tex_directory = os.path.normpath(os.path.join(script_directory, relative_path))
+
+    # Specify the filename
+    filename = "n_first_submit.tex"
+
+    # Combine the directory and filename to get the full file path
+    file_path = os.path.join(supp_tex_directory, filename)
+
+    # Open the file
+    with open(file_path) as f:
         nfirst_submit = eval(f.readlines()[0].split("\n")[0])
+
 
     summary = (
         "citations: {0} / "
@@ -463,7 +542,24 @@ if __name__ == "__main__":
 
     if nfirst_submit > 0:
         summary += ", {0} under review".format(nfirst_submit)
-    with open(os.path.join(supp_tex_path, "pubs_summary.tex"), "w") as f:
+        
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Set the relative path to the supp_tex directory
+    relative_path = "../../supp_tex/"
+
+    # Combine the script directory and relative path to get the full directory path
+    supp_tex_directory = os.path.normpath(os.path.join(script_directory, relative_path))
+
+    # Specify the filename
+    filename = "pubs_summary.tex"
+
+    # Combine the directory and filename to get the full file path
+    file_path = os.path.join(supp_tex_directory, filename)
+
+    # Open the file for writing
+    with open(file_path, "w") as f:
         f.write(summary)
 
     # todo: refactor. this is gross. maybe some kind of partial func.
