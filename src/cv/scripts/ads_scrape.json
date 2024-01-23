@@ -23,29 +23,6 @@
     "year": "2024"
   },
   {
-    "arxiv": "2311.01506",
-    "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael T.",
-      "Lee, Elspeth K. H.",
-      "Beltz, Hayley",
-      "Savel, Arjun",
-      "Kempton, Eliza M. R.",
-      "Cinque, L."
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2311.01506",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2023-11-00",
-    "title": "A Direct Comparison between the use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023arXiv231101506M",
-    "volume": null,
-    "year": "2023"
-  },
-  {
     "arxiv": "2305.06240",
     "authors": [
       "Kempton, Eliza M. -R.",
