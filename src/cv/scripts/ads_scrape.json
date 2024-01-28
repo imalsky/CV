@@ -1,28 +1,5 @@
 [
   {
-    "arxiv": "2311.01506",
-    "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael T.",
-      "Lee, Elspeth K. H.",
-      "Beltz, Hayley",
-      "Savel, Arjun",
-      "Kempton, Eliza M. -R.",
-      "Cinque, L."
-    ],
-    "citations": 0,
-    "doctype": "article",
-    "doi": "10.3847/1538-4357/ad0b70",
-    "page": 66,
-    "pub": "The Astrophysical Journal",
-    "pubdate": "2024-01-00",
-    "title": "A Direct Comparison between the Use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024ApJ...961...66M",
-    "volume": "961",
-    "year": "2024"
-  },
-  {
     "arxiv": "2401.13027",
     "authors": [
       "Bell, Taylor J.",
@@ -121,6 +98,29 @@
     "year": "2024"
   },
   {
+    "arxiv": "2311.01506",
+    "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Roman, Michael T.",
+      "Lee, Elspeth K. H.",
+      "Beltz, Hayley",
+      "Savel, Arjun",
+      "Kempton, Eliza M. -R.",
+      "Cinque, L."
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/ad0b70",
+    "page": 66,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2024-01-00",
+    "title": "A Direct Comparison between the Use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024ApJ...961...66M",
+    "volume": "961",
+    "year": "2024"
+  },
+  {
     "arxiv": "2305.06240",
     "authors": [
       "Kempton, Eliza M. -R.",
@@ -157,7 +157,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 16,
+    "citations": 17,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -233,7 +233,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 4,
+    "citations": 6,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -543,7 +543,7 @@
       "Long, Deryl",
       "Harada, Caleb K."
     ],
-    "citations": 3,
+    "citations": 4,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ac2a2a",
     "page": 62,
