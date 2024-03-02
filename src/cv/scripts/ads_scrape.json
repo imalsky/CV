@@ -288,6 +288,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
+    "volume": "55",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Murphy, Matthew",
       "Beatty, Thomas",
       "Roman, Michael",
@@ -305,26 +325,6 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
-    "volume": "55",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "55",
     "year": "2023"
   },
@@ -470,26 +470,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Kempton, Eliza",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -512,6 +492,26 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Roman, Michael",
+      "Kempton, Eliza",
+      "Malsky, Isaac"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
     "volume": "54",
     "year": "2022"
   },
