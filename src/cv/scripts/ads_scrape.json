@@ -1,5 +1,27 @@
 [
   {
+    "arxiv": "2404.10673",
+    "authors": [
+      "King, George W.",
+      "Corrales, L{\\'\\i}a R.",
+      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
+      "Wheatley, Peter J.",
+      "Malsky, Isaac",
+      "Osborn, Ares",
+      "Armstrong, David"
+    ],
+    "citations": 0,
+    "doctype": "eprint",
+    "doi": "10.48550/arXiv.2404.10673",
+    "page": null,
+    "pub": "arXiv e-prints",
+    "pubdate": "2024-04-00",
+    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; $\\nu^2$ Lupi",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240410673K",
+    "volume": null,
+    "year": "2024"
+  },
+  {
     "arxiv": "2401.13027",
     "authors": [
       "Bell, Taylor J.",
