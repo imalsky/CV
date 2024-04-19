@@ -296,7 +296,7 @@
       "Kempton, Eliza M. -R.",
       "Marounina, Nadejda"
     ],
-    "citations": 9,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.1038/s41550-022-01823-8",
     "page": 57,
@@ -458,7 +458,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 26,
+    "citations": 27,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -492,26 +492,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Kempton, Eliza",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -534,6 +514,26 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Roman, Michael",
+      "Kempton, Eliza",
+      "Malsky, Isaac"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
     "volume": "54",
     "year": "2022"
   },
@@ -586,7 +586,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 20,
+    "citations": 22,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202141497",
     "page": null,
@@ -608,7 +608,7 @@
       "Brinjikji, Marah",
       "DiTomasso, Victoria"
     ],
-    "citations": 17,
+    "citations": 16,
     "doctype": "article",
     "doi": "10.3847/1538-4357/abdc22",
     "page": 85,
@@ -665,7 +665,7 @@
       "Malsky, Isaac",
       "Rogers, Leslie A."
     ],
-    "citations": 29,
+    "citations": 30,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ab873f",
     "page": 48,
