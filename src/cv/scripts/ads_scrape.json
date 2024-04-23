@@ -1,27 +1,5 @@
 [
   {
-    "arxiv": "2404.10673",
-    "authors": [
-      "King, George W.",
-      "Corrales, L{\\'\\i}a R.",
-      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
-      "Wheatley, Peter J.",
-      "Malsky, Isaac",
-      "Osborn, Ares",
-      "Armstrong, David"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2404.10673",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2024-04-00",
-    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; $\\nu^2$ Lupi",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240410673K",
-    "volume": null,
-    "year": "2024"
-  },
-  {
     "arxiv": "2401.13027",
     "authors": [
       "Bell, Taylor J.",
@@ -310,6 +288,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
+    "volume": "55",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Murphy, Matthew",
       "Beatty, Thomas",
       "Roman, Michael",
@@ -327,26 +325,6 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
-    "volume": "55",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "55",
     "year": "2023"
   },
@@ -458,7 +436,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 26,
+    "citations": 28,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -586,7 +564,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 22,
+    "citations": 23,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202141497",
     "page": null,
@@ -608,7 +586,7 @@
       "Brinjikji, Marah",
       "DiTomasso, Victoria"
     ],
-    "citations": 16,
+    "citations": 17,
     "doctype": "article",
     "doi": "10.3847/1538-4357/abdc22",
     "page": 85,
