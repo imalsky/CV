@@ -1,5 +1,27 @@
 [
   {
+    "arxiv": "2404.10673",
+    "authors": [
+      "King, George W.",
+      "Corrales, L{\\'\\i}a R.",
+      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
+      "Wheatley, Peter J.",
+      "Malsky, Isaac",
+      "Osborn, Ares",
+      "Armstrong, David"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.1093/mnras/stae1054",
+    "page": null,
+    "pub": "Monthly Notices of the Royal Astronomical Society",
+    "pubdate": "2024-04-00",
+    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; {\\ensuremath{\\nu}}<SUP>2</SUP> Lupi",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024MNRAS.tmp.1061K",
+    "volume": null,
+    "year": "2024"
+  },
+  {
     "arxiv": "2401.13027",
     "authors": [
       "Bell, Taylor J.",
