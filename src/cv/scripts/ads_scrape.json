@@ -1,27 +1,5 @@
 [
   {
-    "arxiv": "2404.10673",
-    "authors": [
-      "King, George W.",
-      "Corrales, L{\\'\\i}a R.",
-      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
-      "Wheatley, Peter J.",
-      "Malsky, Isaac",
-      "Osborn, Ares",
-      "Armstrong, David"
-    ],
-    "citations": 0,
-    "doctype": "article",
-    "doi": "10.1093/mnras/stae1054",
-    "page": null,
-    "pub": "Monthly Notices of the Royal Astronomical Society",
-    "pubdate": "2024-04-00",
-    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; {\\ensuremath{\\nu}}<SUP>2</SUP> Lupi",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024MNRAS.tmp.1061K",
-    "volume": null,
-    "year": "2024"
-  },
-  {
     "arxiv": "2404.16488",
     "authors": [
       "Hammond, Mark",
@@ -57,6 +35,28 @@
     "pubdate": "2024-04-00",
     "title": "Two-Dimensional Eclipse Mapping of the Hot Jupiter WASP-43b with JWST MIRI/LRS",
     "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240416488H",
+    "volume": null,
+    "year": "2024"
+  },
+  {
+    "arxiv": "2404.10673",
+    "authors": [
+      "King, George W.",
+      "Corrales, L{\\'\\i}a R.",
+      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
+      "Wheatley, Peter J.",
+      "Malsky, Isaac",
+      "Osborn, Ares",
+      "Armstrong, David"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.1093/mnras/stae1054",
+    "page": null,
+    "pub": "Monthly Notices of the Royal Astronomical Society",
+    "pubdate": "2024-04-00",
+    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; {\\ensuremath{\\nu}}<SUP>2</SUP> Lupi",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024MNRAS.tmp.1061K",
     "volume": null,
     "year": "2024"
   },
@@ -218,7 +218,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 30,
+    "citations": 32,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -248,7 +248,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 11,
+    "citations": 13,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
@@ -497,7 +497,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 27,
+    "citations": 28,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -687,7 +687,7 @@
       "Rogers, Leslie A.",
       "Mansfield, Megan"
     ],
-    "citations": 47,
+    "citations": 48,
     "doctype": "article",
     "doi": "10.3847/1538-3881/abbee6",
     "page": 258,
