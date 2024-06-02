@@ -349,6 +349,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
+    "volume": "241",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Murphy, Matthew",
       "Beatty, Thomas",
       "Roman, Michael",
@@ -366,26 +386,6 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
-    "volume": "241",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "241",
     "year": "2023"
   },
@@ -497,7 +497,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 30,
+    "citations": 31,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -625,7 +625,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 23,
+    "citations": 24,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202141497",
     "page": null,
@@ -687,7 +687,7 @@
       "Rogers, Leslie A.",
       "Mansfield, Megan"
     ],
-    "citations": 49,
+    "citations": 51,
     "doctype": "article",
     "doi": "10.3847/1538-3881/abbee6",
     "page": 258,
