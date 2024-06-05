@@ -335,7 +335,7 @@
       "Kempton, Eliza M. -R.",
       "Marounina, Nadejda"
     ],
-    "citations": 12,
+    "citations": 13,
     "doctype": "article",
     "doi": "10.1038/s41550-022-01823-8",
     "page": 57,
@@ -424,28 +424,6 @@
     "title": "CAMEMBERT: A Mini-Neptunes General Circulation Model Intercomparison, Protocol Version 1.0.A CUISINES Model Intercomparison Project",
     "url": "https://ui.adsabs.harvard.edu/abs/2022PSJ.....3..261C",
     "volume": "3",
-    "year": "2022"
-  },
-  {
-    "arxiv": "2204.12996",
-    "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
-      "Malsky, Isaac",
-      "Ochs, Grace",
-      "Arora, Mireya",
-      "Savel, Arjun"
-    ],
-    "citations": 18,
-    "doctype": "article",
-    "doi": "10.3847/1538-3881/ac897b",
-    "page": 140,
-    "pub": "The Astronomical Journal",
-    "pubdate": "2022-10-00",
-    "title": "Magnetic Drag and 3D Effects in Theoretical High-resolution Emission Spectra of Ultrahot Jupiters: the Case of WASP-76b",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022AJ....164..140B",
-    "volume": "164",
     "year": "2022"
   },
   {
