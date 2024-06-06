@@ -108,7 +108,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 6,
+    "citations": 7,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": null,
@@ -147,7 +147,7 @@
       "Rackham, Benjamin V.",
       "Yang, Jingxuan"
     ],
-    "citations": 0,
+    "citations": 1,
     "doctype": "eprint",
     "doi": "10.48550/arXiv.2404.16488",
     "page": null,
@@ -335,7 +335,7 @@
       "Kempton, Eliza M. -R.",
       "Marounina, Nadejda"
     ],
-    "citations": 13,
+    "citations": 12,
     "doctype": "article",
     "doi": "10.1038/s41550-022-01823-8",
     "page": 57,
@@ -427,6 +427,28 @@
     "year": "2022"
   },
   {
+    "arxiv": "2204.12996",
+    "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Kempton, Eliza M. -R.",
+      "Malsky, Isaac",
+      "Ochs, Grace",
+      "Arora, Mireya",
+      "Savel, Arjun"
+    ],
+    "citations": 18,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/ac897b",
+    "page": 140,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2022-10-00",
+    "title": "Magnetic Drag and 3D Effects in Theoretical High-resolution Emission Spectra of Ultrahot Jupiters: the Case of WASP-76b",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022AJ....164..140B",
+    "volume": "164",
+    "year": "2022"
+  },
+  {
     "arxiv": null,
     "authors": [
       "Gardner, Tyler",
@@ -495,7 +517,7 @@
       "Malsky, Isaac",
       "Batygin, Konstantin"
     ],
-    "citations": 8,
+    "citations": 9,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac6353",
     "page": 277,
