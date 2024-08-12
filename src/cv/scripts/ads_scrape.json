@@ -1,6 +1,6 @@
 [
   {
-    "arxiv": "2404.16488",
+    "arxiv": null,
     "authors": [
       "Hammond, Mark",
       "Bell, Taylor J.",
@@ -137,7 +137,7 @@
     "year": "2024"
   },
   {
-    "arxiv": "2404.10673",
+    "arxiv": null,
     "authors": [
       "King, George W.",
       "Corrales, L{\\'\\i}a R.",
@@ -159,7 +159,7 @@
     "year": "2024"
   },
   {
-    "arxiv": "2401.13027",
+    "arxiv": null,
     "authors": [
       "Bell, Taylor J.",
       "Crouzet, Nicolas",
@@ -296,29 +296,7 @@
     "year": "2024"
   },
   {
-    "arxiv": "2404.10673",
-    "authors": [
-      "King, George W.",
-      "Corrales, L{\\'\\i}a R.",
-      "Fern{\\'a}ndez Fern{\\'a}ndez, Jorge",
-      "Wheatley, Peter J.",
-      "Malsky, Isaac",
-      "Osborn, Ares",
-      "Armstrong, David"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2404.10673",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2024-04-00",
-    "title": "The XUV-driven escape of the planets around TOI-431 {\\&}amp; $\\nu^2$ Lupi",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240410673K",
-    "volume": null,
-    "year": "2024"
-  },
-  {
-    "arxiv": "2311.01506",
+    "arxiv": null,
     "authors": [
       "Malsky, Isaac",
       "Rauscher, Emily",
@@ -338,104 +316,6 @@
     "title": "A Direct Comparison between the Use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
     "url": "https://ui.adsabs.harvard.edu/abs/2024ApJ...961...66M",
     "volume": "961",
-    "year": "2024"
-  },
-  {
-    "arxiv": "2401.13027",
-    "authors": [
-      "Bell, Taylor J.",
-      "Crouzet, Nicolas",
-      "Cubillos, Patricio E.",
-      "Kreidberg, Laura",
-      "Piette, Anjali A. A.",
-      "Roman, Michael T.",
-      "Barstow, Joanna K.",
-      "Blecic, Jasmina",
-      "Carone, Ludmila",
-      "Coulombe, Louis-Philippe",
-      "Ducrot, Elsa",
-      "Hammond, Mark",
-      "Mendon{\\c{c}}a, Jo{\\~a}o M.",
-      "Moses, Julianne I.",
-      "Parmentier, Vivien",
-      "Stevenson, Kevin B.",
-      "Teinturier, Lucas",
-      "Zhang, Michael",
-      "Batalha, Natalie M.",
-      "Bean, Jacob L.",
-      "Benneke, Bj{\\\"o}rn",
-      "Charnay, Benjamin",
-      "Chubb, Katy L.",
-      "Demory, Brice-Olivier",
-      "Gao, Peter",
-      "Lee, Elspeth K. H.",
-      "L{\\'o}pez-Morales, Mercedes",
-      "Morello, Giuseppe",
-      "Rauscher, Emily",
-      "Sing, David K.",
-      "Tan, Xianyu",
-      "Venot, Olivia",
-      "Wakeford, Hannah R.",
-      "Aggarwal, Keshav",
-      "Ahrer, Eva-Maria",
-      "Alam, Munazza K.",
-      "Baeyens, Robin",
-      "Barrado, David",
-      "Caceres, Claudio",
-      "Carter, Aarynn L.",
-      "Casewell, Sarah L.",
-      "Challener, Ryan C.",
-      "Crossfield, Ian J. M.",
-      "Decin, Leen",
-      "D{\\'e}sert, Jean-Michel",
-      "Dobbs-Dixon, Ian",
-      "Dyrek, Achr{\\`e}ne",
-      "Espinoza, N{\\'e}stor",
-      "Feinstein, Adina D.",
-      "Gibson, Neale P.",
-      "Harrington, Joseph",
-      "Helling, Christiane",
-      "Hu, Renyu",
-      "Iro, Nicolas",
-      "Kempton, Eliza M. -R.",
-      "Kendrew, Sarah",
-      "Komacek, Thaddeus D.",
-      "Krick, Jessica",
-      "Lagage, Pierre-Olivier",
-      "Leconte, J{\\'e}r{\\'e}my",
-      "Lendl, Monika",
-      "Lewis, Neil T.",
-      "Lothringer, Joshua D.",
-      "Malsky, Isaac",
-      "Mancini, Luigi",
-      "Mansfield, Megan",
-      "Mayne, Nathan J.",
-      "Mikal-Evans, Thomas",
-      "Molaverdikhani, Karan",
-      "Nikolov, Nikolay K.",
-      "Nixon, Matthew C.",
-      "Palle, Enric",
-      "Petit dit de la Roche, Dominique J. M.",
-      "Piaulet, Caroline",
-      "Powell, Diana",
-      "Rackham, Benjamin V.",
-      "Schneider, Aaron D.",
-      "Steinrueck, Maria E.",
-      "Taylor, Jake",
-      "Welbanks, Luis",
-      "Yurchenko, Sergei N.",
-      "Zhang, Xi",
-      "Zieba, Sebastian"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2401.13027",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2024-01-00",
-    "title": "Nightside clouds and disequilibrium chemistry on the hot Jupiter WASP-43b",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240113027B",
-    "volume": null,
     "year": "2024"
   },
   {
@@ -481,7 +361,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2305.06240",
+    "arxiv": null,
     "authors": [
       "Kempton, Eliza M. -R.",
       "Zhang, Michael",
@@ -529,7 +409,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2305.05697",
+    "arxiv": null,
     "authors": [
       "Gao, Peter",
       "Piette, Anjali A. A.",
@@ -559,7 +439,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2302.13969",
+    "arxiv": null,
     "authors": [
       "Beltz, Hayley",
       "Rauscher, Emily",
@@ -576,36 +456,6 @@
     "title": "Magnetic Effects and 3D Structure in Theoretical High-resolution Transmission Spectra of Ultrahot Jupiters: the Case of WASP-76b",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AJ....165..257B",
     "volume": "165",
-    "year": "2023"
-  },
-  {
-    "arxiv": "2305.05697",
-    "authors": [
-      "Gao, Peter",
-      "Piette, Anjali A. A.",
-      "Steinrueck, Maria E.",
-      "Nixon, Matthew C.",
-      "Zhang, Michael",
-      "Kempton, Eliza M. R.",
-      "Bean, Jacob L.",
-      "Rauscher, Emily",
-      "Parmentier, Vivien",
-      "Batalha, Natasha E.",
-      "Savel, Arjun B.",
-      "Arnold, Kenneth E.",
-      "Roman, Michael T.",
-      "Malsky, Isaac",
-      "Taylor, Jake"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2305.05697",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2023-05-00",
-    "title": "The Hazy and Metal-Rich Atmosphere of GJ 1214 b Constrained by Near and Mid-Infrared Transmission Spectroscopy",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023arXiv230505697G",
-    "volume": null,
     "year": "2023"
   },
   {
@@ -657,7 +507,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2212.03240",
+    "arxiv": null,
     "authors": [
       "Murphy, Matthew M.",
       "Beatty, Thomas G.",
@@ -683,7 +533,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2301.01694",
+    "arxiv": null,
     "authors": [
       "Savel, Arjun B.",
       "Kempton, Eliza M. -R.",
@@ -705,27 +555,7 @@
     "year": "2023"
   },
   {
-    "arxiv": "2302.13969",
-    "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Kempton, Eliza",
-      "Malsky, Isaac",
-      "Savel, Arjun"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2302.13969",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2023-02-00",
-    "title": "Magnetic Effects and 3D Structure in Theoretical High-Resolution Transmission Spectra of Ultrahot Jupiters: the Case of WASP-76b",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023arXiv230213969B",
-    "volume": null,
-    "year": "2023"
-  },
-  {
-    "arxiv": "2309.16054",
+    "arxiv": null,
     "authors": [
       "Malsky, Isaac",
       "Rogers, Leslie",
@@ -787,28 +617,6 @@
     "year": "2023"
   },
   {
-    "arxiv": "2301.01694",
-    "authors": [
-      "Savel, Arjun B.",
-      "Kempton, Eliza M. -R.",
-      "Rauscher, Emily",
-      "Komacek, Thaddeus D.",
-      "Bean, Jacob L.",
-      "Malik, Matej",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2301.01694",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2023-01-00",
-    "title": "Diagnosing limb asymmetries in hot and ultra-hot Jupiters with high-resolution transmission spectroscopy",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023arXiv230101694S",
-    "volume": null,
-    "year": "2023"
-  },
-  {
     "arxiv": "2212.03240",
     "authors": [
       "Murphy, Matthew M.",
@@ -835,7 +643,7 @@
     "year": "2022"
   },
   {
-    "arxiv": "2211.04048",
+    "arxiv": null,
     "authors": [
       "Christie, Duncan A.",
       "Lee, Elspeth K. H.",
@@ -872,44 +680,7 @@
     "year": "2022"
   },
   {
-    "arxiv": "2211.04048",
-    "authors": [
-      "Christie, Duncan A.",
-      "Lee, Elspeth K. H.",
-      "Innes, Hamish",
-      "Noti, Pascal A.",
-      "Charnay, Benjamin",
-      "Fauchez, Thomas J.",
-      "Mayne, Nathan J.",
-      "Deitrick, Russell",
-      "Ding, Feng",
-      "Greco, Jennifer J.",
-      "Hammond, Mark",
-      "Malsky, Isaac",
-      "Mandell, Avi",
-      "Rauscher, Emily",
-      "Roman, Michael T.",
-      "Sergeev, Denis E.",
-      "Sohl, Linda",
-      "Steinrueck, Maria E.",
-      "Turbet, Martin",
-      "Wolf, Eric T.",
-      "Zamyatina, Maria",
-      "Carone, Ludmila"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2211.04048",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2022-11-00",
-    "title": "CAMEMBERT: A Mini-Neptunes GCM Intercomparison, Protocol Version 1.0. A CUISINES Model Intercomparison Project",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022arXiv221104048C",
-    "volume": null,
-    "year": "2022"
-  },
-  {
-    "arxiv": "2204.12996",
+    "arxiv": null,
     "authors": [
       "Beltz, Hayley",
       "Rauscher, Emily",
@@ -970,7 +741,7 @@
     "year": "2022"
   },
   {
-    "arxiv": "2112.00744",
+    "arxiv": null,
     "authors": [
       "Caldiroli, Andrea",
       "Haardt, Francesco",
@@ -991,7 +762,7 @@
     "year": "2022"
   },
   {
-    "arxiv": "2203.17180",
+    "arxiv": null,
     "authors": [
       "Belkovski, Michelle",
       "Becker, Juliette",
@@ -1099,27 +870,7 @@
     "year": "2022"
   },
   {
-    "arxiv": "2203.17180",
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2203.17180",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2022-03-00",
-    "title": "A Multi-Planet System's Sole Super-Puff: Exploring Allowable Physical Parameters for the Cold Super-Puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022arXiv220317180B",
-    "volume": null,
-    "year": "2022"
-  },
-  {
-    "arxiv": "2110.05593",
+    "arxiv": null,
     "authors": [
       "Malsky, Isaac",
       "Rauscher, Emily",
@@ -1140,28 +891,7 @@
     "year": "2021"
   },
   {
-    "arxiv": "2112.00744",
-    "authors": [
-      "Caldiroli, Andrea",
-      "Haardt, Francesco",
-      "Gallo, Elena",
-      "Spinelli, Riccardo",
-      "Malsky, Isaac",
-      "Rauscher, Emily"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2112.00744",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2021-12-00",
-    "title": "Irradiation-driven escape of primordial planetary atmospheres II. Evaporation efficiency of sub-Neptunes through hot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2021arXiv211200744C",
-    "volume": null,
-    "year": "2021"
-  },
-  {
-    "arxiv": "2106.10294",
+    "arxiv": null,
     "authors": [
       "Caldiroli, Andrea",
       "Haardt, Francesco",
@@ -1224,7 +954,7 @@
     "year": "2021"
   },
   {
-    "arxiv": "1912.02268",
+    "arxiv": null,
     "authors": [
       "Harada, Caleb K.",
       "Kempton, Eliza M. -R.",
@@ -1263,7 +993,7 @@
     "year": "2021"
   },
   {
-    "arxiv": "2007.12968",
+    "arxiv": null,
     "authors": [
       "Kasper, David",
       "Bean, Jacob L.",
@@ -1286,30 +1016,7 @@
     "year": "2020"
   },
   {
-    "arxiv": "2007.12968",
-    "authors": [
-      "Kasper, David",
-      "Bean, Jacob L.",
-      "Oklop{\\v{c}}i{\\'c}, Antonija",
-      "Malsky, Isaac",
-      "Kempton, Eliza M. -R.",
-      "D{\\'e}sert, Jean-Michel",
-      "Rogers, Leslie A.",
-      "Mansfield, Megan"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2007.12968",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2020-07-00",
-    "title": "Non-detection of Helium in the Upper Atmospheres of Three Sub-Neptune Exoplanets",
-    "url": "https://ui.adsabs.harvard.edu/abs/2020arXiv200712968K",
-    "volume": null,
-    "year": "2020"
-  },
-  {
-    "arxiv": "2002.06466",
+    "arxiv": null,
     "authors": [
       "Malsky, Isaac",
       "Rogers, Leslie A."
@@ -1341,28 +1048,6 @@
     "url": "https://ui.adsabs.harvard.edu/abs/2020arXiv200206466M",
     "volume": null,
     "year": "2020"
-  },
-  {
-    "arxiv": "1912.02268",
-    "authors": [
-      "Harada, Caleb K.",
-      "Kempton, Eliza M. -R.",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Malsky, Isaac",
-      "Brinjikji, Marah",
-      "diTomasso, Victoria"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.1912.02268",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2019-12-00",
-    "title": "Signatures of Clouds in Hot Jupiter Atmospheres: Modeled High Resolution Emission Spectra from 3D General Circulation Models",
-    "url": "https://ui.adsabs.harvard.edu/abs/2019arXiv191202268H",
-    "volume": null,
-    "year": "2019"
   },
   {
     "arxiv": null,
