@@ -125,7 +125,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 4,
+    "citations": 5,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -156,6 +156,29 @@
     "title": "The XUV-driven escape of the planets around TOI-431 and {\\ensuremath{\\nu}}<SUP>2</SUP> Lupi",
     "url": "https://ui.adsabs.harvard.edu/abs/2024MNRAS.530.3500K",
     "volume": "530",
+    "year": "2024"
+  },
+  {
+    "arxiv": "2311.01506",
+    "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Roman, Michael T.",
+      "Lee, Elspeth K. H.",
+      "Beltz, Hayley",
+      "Savel, Arjun",
+      "Kempton, Eliza M. -R.",
+      "Cinque, L."
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/ad0b70",
+    "page": 66,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2024-01-00",
+    "title": "A Direct Comparison between the Use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024ApJ...961...66M",
+    "volume": "961",
     "year": "2024"
   },
   {
@@ -228,7 +251,7 @@
       "Mancini, Luigi",
       "Mansfield, Megan",
       "Mayne, Nathan J.",
-      "Evans-Soma, Thomas M.",
+      "Mikal-Evans, Thomas",
       "Molaverdikhani, Karan",
       "Nikolov, Nikolay K.",
       "Nixon, Matthew C.",
@@ -245,38 +268,15 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 7,
-    "doctype": "article",
-    "doi": "10.1038/s41550-024-02230-x",
-    "page": null,
-    "pub": "Nature Astronomy",
-    "pubdate": "2024-04-00",
-    "title": "Nightside clouds and disequilibrium chemistry on the hot Jupiter WASP-43b",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024NatAs.tmp....1B",
-    "volume": null,
-    "year": "2024"
-  },
-  {
-    "arxiv": "2311.01506",
-    "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael T.",
-      "Lee, Elspeth K. H.",
-      "Beltz, Hayley",
-      "Savel, Arjun",
-      "Kempton, Eliza M. -R.",
-      "Cinque, L."
-    ],
     "citations": 0,
-    "doctype": "article",
-    "doi": "10.3847/1538-4357/ad0b70",
-    "page": 66,
-    "pub": "The Astrophysical Journal",
+    "doctype": "eprint",
+    "doi": "10.48550/arXiv.2401.13027",
+    "page": null,
+    "pub": "arXiv e-prints",
     "pubdate": "2024-01-00",
-    "title": "A Direct Comparison between the Use of Double Gray and Multiwavelength Radiative Transfer in a General Circulation Model with and without Radiatively Active Clouds",
-    "url": "https://ui.adsabs.harvard.edu/abs/2024ApJ...961...66M",
-    "volume": "961",
+    "title": "Nightside clouds and disequilibrium chemistry on the hot Jupiter WASP-43b",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240113027B",
+    "volume": null,
     "year": "2024"
   },
   {
@@ -392,7 +392,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 12,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -447,6 +447,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
+    "volume": "241",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Murphy, Matthew",
       "Beatty, Thomas",
       "Roman, Michael",
@@ -464,26 +484,6 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
-    "volume": "241",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "241",
     "year": "2023"
   },
@@ -535,7 +535,7 @@
       "Arora, Mireya",
       "Savel, Arjun"
     ],
-    "citations": 22,
+    "citations": 21,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac897b",
     "page": 140,
@@ -702,7 +702,7 @@
       "Long, Deryl",
       "Harada, Caleb K."
     ],
-    "citations": 8,
+    "citations": 7,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ac2a2a",
     "page": 62,
