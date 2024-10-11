@@ -1,5 +1,41 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "Monnier, John D.",
+      "Gardner, Tyler",
+      "Shuai, Linling",
+      "Rauscher, Emily",
+      "Beltz, Hayley",
+      "Malsky, Isaac",
+      "le Bouquin, Jean-Baptiste",
+      "Schaefer, Gail",
+      "Kraus, Stefan",
+      "Setterholm, Benjamin",
+      "Anugu, Narsireddy",
+      "ten Brummelaar, Theo",
+      "Chhabra, Sorabh",
+      "Codron, Isabelle",
+      "Davies, Claire",
+      "Ennis, Jacob",
+      "Gutierrez, Mayra",
+      "Ibrahim, Noura",
+      "Labdon, Aaron",
+      "Lanthermann, Cyprien",
+      "Mortimer, Daniel"
+    ],
+    "citations": 0,
+    "doctype": "inproceedings",
+    "doi": "10.1117/12.3020765",
+    "page": 1309516,
+    "pub": "Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series",
+    "pubdate": "2024-08-00",
+    "title": "Precision interferometry with MIRC-X/MYSTIC for exoplanets",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024SPIE13095E..16M",
+    "volume": "13095",
+    "year": "2024"
+  },
+  {
     "arxiv": "2401.13027",
     "authors": [
       "Bell, Taylor J.",
@@ -517,7 +553,7 @@
       "Malsky, Isaac",
       "Batygin, Konstantin"
     ],
-    "citations": 9,
+    "citations": 11,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac6353",
     "page": 277,
@@ -687,7 +723,7 @@
       "Rogers, Leslie A.",
       "Mansfield, Megan"
     ],
-    "citations": 52,
+    "citations": 53,
     "doctype": "article",
     "doi": "10.3847/1538-3881/abbee6",
     "page": 258,
@@ -704,7 +740,7 @@
       "Malsky, Isaac",
       "Rogers, Leslie A."
     ],
-    "citations": 31,
+    "citations": 32,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ab873f",
     "page": 48,
