@@ -373,6 +373,25 @@
     "year": "2023"
   },
   {
+    "arxiv": null,
+    "authors": [
+      "Malsky, Isaac",
+      "Cowherd, Marianne",
+      "Rauscher, Emily",
+      "Roman, Michael T"
+    ],
+    "citations": 1,
+    "doctype": "software",
+    "doi": "10.5281/zenodo.7962911",
+    "page": null,
+    "pub": "Zenodo",
+    "pubdate": "2023-05-23",
+    "title": "emily-rauscher/RM-GCM: First public version of RM-GCM",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023zndo...7962911M",
+    "volume": null,
+    "year": "2023"
+  },
+  {
     "arxiv": "2212.03240",
     "authors": [
       "Murphy, Matthew M.",
