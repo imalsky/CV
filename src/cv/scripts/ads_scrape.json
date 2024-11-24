@@ -311,7 +311,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 65,
+    "citations": 66,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -341,7 +341,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 26,
+    "citations": 27,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
@@ -609,7 +609,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 38,
+    "citations": 39,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -671,24 +671,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Beltz, Hayley",
       "Rauscher, Emily",
       "Roman, Michael",
@@ -703,6 +685,24 @@
     "pubdate": "2022-06-00",
     "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Roman, Michael"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
     "volume": "54",
     "year": "2022"
   },
@@ -737,7 +737,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 29,
+    "citations": 30,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202141497",
     "page": null,
@@ -759,7 +759,7 @@
       "Brinjikji, Marah",
       "DiTomasso, Victoria"
     ],
-    "citations": 22,
+    "citations": 23,
     "doctype": "article",
     "doi": "10.3847/1538-4357/abdc22",
     "page": 85,
