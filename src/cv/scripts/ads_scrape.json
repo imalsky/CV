@@ -311,7 +311,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 71,
+    "citations": 73,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -643,6 +643,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Roman, Michael",
+      "Kempton, Eliza",
+      "Malsky, Isaac"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -665,26 +685,6 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Kempton, Eliza",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
     "volume": "54",
     "year": "2022"
   },
@@ -759,7 +759,7 @@
       "Brinjikji, Marah",
       "DiTomasso, Victoria"
     ],
-    "citations": 23,
+    "citations": 22,
     "doctype": "article",
     "doi": "10.3847/1538-4357/abdc22",
     "page": 85,
