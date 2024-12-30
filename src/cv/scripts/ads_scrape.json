@@ -1,5 +1,25 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "Kennedy, Thomas D.",
+      "Rauscher, Emily",
+      "Malsky, Isaac",
+      "Roman, Michael T.",
+      "Beltz, Hayley"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/ad9394",
+    "page": 82,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2025-01-00",
+    "title": "Radiatively Active Clouds and Magnetic Effects Explored in a Grid of Hot Jupiter GCMs",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...978...82K",
+    "volume": "978",
+    "year": "2025"
+  },
+  {
     "arxiv": "2410.19017",
     "authors": [
       "Smith, Peter C. B.",
@@ -311,7 +331,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 72,
+    "citations": 73,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
