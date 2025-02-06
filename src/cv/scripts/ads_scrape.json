@@ -549,7 +549,7 @@
       "Arora, Mireya",
       "Savel, Arjun"
     ],
-    "citations": 29,
+    "citations": 28,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac897b",
     "page": 140,
@@ -643,26 +643,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Kempton, Eliza",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -685,6 +665,26 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Roman, Michael",
+      "Kempton, Eliza",
+      "Malsky, Isaac"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
     "volume": "54",
     "year": "2022"
   },
@@ -716,7 +716,7 @@
       "Long, Deryl",
       "Harada, Caleb K."
     ],
-    "citations": 11,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ac2a2a",
     "page": 62,
@@ -799,7 +799,7 @@
       "Rogers, Leslie A.",
       "Mansfield, Megan"
     ],
-    "citations": 57,
+    "citations": 56,
     "doctype": "article",
     "doi": "10.3847/1538-3881/abbee6",
     "page": 258,
