@@ -217,7 +217,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 32,
+    "citations": 33,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -349,7 +349,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 76,
+    "citations": 77,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -379,7 +379,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 30,
+    "citations": 31,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
@@ -444,7 +444,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 12,
+    "citations": 13,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -681,26 +681,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Beltz, Hayley",
-      "Rauscher, Emily",
-      "Roman, Michael",
-      "Kempton, Eliza",
-      "Malsky, Isaac"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -723,6 +703,26 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Beltz, Hayley",
+      "Rauscher, Emily",
+      "Roman, Michael",
+      "Kempton, Eliza",
+      "Malsky, Isaac"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Exploring the Effects of Active Magnetic Drag in the Atmospheric Structure and High Resolution Emission Spectroscopy of Ultrahot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.195B",
     "volume": "54",
     "year": "2022"
   },
