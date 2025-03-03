@@ -217,7 +217,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 33,
+    "citations": 34,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -256,7 +256,7 @@
       "Rackham, Benjamin V.",
       "Yang, Jingxuan"
     ],
-    "citations": 7,
+    "citations": 8,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad434d",
     "page": 4,
@@ -301,7 +301,7 @@
       "Kempton, Eliza M. -R.",
       "Cinque, L."
     ],
-    "citations": 4,
+    "citations": 5,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ad0b70",
     "page": 66,
@@ -444,7 +444,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 13,
+    "citations": 14,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -701,24 +701,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -741,6 +723,24 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Roman, Michael"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
     "volume": "54",
     "year": "2022"
   },
