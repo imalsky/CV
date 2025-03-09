@@ -217,7 +217,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 34,
+    "citations": 35,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -278,7 +278,7 @@
       "Osborn, Ares",
       "Armstrong, David"
     ],
-    "citations": 3,
+    "citations": 6,
     "doctype": "article",
     "doi": "10.1093/mnras/stae1054",
     "page": 3500,
@@ -701,6 +701,24 @@
   {
     "arxiv": null,
     "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Roman, Michael"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "Bulletin of the American Astronomical Society",
+    "pubdate": "2022-06-00",
+    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
+    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
+    "volume": "54",
+    "year": "2022"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Rasmussen, Kaitlin C.",
       "Rahman, Fahin",
       "Beltz, Hayley",
@@ -723,24 +741,6 @@
     "pubdate": "2022-06-00",
     "title": "Simulating the Exoplanet Atmosphere Detections of Today and Tomorrow with the All-Purpose Carrie Spectrograph Simulator",
     "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.331R",
-    "volume": "54",
-    "year": "2022"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Roman, Michael"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "Bulletin of the American Astronomical Society",
-    "pubdate": "2022-06-00",
-    "title": "Multiwavelength Radiative Transfer and Clouds with Feedback in 3D Models of Hot Jupiters",
-    "url": "https://ui.adsabs.harvard.edu/abs/2022BAAS...54e.268M",
     "volume": "54",
     "year": "2022"
   },
@@ -837,7 +837,7 @@
       "Rogers, Leslie A.",
       "Mansfield, Megan"
     ],
-    "citations": 104,
+    "citations": 56,
     "doctype": "article",
     "doi": "10.3847/1538-3881/abbee6",
     "page": 258,
@@ -854,7 +854,7 @@
       "Malsky, Isaac",
       "Rogers, Leslie A."
     ],
-    "citations": 66,
+    "citations": 35,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ab873f",
     "page": 48,
