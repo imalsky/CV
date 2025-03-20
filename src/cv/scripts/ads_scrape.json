@@ -14,7 +14,7 @@
     ],
     "citations": 0,
     "doctype": "eprint",
-    "doi": null,
+    "doi": "10.48550/arXiv.2503.12521",
     "page": null,
     "pub": "arXiv e-prints",
     "pubdate": "2025-03-00",
@@ -423,7 +423,7 @@
       "Malsky, Isaac",
       "Savel, Arjun B."
     ],
-    "citations": 17,
+    "citations": 16,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acd24d",
     "page": 257,
@@ -490,7 +490,7 @@
       "Malik, Matej",
       "Malsky, Isaac"
     ],
-    "citations": 19,
+    "citations": 18,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acb141",
     "page": 99,
