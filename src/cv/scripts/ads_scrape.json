@@ -1,5 +1,33 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "Malsky, Isaac",
+      "Rauscher, Emily",
+      "Stevenson, Kevin",
+      "Savel, Arjun B.",
+      "Steinrueck, Maria E.",
+      "Gao, Peter",
+      "Kempton, Eliza M. -R.",
+      "Roman, Michael T.",
+      "Bean, Jacob L.",
+      "Zhang, Michael",
+      "Parmentier, Vivien",
+      "Piette, Anjali A. A.",
+      "Kataria, Tiffany"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/adb7e8",
+    "page": 221,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2025-04-00",
+    "title": "Clouds and Hazes in GJ 1214 b's Metal-rich Atmosphere",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..221M",
+    "volume": "169",
+    "year": "2025"
+  },
+  {
     "arxiv": "2503.12521",
     "authors": [
       "Davenport, Brian",
@@ -20,6 +48,41 @@
     "pubdate": "2025-03-00",
     "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
     "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250312521D",
+    "volume": null,
+    "year": "2025"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Moran, Sarah E.",
+      "Alderson, Lili",
+      "Alam, Munazza",
+      "Barstow, Joanna",
+      "Batalha, Natasha",
+      "Chubb, Katy",
+      "Espinoza, Nestor",
+      "Fairman, Charlotte",
+      "Gao, Peter",
+      "Inglis, Julie",
+      "Kataria, Tiffany",
+      "Lewis, Nikole",
+      "MacDonald, Ryan",
+      "Malsky, Isaac",
+      "Mayorga, Laura C.",
+      "Mullens, Elijah",
+      "Powell, Diana",
+      "Stevenson, Kevin",
+      "Valentine, Daniel",
+      "Wakeford, Hannah"
+    ],
+    "citations": 0,
+    "doctype": "proposal",
+    "doi": null,
+    "page": 7849,
+    "pub": "JWST Proposal. Cycle 4",
+    "pubdate": "2025-03-00",
+    "title": "Meeting their Match: Measuring Cloudy Hot Jupiter Counterparts to Understand the Silicate Cloud Regime with JWST/MIRI",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025jwst.prop.7849M",
     "volume": null,
     "year": "2025"
   },
@@ -241,7 +304,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 36,
+    "citations": 37,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -280,7 +343,7 @@
       "Rackham, Benjamin V.",
       "Yang, Jingxuan"
     ],
-    "citations": 9,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad434d",
     "page": 4,
@@ -325,7 +388,7 @@
       "Kempton, Eliza M. -R.",
       "Cinque, L."
     ],
-    "citations": 6,
+    "citations": 7,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ad0b70",
     "page": 66,
@@ -373,7 +436,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 80,
+    "citations": 82,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -403,7 +466,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 32,
+    "citations": 33,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
@@ -468,7 +531,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 14,
+    "citations": 15,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -778,7 +841,7 @@
       "Long, Deryl",
       "Harada, Caleb K."
     ],
-    "citations": 13,
+    "citations": 14,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ac2a2a",
     "page": 62,
