@@ -1,6 +1,6 @@
 [
   {
-    "arxiv": null,
+    "arxiv": "2503.12521",
     "authors": [
       "Davenport, Brian",
       "Kennedy, Thomas",
@@ -65,7 +65,7 @@
     ],
     "citations": 0,
     "doctype": "eprint",
-    "doi": null,
+    "doi": "10.48550/arXiv.2504.14060",
     "page": null,
     "pub": "arXiv e-prints",
     "pubdate": "2025-04-00",
@@ -137,34 +137,6 @@
     "pubdate": "2025-03-00",
     "title": "Meeting their Match: Measuring Cloudy Hot Jupiter Counterparts to Understand the Silicate Cloud Regime with JWST/MIRI",
     "url": "https://ui.adsabs.harvard.edu/abs/2025jwst.prop.7849M",
-    "volume": null,
-    "year": "2025"
-  },
-  {
-    "arxiv": "2503.22608",
-    "authors": [
-      "Malsky, Isaac",
-      "Rauscher, Emily",
-      "Stevenson, Kevin",
-      "Savel, Arjun B.",
-      "Steinrueck, Maria E.",
-      "Gao, Peter",
-      "Kempton, Eliza M. -R.",
-      "Roman, Michael T.",
-      "Bean, Jacob L.",
-      "Zhang, Michael",
-      "Parmentier, Vivien",
-      "Piette, Anjali A. A.",
-      "Kataria, Tiffany"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": null,
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2025-03-00",
-    "title": "Clouds and Hazes in GJ 1214b's Metal-Rich Atmosphere",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250322608M",
     "volume": null,
     "year": "2025"
   },
@@ -386,7 +358,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 40,
+    "citations": 39,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -425,7 +397,7 @@
       "Rackham, Benjamin V.",
       "Yang, Jingxuan"
     ],
-    "citations": 11,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad434d",
     "page": 4,
@@ -447,7 +419,7 @@
       "Osborn, Ares",
       "Armstrong, David"
     ],
-    "citations": 5,
+    "citations": 4,
     "doctype": "article",
     "doi": "10.1093/mnras/stae1054",
     "page": 3500,
@@ -470,7 +442,7 @@
       "Kempton, Eliza M. -R.",
       "Cinque, L."
     ],
-    "citations": 9,
+    "citations": 7,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ad0b70",
     "page": 66,
@@ -613,7 +585,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 16,
+    "citations": 15,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
@@ -923,7 +895,7 @@
       "Long, Deryl",
       "Harada, Caleb K."
     ],
-    "citations": 15,
+    "citations": 14,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ac2a2a",
     "page": 62,
