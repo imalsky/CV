@@ -238,6 +238,25 @@
   {
     "arxiv": null,
     "authors": [
+      "Savel, Arjun",
+      "M.-R. Kempton, Eliza",
+      "Beltz, Hayley",
+      "Malsky, Isaac"
+    ],
+    "citations": 1,
+    "doctype": "software",
+    "doi": "10.5281/zenodo.13306679",
+    "page": null,
+    "pub": "Zenodo",
+    "pubdate": "2024-08-12",
+    "title": "arjunsavel/hires-literature",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024zndo..13306679S",
+    "volume": null,
+    "year": "2024"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Monnier, John D.",
       "Gardner, Tyler",
       "Shuai, Linling",
@@ -559,7 +578,7 @@
       "Rauscher, Emily",
       "Roman, Michael T"
     ],
-    "citations": 2,
+    "citations": 3,
     "doctype": "software",
     "doi": "10.5281/zenodo.7962911",
     "page": null,
