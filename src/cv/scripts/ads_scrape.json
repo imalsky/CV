@@ -1,5 +1,28 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "Arnold, Kenneth E.",
+      "Savel, Arjun B.",
+      "Kempton, Eliza M. -R.",
+      "Roman, Michael T.",
+      "Rauscher, Emily",
+      "Malsky, Isaac",
+      "Beltz, Hayley",
+      "Steinrueck, Maria E."
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/add3f6",
+    "page": 187,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2025-06-00",
+    "title": "Out on a Limb: The Signatures of East{\\textendash}West Asymmetries in Transmission Spectra from General Circulation Models",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...986..187A",
+    "volume": "986",
+    "year": "2025"
+  },
+  {
     "arxiv": "2503.12521",
     "authors": [
       "Davenport, Brian",
@@ -377,7 +400,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 45,
+    "citations": 46,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -539,7 +562,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 39,
+    "citations": 40,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
