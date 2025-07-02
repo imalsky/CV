@@ -191,7 +191,7 @@
     "doctype": "abstract",
     "doi": null,
     "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts",
+    "pub": "American Astronomical Society Meeting Abstracts #245",
     "pubdate": "2025-01-00",
     "title": "The Roasting Marshmallows Program with IGRINS on Gemini South II - WASP-121 b has super-stellar C/O and refractory-to-volatile ratios",
     "url": "https://ui.adsabs.harvard.edu/abs/2025AAS...24511904S",
@@ -509,7 +509,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 100,
+    "citations": 99,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
