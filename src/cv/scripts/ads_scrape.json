@@ -23,30 +23,6 @@
     "year": "2025"
   },
   {
-    "arxiv": "2503.12521",
-    "authors": [
-      "Davenport, Brian",
-      "Kennedy, Thomas",
-      "May, E. M.",
-      "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
-      "Malsky, Isaac",
-      "Stevenson, Kevin B.",
-      "Bean, Jacob L.",
-      "Mansfield, Megan Weiner"
-    ],
-    "citations": 0,
-    "doctype": "article",
-    "doi": "10.3847/1538-3881/adc0a4",
-    "page": 260,
-    "pub": "The Astronomical Journal",
-    "pubdate": "2025-05-00",
-    "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..260D",
-    "volume": "169",
-    "year": "2025"
-  },
-  {
     "arxiv": "2503.22642",
     "authors": [
       "Steinrueck, Maria E.",
@@ -75,6 +51,30 @@
     "title": "The Radiative Effects of Photochemical Hazes on the Atmospheric Circulation and Phase Curves of Sub-Neptunes",
     "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...985...98S",
     "volume": "985",
+    "year": "2025"
+  },
+  {
+    "arxiv": "2503.12521",
+    "authors": [
+      "Davenport, Brian",
+      "Kennedy, Thomas",
+      "May, E. M.",
+      "Rauscher, Emily",
+      "Kempton, Eliza M. -R.",
+      "Malsky, Isaac",
+      "Stevenson, Kevin B.",
+      "Bean, Jacob L.",
+      "Mansfield, Megan Weiner"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/adc0a4",
+    "page": 260,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2025-05-00",
+    "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..260D",
+    "volume": "169",
     "year": "2025"
   },
   {
@@ -224,7 +224,7 @@
       "Meyer, Michael",
       "Monnier, John"
     ],
-    "citations": 8,
+    "citations": 7,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad8574",
     "page": 293,
@@ -377,7 +377,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 48,
+    "citations": 47,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -461,7 +461,7 @@
       "Kempton, Eliza M. -R.",
       "Cinque, L."
     ],
-    "citations": 11,
+    "citations": 10,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ad0b70",
     "page": 66,
@@ -509,7 +509,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 102,
+    "citations": 101,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -559,7 +559,7 @@
       "Malsky, Isaac",
       "Savel, Arjun B."
     ],
-    "citations": 19,
+    "citations": 18,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acd24d",
     "page": 257,
@@ -604,7 +604,7 @@
       "Kempton, Eliza M. -R.",
       "Stevenson, Kevin B."
     ],
-    "citations": 17,
+    "citations": 16,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acaec5",
     "page": 107,
