@@ -1,5 +1,27 @@
 [
   {
+    "arxiv": "2507.16687",
+    "authors": [
+      "van Sluijs, Lennart",
+      "Beltz, Hayley",
+      "Malsky, Isaac",
+      "Pereira, Genevieve H.",
+      "Cinque, L.",
+      "Rauscher, Emily",
+      "Birkby, Jayne"
+    ],
+    "citations": 0,
+    "doctype": "eprint",
+    "doi": null,
+    "page": null,
+    "pub": "arXiv e-prints",
+    "pubdate": "2025-07-00",
+    "title": "Assessing robustness and bias in 1D retrievals of 3D Global Circulation Models at high spectral resolution: a WASP-76 b simulation case study in emission",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250716687V",
+    "volume": null,
+    "year": "2025"
+  },
+  {
     "arxiv": "2504.14060",
     "authors": [
       "Arnold, Kenneth E.",
