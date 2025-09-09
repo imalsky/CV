@@ -1,5 +1,27 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "van Sluijs, Lennart",
+      "Beltz, Hayley",
+      "Malsky, Isaac",
+      "Pereira, Genevieve H.",
+      "Cinque, L.",
+      "Rauscher, Emily",
+      "Birkby, Jayne"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/adf328",
+    "page": 106,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2025-09-00",
+    "title": "Assessing Robustness and Bias in 1D Retrievals of 3D Global Circulation Models at High Spectral Resolution: A WASP-76 b Simulation Case Study in Emission",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...990..106V",
+    "volume": "990",
+    "year": "2025"
+  },
+  {
     "arxiv": "2508.11089",
     "authors": [
       "van Sluijs, Lennart",
@@ -23,28 +45,6 @@
     "pubdate": "2025-08-00",
     "title": "First Results from WINERED: Detection of Emission Lines from Neutral Iron and a Combined Set of Trace Species on the Dayside of WASP-189 b",
     "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250811089V",
-    "volume": null,
-    "year": "2025"
-  },
-  {
-    "arxiv": "2507.16687",
-    "authors": [
-      "van Sluijs, Lennart",
-      "Beltz, Hayley",
-      "Malsky, Isaac",
-      "Pereira, Genevieve H.",
-      "Cinque, L.",
-      "Rauscher, Emily",
-      "Birkby, Jayne"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2507.16687",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2025-07-00",
-    "title": "Assessing robustness and bias in 1D retrievals of 3D Global Circulation Models at high spectral resolution: a WASP-76 b simulation case study in emission",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250716687V",
     "volume": null,
     "year": "2025"
   },
@@ -273,7 +273,7 @@
       "Meyer, Michael",
       "Monnier, John"
     ],
-    "citations": 15,
+    "citations": 16,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad8574",
     "page": 293,
@@ -426,7 +426,7 @@
       "Zhang, Xi",
       "Zieba, Sebastian"
     ],
-    "citations": 55,
+    "citations": 56,
     "doctype": "article",
     "doi": "10.1038/s41550-024-02230-x",
     "page": 879,
@@ -675,7 +675,7 @@
       "Malik, Matej",
       "Malsky, Isaac"
     ],
-    "citations": 21,
+    "citations": 22,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acb141",
     "page": 99,
