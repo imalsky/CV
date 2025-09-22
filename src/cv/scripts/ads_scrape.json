@@ -1,5 +1,32 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "van Sluijs, Lennart",
+      "Rauscher, Emily",
+      "Kempton, Eliza M. -R.",
+      "Kennedy, Thomas",
+      "Malsky, Isaac",
+      "Matsunaga, Noriyuki",
+      "Meyer, Michael",
+      "McWilliam, Andrew",
+      "Monnier, John D.",
+      "Otsubo, Shogo",
+      "Sarugaku, Yuki",
+      "Takeuchi, Tomomi"
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/adfb61",
+    "page": 217,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2025-10-00",
+    "title": "First Results from WINERED: Detection of Emission Lines from Neutral Iron and a Combined Set of Trace Species on the Dayside of WASP-189 b",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....170..217V",
+    "volume": "170",
+    "year": "2025"
+  },
+  {
     "arxiv": "2507.16687",
     "authors": [
       "van Sluijs, Lennart",
