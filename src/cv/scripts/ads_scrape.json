@@ -49,33 +49,6 @@
     "year": "2025"
   },
   {
-    "arxiv": "2508.11089",
-    "authors": [
-      "van Sluijs, Lennart",
-      "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
-      "Kennedy, Thomas",
-      "Malsky, Isaac",
-      "Matsunaga, Noriyuki",
-      "Meyer, Michael",
-      "McWilliam, Andrew",
-      "Monnier, John D.",
-      "Otsubo, Shogo",
-      "Sarugaku, Yuki",
-      "Takeuchi, Tomomi"
-    ],
-    "citations": 0,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2508.11089",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2025-08-00",
-    "title": "First Results from WINERED: Detection of Emission Lines from Neutral Iron and a Combined Set of Trace Species on the Dayside of WASP-189 b",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv250811089V",
-    "volume": null,
-    "year": "2025"
-  },
-  {
     "arxiv": "2504.14060",
     "authors": [
       "Arnold, Kenneth E.",
@@ -635,7 +608,7 @@
       "Malsky, Isaac",
       "Savel, Arjun B."
     ],
-    "citations": 22,
+    "citations": 23,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acd24d",
     "page": 257,
@@ -823,7 +796,7 @@
       "Arora, Mireya",
       "Savel, Arjun"
     ],
-    "citations": 39,
+    "citations": 40,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac897b",
     "page": 140,
