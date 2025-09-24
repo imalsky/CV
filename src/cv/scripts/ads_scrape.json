@@ -1,6 +1,6 @@
 [
   {
-    "arxiv": null,
+    "arxiv": "2508.11089",
     "authors": [
       "van Sluijs, Lennart",
       "Rauscher, Emily",
@@ -608,7 +608,7 @@
       "Malsky, Isaac",
       "Savel, Arjun B."
     ],
-    "citations": 23,
+    "citations": 22,
     "doctype": "article",
     "doi": "10.3847/1538-3881/acd24d",
     "page": 257,
@@ -796,7 +796,7 @@
       "Arora, Mireya",
       "Savel, Arjun"
     ],
-    "citations": 40,
+    "citations": 39,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ac897b",
     "page": 140,
