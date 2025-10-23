@@ -4,7 +4,7 @@
     "authors": [
       "van Sluijs, Lennart",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Kennedy, Thomas",
       "Malsky, Isaac",
       "Matsunaga, Noriyuki",
@@ -46,7 +46,7 @@
     ],
     "citations": 0,
     "doctype": "eprint",
-    "doi": null,
+    "doi": "10.48550/arXiv.2510.16105",
     "page": null,
     "pub": "arXiv e-prints",
     "pubdate": "2025-10-00",
@@ -106,7 +106,7 @@
     "authors": [
       "Arnold, Kenneth E.",
       "Savel, Arjun B.",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Roman, Michael T.",
       "Rauscher, Emily",
       "Malsky, Isaac",
@@ -131,7 +131,7 @@
       "Parmentier, Vivien",
       "Kreidberg, Laura",
       "Gao, Peter",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Zhang, Michael",
       "Stevenson, Kevin B.",
       "Malsky, Isaac",
@@ -162,7 +162,7 @@
       "Kennedy, Thomas",
       "May, E. M.",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Malsky, Isaac",
       "Stevenson, Kevin B.",
       "Bean, Jacob L.",
@@ -188,7 +188,7 @@
       "Savel, Arjun B.",
       "Steinrueck, Maria E.",
       "Gao, Peter",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Roman, Michael T.",
       "Bean, Jacob L.",
       "Zhang, Michael",
@@ -308,7 +308,7 @@
       "Line, Michael R.",
       "Rauscher, Emily",
       "Mansfield, Megan Weiner",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Savel, Arjun",
       "Wardenier, Joost P.",
       "Pino, Lorenzo",
@@ -449,7 +449,7 @@
       "Helling, Christiane",
       "Hu, Renyu",
       "Iro, Nicolas",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Kendrew, Sarah",
       "Komacek, Thaddeus D.",
       "Krick, Jessica",
@@ -540,7 +540,7 @@
       "Osborn, Ares",
       "Armstrong, David"
     ],
-    "citations": 7,
+    "citations": 6,
     "doctype": "article",
     "doi": "10.1093/mnras/stae1054",
     "page": 3500,
@@ -560,7 +560,7 @@
       "Lee, Elspeth K. H.",
       "Beltz, Hayley",
       "Savel, Arjun",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Cinque, L."
     ],
     "citations": 14,
@@ -577,7 +577,7 @@
   {
     "arxiv": "2305.06240",
     "authors": [
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Zhang, Michael",
       "Bean, Jacob L.",
       "Steinrueck, Maria E.",
@@ -630,7 +630,7 @@
       "Steinrueck, Maria E.",
       "Nixon, Matthew C.",
       "Zhang, Michael",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Bean, Jacob L.",
       "Rauscher, Emily",
       "Parmentier, Vivien",
@@ -657,7 +657,7 @@
     "authors": [
       "Beltz, Hayley",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Malsky, Isaac",
       "Savel, Arjun B."
     ],
@@ -703,7 +703,7 @@
       "Cinque, L.",
       "Beltz, Hayley",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Stevenson, Kevin B."
     ],
     "citations": 17,
@@ -721,7 +721,7 @@
     "arxiv": "2301.01694",
     "authors": [
       "Savel, Arjun B.",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Rauscher, Emily",
       "Komacek, Thaddeus D.",
       "Bean, Jacob L.",
@@ -744,10 +744,10 @@
     "authors": [
       "Malsky, Isaac",
       "Rogers, Leslie",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Marounina, Nadejda"
     ],
-    "citations": 27,
+    "citations": 26,
     "doctype": "article",
     "doi": "10.1038/s41550-022-01823-8",
     "page": 57,
@@ -756,26 +756,6 @@
     "title": "Helium-enhanced planets along the upper edge of the radius valley",
     "url": "https://ui.adsabs.harvard.edu/abs/2023NatAs...7...57M",
     "volume": "7",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts #241",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
-    "volume": "241",
     "year": "2023"
   },
   {
@@ -798,6 +778,26 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
+    "volume": "241",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts #241",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "241",
     "year": "2023"
   },
@@ -843,7 +843,7 @@
     "authors": [
       "Beltz, Hayley",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Malsky, Isaac",
       "Ochs, Grace",
       "Arora, Mireya",
@@ -909,7 +909,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 53,
+    "citations": 51,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202142763",
     "page": null,
@@ -1011,7 +1011,7 @@
     "authors": [
       "Malsky, Isaac",
       "Rauscher, Emily",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Roman, Michael",
       "Long, Deryl",
       "Harada, Caleb K."
@@ -1037,7 +1037,7 @@
       "Malsky, Isaac",
       "Rauscher, Emily"
     ],
-    "citations": 43,
+    "citations": 42,
     "doctype": "article",
     "doi": "10.1051/0004-6361/202141497",
     "page": null,
@@ -1052,7 +1052,7 @@
     "arxiv": "1912.02268",
     "authors": [
       "Harada, Caleb K.",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "Rauscher, Emily",
       "Roman, Michael",
       "Malsky, Isaac",
@@ -1094,7 +1094,7 @@
       "Bean, Jacob L.",
       "Oklop{\\v{c}}i{\\'c}, Antonija",
       "Malsky, Isaac",
-      "Kempton, Eliza M. -R.",
+      "Kempton, Eliza M.-R.",
       "D{\\'e}sert, Jean-Michel",
       "Rogers, Leslie A.",
       "Mansfield, Megan"
