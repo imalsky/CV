@@ -56,6 +56,25 @@
     "year": "2025"
   },
   {
+    "arxiv": "2510.27050",
+    "authors": [
+      "Malsky, Isaac",
+      "Kataria, Tiffany",
+      "Batalha, Natasha E.",
+      "Graham, Matthew"
+    ],
+    "citations": 0,
+    "doctype": "eprint",
+    "doi": null,
+    "page": null,
+    "pub": "arXiv e-prints",
+    "pubdate": "2025-10-00",
+    "title": "Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251027050M",
+    "volume": null,
+    "year": "2025"
+  },
+  {
     "arxiv": "2507.16687",
     "authors": [
       "van Sluijs, Lennart",
