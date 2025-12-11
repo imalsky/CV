@@ -144,37 +144,6 @@
     "year": "2025"
   },
   {
-    "arxiv": "2503.22642",
-    "authors": [
-      "Steinrueck, Maria E.",
-      "Parmentier, Vivien",
-      "Kreidberg, Laura",
-      "Gao, Peter",
-      "Kempton, Eliza M.-R.",
-      "Zhang, Michael",
-      "Stevenson, Kevin B.",
-      "Malsky, Isaac",
-      "Roman, Michael T.",
-      "Rauscher, Emily",
-      "Malik, Matej",
-      "Lupu, Roxana",
-      "Kataria, Tiffany",
-      "Piette, Anjali A. A.",
-      "Bean, Jacob L.",
-      "Nixon, Matthew C."
-    ],
-    "citations": 0,
-    "doctype": "article",
-    "doi": "10.3847/1538-4357/adc99a",
-    "page": 98,
-    "pub": "The Astrophysical Journal",
-    "pubdate": "2025-05-00",
-    "title": "The Radiative Effects of Photochemical Hazes on the Atmospheric Circulation and Phase Curves of Sub-Neptunes",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...985...98S",
-    "volume": "985",
-    "year": "2025"
-  },
-  {
     "arxiv": "2503.12521",
     "authors": [
       "Davenport, Brian",
@@ -196,6 +165,37 @@
     "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
     "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..260D",
     "volume": "169",
+    "year": "2025"
+  },
+  {
+    "arxiv": "2503.22642",
+    "authors": [
+      "Steinrueck, Maria E.",
+      "Parmentier, Vivien",
+      "Kreidberg, Laura",
+      "Gao, Peter",
+      "Kempton, Eliza M.-R.",
+      "Zhang, Michael",
+      "Stevenson, Kevin B.",
+      "Malsky, Isaac",
+      "Roman, Michael T.",
+      "Rauscher, Emily",
+      "Malik, Matej",
+      "Lupu, Roxana",
+      "Kataria, Tiffany",
+      "Piette, Anjali A. A.",
+      "Bean, Jacob L.",
+      "Nixon, Matthew C."
+    ],
+    "citations": 1,
+    "doctype": "article",
+    "doi": "10.3847/1538-4357/adc99a",
+    "page": 98,
+    "pub": "The Astrophysical Journal",
+    "pubdate": "2025-05-00",
+    "title": "The Radiative Effects of Photochemical Hazes on the Atmospheric Circulation and Phase Curves of Sub-Neptunes",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...985...98S",
+    "volume": "985",
     "year": "2025"
   },
   {
@@ -270,7 +270,7 @@
       "Roman, Michael T.",
       "Beltz, Hayley"
     ],
-    "citations": 4,
+    "citations": 5,
     "doctype": "article",
     "doi": "10.3847/1538-4357/ad9394",
     "page": 82,
@@ -345,7 +345,7 @@
       "Meyer, Michael",
       "Monnier, John"
     ],
-    "citations": 19,
+    "citations": 18,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad8574",
     "page": 293,
@@ -537,7 +537,7 @@
       "Rackham, Benjamin V.",
       "Yang, Jingxuan"
     ],
-    "citations": 16,
+    "citations": 17,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ad434d",
     "page": 4,
@@ -630,7 +630,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 133,
+    "citations": 135,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
@@ -660,7 +660,7 @@
       "Malsky, Isaac",
       "Taylor, Jake"
     ],
-    "citations": 58,
+    "citations": 59,
     "doctype": "article",
     "doi": "10.3847/1538-4357/acd16f",
     "page": 96,
