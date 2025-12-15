@@ -1,5 +1,34 @@
 [
   {
+    "arxiv": null,
+    "authors": [
+      "Gardner, Tyler",
+      "Monnier, John D.",
+      "Kraus, Stefan",
+      "Rauscher, Emily",
+      "Malsky, Isaac",
+      "Le Bouquin, Jean-Baptiste",
+      "Anugu, Narsireddy",
+      "Chhabra, Sorabh",
+      "Codron, Isabelle",
+      "Davies, Claire L.",
+      "Ibrahim, Noura",
+      "Lanthermann, Cyprien",
+      "Schaefer, Gail",
+      "Setterholm, Benjamin R."
+    ],
+    "citations": 0,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/ae0ca9",
+    "page": 30,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2026-01-00",
+    "title": "Surprise Nondetection of Upsilon Andromedae b with MIRC-X and MYSTIC at the CHARA Array",
+    "url": "https://ui.adsabs.harvard.edu/abs/2026AJ....171...30G",
+    "volume": "171",
+    "year": "2026"
+  },
+  {
     "arxiv": "2508.11089",
     "authors": [
       "van Sluijs, Lennart",
@@ -630,7 +659,7 @@
       "Welbanks, Luis",
       "McGill, Peter"
     ],
-    "citations": 135,
+    "citations": 136,
     "doctype": "article",
     "doi": "10.1038/s41586-023-06159-5",
     "page": 67,
