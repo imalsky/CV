@@ -1,6 +1,6 @@
 [
   {
-    "arxiv": null,
+    "arxiv": "2510.16105",
     "authors": [
       "Gardner, Tyler",
       "Monnier, John D.",
@@ -17,7 +17,7 @@
       "Schaefer, Gail",
       "Setterholm, Benjamin R."
     ],
-    "citations": 0,
+    "citations": 1,
     "doctype": "article",
     "doi": "10.3847/1538-3881/ae0ca9",
     "page": 30,
@@ -53,35 +53,6 @@
     "title": "First Results from WINERED: Detection of Emission Lines from Neutral Iron and a Combined Set of Trace Species on the Dayside of WASP-189 b",
     "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....170..217V",
     "volume": "170",
-    "year": "2025"
-  },
-  {
-    "arxiv": "2510.16105",
-    "authors": [
-      "Gardner, Tyler",
-      "Monnier, John D.",
-      "Kraus, Stefan",
-      "Rauscher, Emily",
-      "Malsky, Isaac",
-      "Le Bouquin, Jean-Baptiste",
-      "Anugu, Narsireddy",
-      "Chhabra, Sorabh",
-      "Codron, Isabelle",
-      "Davies, Claire L.",
-      "Ibrahim, Noura",
-      "Lanthermann, Cyprien",
-      "Schaefer, Gail",
-      "Setterholm, Benjamin R."
-    ],
-    "citations": 1,
-    "doctype": "eprint",
-    "doi": "10.48550/arXiv.2510.16105",
-    "page": null,
-    "pub": "arXiv e-prints",
-    "pubdate": "2025-10-00",
-    "title": "Surprise non-detection of Upsilon Andromedae b with MIRC-X and MYSTIC at the CHARA Array",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251016105G",
-    "volume": null,
     "year": "2025"
   },
   {
