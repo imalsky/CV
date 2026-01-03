@@ -144,30 +144,6 @@
     "year": "2025"
   },
   {
-    "arxiv": "2503.12521",
-    "authors": [
-      "Davenport, Brian",
-      "Kennedy, Thomas",
-      "May, E. M.",
-      "Rauscher, Emily",
-      "Kempton, Eliza M.-R.",
-      "Malsky, Isaac",
-      "Stevenson, Kevin B.",
-      "Bean, Jacob L.",
-      "Mansfield, Megan Weiner"
-    ],
-    "citations": 3,
-    "doctype": "article",
-    "doi": "10.3847/1538-3881/adc0a4",
-    "page": 260,
-    "pub": "The Astronomical Journal",
-    "pubdate": "2025-05-00",
-    "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
-    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..260D",
-    "volume": "169",
-    "year": "2025"
-  },
-  {
     "arxiv": "2503.22642",
     "authors": [
       "Steinrueck, Maria E.",
@@ -196,6 +172,30 @@
     "title": "The Radiative Effects of Photochemical Hazes on the Atmospheric Circulation and Phase Curves of Sub-Neptunes",
     "url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...985...98S",
     "volume": "985",
+    "year": "2025"
+  },
+  {
+    "arxiv": "2503.12521",
+    "authors": [
+      "Davenport, Brian",
+      "Kennedy, Thomas",
+      "May, E. M.",
+      "Rauscher, Emily",
+      "Kempton, Eliza M.-R.",
+      "Malsky, Isaac",
+      "Stevenson, Kevin B.",
+      "Bean, Jacob L.",
+      "Mansfield, Megan Weiner"
+    ],
+    "citations": 3,
+    "doctype": "article",
+    "doi": "10.3847/1538-3881/adc0a4",
+    "page": 260,
+    "pub": "The Astronomical Journal",
+    "pubdate": "2025-05-00",
+    "title": "An Analysis of Spitzer Phase Curves for WASP-121b and WASP-77Ab",
+    "url": "https://ui.adsabs.harvard.edu/abs/2025AJ....169..260D",
+    "volume": "169",
     "year": "2025"
   },
   {
