@@ -780,6 +780,26 @@
   {
     "arxiv": null,
     "authors": [
+      "Belkovski, Michelle",
+      "Becker, Juliette",
+      "Howe, Alex",
+      "Malsky, Isaac",
+      "Batygin, Konstantin"
+    ],
+    "citations": 0,
+    "doctype": "abstract",
+    "doi": null,
+    "page": null,
+    "pub": "American Astronomical Society Meeting Abstracts #241",
+    "pubdate": "2023-01-00",
+    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
+    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
+    "volume": "241",
+    "year": "2023"
+  },
+  {
+    "arxiv": null,
+    "authors": [
       "Murphy, Matthew",
       "Beatty, Thomas",
       "Roman, Michael",
@@ -797,26 +817,6 @@
     "pubdate": "2023-01-00",
     "title": "Where's the Weather on WASP-43b?",
     "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24135005M",
-    "volume": "241",
-    "year": "2023"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Belkovski, Michelle",
-      "Becker, Juliette",
-      "Howe, Alex",
-      "Malsky, Isaac",
-      "Batygin, Konstantin"
-    ],
-    "citations": 0,
-    "doctype": "abstract",
-    "doi": null,
-    "page": null,
-    "pub": "American Astronomical Society Meeting Abstracts #241",
-    "pubdate": "2023-01-00",
-    "title": "A Multiplanet System's Sole Super-puff: Exploring Allowable Physical Parameters for the Cold Super-puff HIP 41378 f",
-    "url": "https://ui.adsabs.harvard.edu/abs/2023AAS...24143001B",
     "volume": "241",
     "year": "2023"
   },
