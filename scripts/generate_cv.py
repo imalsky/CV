@@ -20,11 +20,7 @@ DEFAULT_CONFIG_PATH = ROOT / "cv_config.toml"
 DEFAULT_MANUAL_PATH = ROOT / "manual_publications.toml"
 DEFAULT_GENERATED_DIR = ROOT / "generated"
 DEFAULT_SITE_DIR = ROOT / "site"
-ALLOWED_SECTIONS: tuple[str, ...] = (
-    "First Author",
-    "Second, Third or Fourth Author",
-    "Contributing Author",
-)
+REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
 LATEX_ESCAPE_MAP = {
     "\\": r"\textbackslash{}",
@@ -38,6 +34,17 @@ LATEX_ESCAPE_MAP = {
     "~": r"\textasciitilde{}",
     "^": r"\textasciicircum{}",
 }
+JOURNAL_ABBREVIATIONS = {
+    "The Astrophysical Journal": "ApJ",
+    "The Astrophysical Journal Letters": "ApJL",
+    "The Astronomical Journal": "AJ",
+    "Monthly Notices of the Royal Astronomical Society": "MNRAS",
+    "Astronomy and Astrophysics": "A&A",
+    "Nature Astronomy": "Nature Astronomy",
+    "Nature": "Nature",
+    "The Planetary Science Journal": "PSJ",
+    "Publications of the Astronomical Society of the Pacific": "PASP",
+}
 
 
 @dataclass(frozen=True)
@@ -49,7 +56,7 @@ class CvConfig:
     name_aliases: tuple[str, ...]
     ads_query_suffix: str
     exclude_bibcodes: frozenset[str]
-    section_overrides: dict[str, str]
+    scholar_url: str
     normalized_aliases: frozenset[str]
     alias_signatures: frozenset[tuple[str, str]]
 
@@ -65,27 +72,24 @@ class AdsPublication:
     year: str
     sort_date: str
     citation_count: int
-    doi: tuple[str, ...]
-    identifiers: tuple[str, ...]
-    section: str
+    author_position: int | None
 
 
 @dataclass(frozen=True)
 class ManualPublication:
     """A manually curated publication entry."""
 
-    section: str
     sort_date: str
     text: str
-    status: str
-    notes: str
+    status_label: str
+    review_state: str
+    include_in_selected_research: bool
 
 
 @dataclass(frozen=True)
 class RenderedPublication:
     """A publication entry ready to write into TeX."""
 
-    section: str
     sort_date: str
     text: str
 
@@ -170,26 +174,12 @@ def load_config(path: Path) -> CvConfig:
     exclude_bibcodes = frozenset(
         str(bibcode).strip() for bibcode in raw_config.get("exclude_bibcodes", []) if str(bibcode).strip()
     )
-    raw_overrides = raw_config.get("section_overrides", {})
-    section_overrides = {
-        str(bibcode).strip(): str(section).strip()
-        for bibcode, section in raw_overrides.items()
-        if str(bibcode).strip()
-    }
+    scholar_url = str(raw_config.get("scholar_url", "")).strip()
 
     if not display_name:
         raise RuntimeError(f"`display_name` must be set in {path}")
-    if not orcid_id:
-        raise RuntimeError(f"`orcid_id` must be set in {path}")
     if not name_aliases:
         raise RuntimeError(f"`name_aliases` must contain at least one alias in {path}")
-
-    for bibcode, section in section_overrides.items():
-        if section not in ALLOWED_SECTIONS:
-            raise RuntimeError(
-                f"Invalid section override for {bibcode!r}: {section!r}. "
-                f"Expected one of {ALLOWED_SECTIONS}."
-            )
 
     normalized_aliases = frozenset(normalize_name(alias) for alias in name_aliases)
     alias_signatures = frozenset(build_author_signature(alias) for alias in name_aliases)
@@ -200,7 +190,7 @@ def load_config(path: Path) -> CvConfig:
         name_aliases=name_aliases,
         ads_query_suffix=ads_query_suffix,
         exclude_bibcodes=exclude_bibcodes,
-        section_overrides=section_overrides,
+        scholar_url=scholar_url,
         normalized_aliases=normalized_aliases,
         alias_signatures=alias_signatures,
     )
@@ -213,17 +203,12 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
     entries: list[ManualPublication] = []
 
     for entry in raw_manual.get("entries", []):
-        section = str(entry.get("section", "")).strip()
         sort_date = str(entry.get("sort_date", "")).strip()
         text = str(entry.get("text", "")).strip()
-        status = str(entry.get("status", "")).strip()
-        notes = str(entry.get("notes", "")).strip()
+        status_label = str(entry.get("status_label", "")).strip()
+        review_state = str(entry.get("review_state", "")).strip().lower()
+        include_in_selected_research = bool(entry.get("include_in_selected_research", True))
 
-        if section not in ALLOWED_SECTIONS:
-            raise RuntimeError(
-                f"Invalid manual publication section {section!r} in {path}. "
-                f"Expected one of {ALLOWED_SECTIONS}."
-            )
         if not sort_date:
             raise RuntimeError(f"Manual publication entries in {path} require `sort_date`.")
         if not text:
@@ -231,11 +216,11 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
 
         entries.append(
             ManualPublication(
-                section=section,
                 sort_date=sort_date,
                 text=text,
-                status=status,
-                notes=notes,
+                status_label=status_label,
+                review_state=review_state,
+                include_in_selected_research=include_in_selected_research,
             )
         )
 
@@ -245,14 +230,19 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
 def build_ads_query(config: CvConfig) -> str:
     """Build the ADS query string from the checked-in config."""
 
-    query = f'orcid:"{config.orcid_id}"'
+    if config.orcid_id:
+        query = f'orcid:"{config.orcid_id}"'
+    else:
+        author_clauses = [f'author:"{alias}"' for alias in config.name_aliases]
+        query = "(" + " OR ".join(author_clauses) + ")"
+
     if config.ads_query_suffix:
         query = f"{query} {config.ads_query_suffix}"
     return query
 
 
-def require_ads_token() -> str:
-    """Return the ADS token or fail with a clear setup message."""
+def require_ads_token() -> None:
+    """Validate that an ADS token is available."""
 
     token = os.environ.get("ADS_DEV_KEY", "").strip()
     if not token:
@@ -260,7 +250,6 @@ def require_ads_token() -> str:
             "Missing ADS_DEV_KEY. Create an ADS API token and add it as the "
             "`ADS_DEV_KEY` environment variable or GitHub Actions secret."
         )
-    return token
 
 
 def first_text(value: Any) -> str:
@@ -312,17 +301,12 @@ def author_matches(author: str, config: CvConfig) -> bool:
     return (surname, initials) in config.alias_signatures
 
 
-def classify_author_section(authors: Sequence[str], config: CvConfig) -> str | None:
-    """Bucket a paper by author position using the agreed CV rules."""
+def find_author_position(authors: Sequence[str], config: CvConfig) -> int | None:
+    """Return the 1-based author position for the configured researcher."""
 
     for index, author in enumerate(authors, start=1):
-        if not author_matches(author, config):
-            continue
-        if index == 1:
-            return "First Author"
-        if 2 <= index <= 4:
-            return "Second, Third or Fourth Author"
-        return "Contributing Author"
+        if author_matches(author, config):
+            return index
     return None
 
 
@@ -339,36 +323,10 @@ def format_authors_for_tex(authors: Sequence[str], config: CvConfig) -> str:
     return ", ".join(rendered_authors)
 
 
-def ensure_terminal_punctuation(value: str) -> str:
-    """Add a trailing period when a fragment does not already end with punctuation."""
+def abbreviate_journal(journal: str) -> str:
+    """Return a concise journal label for CV rendering."""
 
-    if not value:
-        return value
-    if value.endswith((".", "?", "!")):
-        return value
-    return f"{value}."
-
-
-def render_ads_publication_text(publication: AdsPublication, config: CvConfig) -> str:
-    """Render an ADS publication as a custom TeX sentence, not a BibTeX item."""
-
-    authors_tex = format_authors_for_tex(publication.authors, config)
-    title_tex = ensure_terminal_punctuation(escape_tex(publication.title))
-    journal_tex = ensure_terminal_punctuation(escape_tex(publication.journal))
-    year_fragment = f" ({publication.year})." if publication.year else ""
-    journal_fragment = f" {journal_tex}" if journal_tex else ""
-    return f"{authors_tex}. {title_tex}{year_fragment}{journal_fragment}".strip()
-
-
-def format_manual_text(publication: ManualPublication) -> str:
-    """Append optional status and notes to a manual TeX publication string."""
-
-    fragments = [publication.text]
-    if publication.status:
-        fragments.append(publication.status)
-    if publication.notes:
-        fragments.append(publication.notes)
-    return " ".join(fragment.strip() for fragment in fragments if fragment.strip())
+    return JOURNAL_ABBREVIATIONS.get(journal, journal)
 
 
 def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
@@ -387,8 +345,6 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
         "author",
         "bibcode",
         "citation_count",
-        "doi",
-        "identifier",
         "pub",
         "pubdate",
         "title",
@@ -410,31 +366,24 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
             continue
 
         authors = list_text(getattr(result, "author", ()))
-        section = config.section_overrides.get(bibcode) or classify_author_section(authors, config)
-        if section is None:
+        author_position = find_author_position(authors, config)
+        if author_position is None:
             continue
 
         seen_bibcodes.add(bibcode)
-        title = first_text(getattr(result, "title", ""))
-        journal = first_text(getattr(result, "pub", ""))
-        year = first_text(getattr(result, "year", ""))
-        pubdate = first_text(getattr(result, "pubdate", ""))
-        citation_count = int(getattr(result, "citation_count", 0) or 0)
-        doi = list_text(getattr(result, "doi", ()))
-        identifiers = list_text(getattr(result, "identifier", ()))
-
         publications.append(
             AdsPublication(
                 bibcode=bibcode,
-                title=title,
+                title=first_text(getattr(result, "title", "")),
                 authors=authors,
-                journal=journal,
-                year=year,
-                sort_date=parse_sort_date(pubdate, year),
-                citation_count=citation_count,
-                doi=doi,
-                identifiers=identifiers,
-                section=section,
+                journal=first_text(getattr(result, "pub", "")),
+                year=first_text(getattr(result, "year", "")),
+                sort_date=parse_sort_date(
+                    first_text(getattr(result, "pubdate", "")),
+                    first_text(getattr(result, "year", "")),
+                ),
+                citation_count=int(getattr(result, "citation_count", 0) or 0),
+                author_position=author_position,
             )
         )
 
@@ -461,95 +410,97 @@ def compute_metrics(publications: Sequence[AdsPublication]) -> Metrics:
         h_index=compute_h_index(citation_counts),
         total_citations=sum(citation_counts),
         indexed_papers=len(publications),
-        first_author_count=sum(publication.section == "First Author" for publication in publications),
+        first_author_count=sum(publication.author_position == 1 for publication in publications),
     )
 
 
-def build_rendered_publications(
+def format_ads_publication(publication: AdsPublication, config: CvConfig) -> str:
+    """Render an ADS publication in the compact selected-research style."""
+
+    authors_tex = format_authors_for_tex(publication.authors, config)
+    title_tex = escape_tex(publication.title)
+    journal_tex = escape_tex(abbreviate_journal(publication.journal))
+
+    fragments = [authors_tex]
+    if publication.year:
+        fragments.append(publication.year)
+    fragments.append(f"\\textsc{{{title_tex}}}")
+    if journal_tex:
+        fragments.append(f"\\emph{{{journal_tex}}}")
+
+    return ", ".join(fragment for fragment in fragments if fragment) + "."
+
+
+def format_manual_publication(publication: ManualPublication) -> str:
+    """Render a manual publication entry."""
+
+    text = publication.text.strip()
+    if publication.status_label:
+        text = f"{text}, {publication.status_label}"
+    return text if text.endswith(".") else f"{text}."
+
+
+def build_selected_research_entries(
     ads_publications: Sequence[AdsPublication],
     manual_publications: Sequence[ManualPublication],
     config: CvConfig,
 ) -> list[RenderedPublication]:
-    """Merge ADS and manual publications into a single renderable list."""
+    """Build the selected-research publication list."""
 
     rendered: list[RenderedPublication] = []
 
     for publication in ads_publications:
+        if publication.author_position != 1:
+            continue
         rendered.append(
             RenderedPublication(
-                section=publication.section,
                 sort_date=publication.sort_date,
-                text=render_ads_publication_text(publication, config),
+                text=format_ads_publication(publication, config),
             )
         )
 
     for publication in manual_publications:
+        if not publication.include_in_selected_research:
+            continue
         rendered.append(
             RenderedPublication(
-                section=publication.section,
                 sort_date=publication.sort_date,
-                text=format_manual_text(publication),
+                text=format_manual_publication(publication),
             )
         )
 
+    rendered.sort(key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
     return rendered
 
 
-def group_publications_by_section(
+def render_selected_research_tex(
     publications: Sequence[RenderedPublication],
-) -> dict[str, list[RenderedPublication]]:
-    """Group publications by section, newest first within each section."""
+    metrics: Metrics,
+    in_review_count: int,
+) -> str:
+    """Render the selected research TeX fragment."""
 
-    grouped: dict[str, list[RenderedPublication]] = {section: [] for section in ALLOWED_SECTIONS}
-    for publication in publications:
-        grouped[publication.section].append(publication)
-
-    for section in ALLOWED_SECTIONS:
-        grouped[section].sort(key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
-
-    return grouped
-
-
-def render_metrics_tex(metrics: Metrics) -> str:
-    """Render the ADS metric summary TeX fragment."""
-
-    return (
-        "\\item \\textbf{ADS Metrics:} "
-        f"h-index {metrics.h_index} \\quad "
-        f"Total citations {metrics.total_citations} \\quad "
-        f"Indexed papers {metrics.indexed_papers} \\quad "
-        f"First-author papers {metrics.first_author_count}\n"
-        "\\vspace{0.3em}\n"
+    summary = (
+        f"\\contline{{\\emph{{{metrics.first_author_count} published first-author papers, "
+        f"{in_review_count} in review, and an ADS h-index of {metrics.h_index}.}}}}"
     )
+    lines = [summary, "\\begin{itemize}"]
+    for publication in sorted(publications, key=lambda item: (item.sort_date, item.text.casefold()), reverse=True):
+        lines.append(f"  \\item {publication.text}")
+    lines.append("\\end{itemize}")
+    return "\n".join(lines) + "\n"
 
 
-def render_publications_tex(publications: Sequence[RenderedPublication]) -> str:
-    """Render the bucketed publication list TeX fragment."""
-
-    grouped = group_publications_by_section(publications)
-    lines: list[str] = ["\\item", "\\vspace{0.3em}", ""]
-
-    for section in ALLOWED_SECTIONS:
-        entries = grouped[section]
-        if not entries:
-            continue
-
-        lines.append(f"{{\\Large\\textbf{{{section}}}}}")
-        lines.append("")
-        for publication in entries:
-            lines.append(publication.text)
-            lines.append("")
-        lines.append("\\vspace{0.6em}")
-        lines.append("")
-
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def render_index_html(display_name: str, metrics: Metrics, generated_at: datetime) -> str:
+def render_index_html(display_name: str, metrics: Metrics, generated_at: datetime, scholar_url: str) -> str:
     """Render the GitHub Pages landing page."""
 
     safe_name = html.escape(display_name)
     generated_label = generated_at.strftime("%Y-%m-%d %H:%M UTC")
+    scholar_link = (
+        f'<a class="secondary" href="{html.escape(scholar_url)}">Google Scholar</a>'
+        if scholar_url
+        else ""
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -560,12 +511,12 @@ def render_index_html(display_name: str, metrics: Metrics, generated_at: datetim
   <style>
     :root {{
       color-scheme: light;
-      --bg: #f3efe6;
-      --panel: #fffaf1;
-      --ink: #14213d;
-      --muted: #5c6773;
-      --accent: #8d5524;
-      --line: rgba(20, 33, 61, 0.16);
+      --bg: #f4efe8;
+      --panel: rgba(255, 250, 244, 0.88);
+      --ink: #1d2433;
+      --muted: #596377;
+      --accent: #b40f00;
+      --line: rgba(29, 36, 51, 0.12);
     }}
 
     * {{
@@ -574,11 +525,11 @@ def render_index_html(display_name: str, metrics: Metrics, generated_at: datetim
 
     body {{
       margin: 0;
-      font-family: "Georgia", "Times New Roman", serif;
       color: var(--ink);
+      font-family: "Georgia", "Times New Roman", serif;
       background:
-        radial-gradient(circle at top left, rgba(141, 85, 36, 0.12), transparent 35%),
-        linear-gradient(180deg, #f6f1e6 0%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(180, 15, 0, 0.09), transparent 28%),
+        linear-gradient(180deg, #f7f1ea 0%, var(--bg) 100%);
     }}
 
     main {{
@@ -590,30 +541,55 @@ def render_index_html(display_name: str, metrics: Metrics, generated_at: datetim
     .hero {{
       display: grid;
       gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       align-items: start;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }}
 
     .panel {{
-      background: rgba(255, 250, 241, 0.86);
+      background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 24px;
-      box-shadow: 0 20px 45px rgba(20, 33, 61, 0.08);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 18px 48px rgba(29, 36, 51, 0.08);
+      backdrop-filter: blur(8px);
     }}
 
     h1 {{
-      margin: 0 0 10px;
+      margin: 0 0 12px;
+      color: var(--accent);
       font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.05;
+      line-height: 1.04;
     }}
 
     p {{
-      margin: 0;
+      margin: 0 0 10px;
       color: var(--muted);
       line-height: 1.6;
+    }}
+
+    .links {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }}
+
+    a {{
+      color: var(--ink);
+      text-decoration: none;
+    }}
+
+    .cta, .secondary {{
+      display: inline-block;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }}
+
+    .cta {{
+      background: var(--ink);
+      color: #fffaf4;
     }}
 
     .metrics {{
@@ -637,16 +613,6 @@ def render_index_html(display_name: str, metrics: Metrics, generated_at: datetim
       padding-bottom: 0;
     }}
 
-    .cta {{
-      display: inline-block;
-      margin-top: 18px;
-      padding: 11px 18px;
-      border-radius: 999px;
-      background: var(--ink);
-      color: #fffaf1;
-      text-decoration: none;
-    }}
-
     .viewer {{
       width: 100%;
       min-height: 78vh;
@@ -661,13 +627,16 @@ def render_index_html(display_name: str, metrics: Metrics, generated_at: datetim
     <section class="hero">
       <div class="panel">
         <h1>{safe_name}</h1>
-        <p>Daily ADS-backed CV build with ORCID-based author matching.</p>
+        <p>Automated daily CV build powered by NASA ADS.</p>
         <p>Last updated {generated_label}</p>
-        <a class="cta" href="academic_cv.pdf">Download PDF</a>
+        <div class="links">
+          <a class="cta" href="academic_cv.pdf">Download PDF</a>
+          {scholar_link}
+        </div>
       </div>
       <div class="panel">
         <ul class="metrics">
-          <li><strong>h-index</strong><span>{metrics.h_index}</span></li>
+          <li><strong>ADS h-index</strong><span>{metrics.h_index}</span></li>
           <li><strong>Total citations</strong><span>{metrics.total_citations}</span></li>
           <li><strong>Indexed papers</strong><span>{metrics.indexed_papers}</span></li>
           <li><strong>First-author papers</strong><span>{metrics.first_author_count}</span></li>
@@ -700,16 +669,30 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if not ads_publications and not args.allow_empty:
         raise RuntimeError(
-            "The ADS query returned zero indexed papers. Verify the ORCID ID, claims, and ADS_DEV_KEY."
+            "The ADS query returned zero indexed papers. Verify the ADS token, ORCID settings, "
+            "or switch to ADS-only alias queries in cv_config.toml."
         )
 
     metrics = compute_metrics(ads_publications)
-    rendered_publications = build_rendered_publications(ads_publications, manual_publications, config)
     generated_at = datetime.now(timezone.utc)
+    selected_research_publications = build_selected_research_entries(
+        ads_publications,
+        manual_publications,
+        config,
+    )
+    in_review_count = sum(
+        publication.include_in_selected_research and publication.review_state in REVIEW_STATES
+        for publication in manual_publications
+    )
 
-    write_text(args.generated_dir / "metrics.tex", render_metrics_tex(metrics))
-    write_text(args.generated_dir / "publications.tex", render_publications_tex(rendered_publications))
-    write_text(args.site_dir / "index.html", render_index_html(config.display_name, metrics, generated_at))
+    write_text(
+        args.generated_dir / "selected_research.tex",
+        render_selected_research_tex(selected_research_publications, metrics, in_review_count),
+    )
+    write_text(
+        args.site_dir / "index.html",
+        render_index_html(config.display_name, metrics, generated_at, config.scholar_url),
+    )
     write_text(args.site_dir / ".nojekyll", "")
 
     return 0

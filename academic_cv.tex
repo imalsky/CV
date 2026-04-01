@@ -1,212 +1,98 @@
-\documentclass{cv}
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{longtable}
-\usepackage[left=1.0in,top = 1.0in,right=1.0in,bottom=1.0in]{geometry} % Document margins
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
 
-\usepackage{fancyhdr,tabularx}
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\setlength{\headheight}{14pt}
-\renewcommand{\footrulewidth}{0pt}
-\usepackage{hyperref}
-\name{Isaac Malsky}
-\phone{\href{github.com/imalsky}{github.com/imalsky}}
-\email{isaacmalsky@gmail.com}
-\renewcommand{\familydefault}{\sfdefault} %edit this for fonts
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=2em
 
+\definecolor{namecolor}{rgb}{0.70589,0.05882,0}
+
+\newlength{\cvlabelwidth}
+\newlength{\cvlabelsep}
+\newlength{\cvcontentwidth}
+\setlength{\cvlabelwidth}{1.10in}
+\setlength{\cvlabelsep}{0.20in}
+\setlength{\cvcontentwidth}{\dimexpr\textwidth-\cvlabelwidth-\cvlabelsep\relax}
+
+\setlist[itemize]{leftmargin=1em,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\newcommand{\cvsection}[2]{%
+  \noindent
+  \parbox[t]{\cvlabelwidth}{\raggedright\scshape #1}%
+  \hspace{\cvlabelsep}%
+  \parbox[t]{\cvcontentwidth}{#2}%
+  \par\vspace{0.13in}
+}
+
+\newcommand{\datedline}[2]{\noindent #1\hfill #2\par}
+\newcommand{\contline}[1]{\noindent #1\par}
 
 \begin{document}
-\vspace{-0.1cm}
-\begin{cSection}{Education}
-\begin{cSubsection}{\vspace{1.6em} Ph.D., Astronomy and Astrophysics} {The University of Michigan\hspace{-0.5em}} {\normalfont{Advisor: Prof. Emily Rauscher}} {2019-2024}
-\item Dissertation: ``Modeling the 3D Atmospheric Structure of Hot Gaseous Planets''
-\end{cSubsection}
-\vspace{-0.1cm}
-\begin{cSubsection}{B.A., Physics, with honors} {The University of Chicago\hspace{-0.5em}}
-{\normalfont{ Thesis: ``The Coupled Thermal and Compositional Evolution of Planet Envelopes''}}{2014--2018  }
-\item
-\vspace{-0.8cm}
-\end{cSubsection}
-\end{cSection}
 
+\begin{center}
+{\large\bfseries\textcolor{namecolor}{ISAAC MALSKY}}\\[-1pt]
+\href{mailto:isaacmalsky@gmail.com}{isaacmalsky@gmail.com} \textbar\ 
+\href{https://github.com/imalsky}{github.com/imalsky} \textbar\ 
+\href{https://scholar.google.com/citations?user=8UH3LhoAAAAJ}{Google Scholar}
+\end{center}
+\vspace{-0.06in}
+\hrule height 0.4pt
+\vspace{0.14in}
 
-\vspace{-0.1cm}
-\begin{cSection}{Appointments}
-
-\begin{cSubsection}{\vspace{1.6em}NASA Jet Propulsion Laboratory}{Pasadena, California\hspace{-0.5em}}{Postdoctoral Researcher}{2024 - present}\item \emph{NASA Postdoctoral Program Fellow, Science Division}
-\end{cSubsection}
-
-\vspace{-0.1cm}
-\begin{cSubsection}{The University of Michigan}{Ann Arbor, Michigan\hspace{-0.5em}}{Graduate Researcher}{2019 - 2024}\item \emph{Rauscher Lab}
-\end{cSubsection}
-
-\vspace{-0.1cm}
-\begin{cSubsection}{The University of Chicago}{Chicago, Illinois\hspace{-0.5em}}{Research Assistant}{November 2015 - June 2019}\item \emph{Rogers Lab}
-\end{cSubsection}
-
-\vspace{-0.1cm}
-\begin{cSubsection}{Argonne National Lab}{Lemont, IL\hspace{-0.5em}}
-{Post-bac Researcher}{June 2018 - January 2019} \item \emph{Chan Lab, Center for Nanoscale Materials}
-\end{cSubsection}
-
-%\vspace{-0.1cm}
-%\begin{cSubsection}{NASA Goddard}{Greenbelt, Maryland}
-%{Undergraduate Researcher}{June 2016 - August 2016}
-%\item Created a CAD model of a flight dewar and analyzed the performance of sensor equipment when cooled with liquid helium.
-%\end{cSubsection}
-
-\end{cSection}
-\vspace{-0.2cm}
-
-%\begin{cSection}{Skills}
-%\item \textit{Languages}: Python, FORTRAN, Bash, Git, C/C++ (OpenMP), MATLAB
-%\vspace{-0.2cm}
-%\item \textit{Libraries}{: pandas, NumPy, Matplotlib, SciPy}
-%\end{cSection}
-
-
-
-
-\begin{cSection}{Publications}
-\InputIfFileExists{generated/metrics.tex}{
-\input{generated/metrics.tex}
-}{}
-\InputIfFileExists{generated/publications.tex}{
-\input{generated/publications.tex}
-}{
-\item \textit{Run \texttt{python scripts/generate\_cv.py} with a valid ADS token to populate the automated publication list.}
+\cvsection{Appointments}{%
+  \datedline{NASA Postdoctoral Program Fellow, Jet Propulsion Laboratory}{2024--present}
+  \datedline{Graduate Researcher, University of Michigan}{2019--2024}
+  \datedline{Post-baccalaureate Researcher, Argonne National Laboratory}{2018--2019}
+  \datedline{Research Assistant, University of Chicago}{2015--2019}
 }
-\end{cSection}
 
+\cvsection{Education}{%
+  \datedline{Ph.D., Astronomy \& Astrophysics, University of Michigan}{2024}
+  \contline{Dissertation: Modeling the 3D Atmospheric Structure of Hot Gaseous Planets.}
+  \datedline{B.A., Physics, with Honors, University of Chicago}{2018}
+  \contline{Thesis: The Coupled Thermal and Compositional Evolution of Planet Envelopes.}
+}
 
-\begin{cSection}{Grants and Awards}
-\vspace{1.8em}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{.98\textwidth}{X r}
-NASA Postdoctoral Program Fellowship & 2024-2026 \\
-Rackham Predoctoral Fellowship & 2023-2024 \\
-Rackham Professional Development Grant & 2023 \\
-Rackham Graduate Student Research Grant & 2023 \\
-Rackham Travel Grant & 2023 \\
-Other Worlds Laboratory Summer Program & 2022 \\
-NSF Graduate Research Fellowship Program Honorable Mention & 2021 \\
-Michigan Space Grant & 2021\\
-Jeff Metcalf Fellowship & 2015 \\
-University of Chicago Deans List & 2014-2018\\
-\end{tabularx}
-\end{cSection}
+\cvsection{Selected\\Awards}{%
+  \datedline{NASA Postdoctoral Program Fellowship}{2024--2026}
+  \datedline{Rackham Predoctoral Fellowship}{2023--2024}
+  \datedline{Rackham Graduate Student Research Grant}{2023}
+  \datedline{Michigan Space Grant}{2021}
+  \datedline{NSF GRFP Honorable Mention}{2021}
+}
 
+\cvsection{Mentoring}{%
+  \contline{Supervised two graduate students and two undergraduate students.}
+}
 
-\vspace{0.3em}
+\cvsection{Teaching}{%
+  \contline{Graduate Student Instructor for ASTRO 101 (Fall 2020) and ASTRO 105 (Spring 2021), University of Michigan.}
+}
 
-\begin{cSection}{Mentoring}
-\vspace{2em}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{.98\textwidth}{X r}
-Elijah Mullens, graduate research & 2024--present \\
-Thomas Kennedy, graduate research & 2023--present \\
-Alex Wingate, undergraduate research & 2022--2024 \\
-Eli Cinque, undergraduate research & 2022--2024 \\
-\end{tabularx}
-\end{cSection}
-\vspace{0.3em}
+\cvsection{Service}{%
+  \contline{Referee for \emph{ApJ}, \emph{ApJL}, \emph{JOSS}, and NASA NSPIRES.}
+  \contline{Co-I on successful JWST, Gemini South, and Magellan observing proposals.}
+}
 
-\begin{cSection}{Teaching}
-\vspace{1.6em}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{.98\textwidth}{X r}
-\textbf{ASTRO 105: Cosmos Constellations} & The University of Michigan\\
-\textit{Graduate Student Instructor} & \textit{Spring 2021}\\
-\textbf{ASTRO 101: The Solar System and the Search for a New Earth} & The University of Michigan\\
-\textit{Graduate Student Instructor} & \textit{Fall 2020}\\
-\end{tabularx}
-\end{cSection}
+\cvsection{Selected\\Talks}{%
+  \contline{Talks at ExSoCal, Aspen Rocky Worlds, and NASA Ames (2025); Cornell, JPL, and Los Alamos (2024).}
+}
 
-\begin{cSection}{Service, Outreach, and Skills}
-\renewcommand{\arraystretch}{1.2}
-\vspace{1.6em}
-\begin{tabularx}{.98\textwidth}{l X}
-\textit{Peer Review:} 
-& \textit{NASA NSPIRES (2025)} \\
-& \textit{The Astrophysical Journal (2025)} \\
-& \textit{The Astrophysical Journal Letters (2023)} \\
-& \textit{The Journal of Open Source Software (2023)}\\
-\textit{Service:}
-& Intro2Astro Course Volunteer Summer (2021) \\
-& Scarlett Middle School Teaching Assistant (2020) \\
-& Science Olympiad Mentor at Slauson Middle School (2020)\\
-& Ann Arbor Astronomy on Tap (2019) \\
-& Invisible Institute Volunteer Infographic Designer (2018) \\
-\textit{Training: } & Exoclimes Summer School (2023) \\
-& SC23 Supercomputing Workshops (2023) \\
-& University of Chicago Supercomputer Workshops (2018)\\
-\textit{Computing:} & Advanced: Python,  FORTRAN 77, FORTRAN 95, git, HPC systems\\ 
- & Basic: C,  OpenMP, Julia, SQL \\
-\end{tabularx}
-\end{cSection}
-
-
-
-
-\begin{cSection}{Successful Observing Proposals}
-\vspace{0.6cm}
-
-\noindent \textbf{[Co-I]}  Meeting their Match: Measuring Cloudy Hot Jupiter Counterparts to Understand the Silicate Cloud Regime with JWST/MIRI - Moran et al., JWST, 46.1 hours (2025)
-
-
-\noindent \textbf{[Co-I]} The Beginning of a High-Resolution Emission Spectroscopy Program at Magellan for the Characterization of Hot Jupiter Atmospheres with the WINERED Instrument - Sluijs et al., Magellan, 3 nights (2023)
-
-\noindent \textbf{[Co-I]} Tracing the Day-Night Structure of WASP-121b with Multi-Phase High-Resolution Spectroscopy - Rauscher et. al., Gemini South, 12 hours (2023)
-  
-\noindent \textbf{[Co-I]} Tracing the Day-Night Structure of WASP-76b with Multi-Phase High-Resolution Spectroscopy - Rauscher et. al., Gemini South, 20 hours (2023)
-
-\noindent \textbf{[Co-I]} The First High-Resolution Emission Spectrum of an Exoplanet with WINERED at Magellan - Rauscher et. al., Magellan, 12 hours (2022)
-\end{cSection}
-
-
-
-
-
-
-
-
-
-
-\begin{cSection}{Selected Presentations}
-\item \textbf{ExSoCal.} Breaking the Accuracy-Speed Trade-off in Radiative Transfer Calculations with Transformer-Based Emulation. 2025. (talk)
-
-\item \textbf{Aspen Rocky Worlds Conference.} Clouds and Hazes in Trappist 1214 b’s Metal-Rich Atmosphere. 2025. (talk)
-
-\item \textbf{NASA AMES.} Machine Learning Emulation of Atmospheric Radiative Transfer. 2025. (talk)
-
-\item \textbf{Cornell.} Clouds and Hazes in GJ 1214b’s Metal-Rich Atmosphere. 2024. (talk)
-
-\item \textbf{NASA Jet Propulsion Lab.} Characterizing Exoplanet Atmospheres: 1D and 3D. 2024. (talk)
-
-\item \textbf{Los Alamos National Lab.} Characterizing Exoplanet Atmospheres: 1D and 3D. 2024. (talk)
-
-\item \textbf{Exoclimes VI.} Clouds and Hazes in Polychromatic General circulation Models. 2023. (talk)
-
-\item \textbf{Bay Area Exoplanets Meeting.} Clouds and hazes in Polychromatic GCMs. 2022. (talk)
-
-\item \textbf{The Other Worlds Laboratory.} A Direct Comparison between a Double Gray and Multiwavelength GCMs. 2022. (talk)
-
-\iffalse
-\item \textbf{The University of Michigan Lunch Talks.} Modeling the Three-Dimensional Atmospheric Structure of Hot Gaseous Planets. 2022. (talk)
-\fi
-
-\item \textbf{Great Lakes Exoplanet Area Meeting.} Modeling the Three-Dimensional Atmospheric Structure of Hot Gaseous Planets. 2021. (talk)
-
-\item \textbf{Exoplanets IV.} Modeling the
-High-resolution Emission Spectra of Clear and Cloudy non-transiting Hot Jupiters. 2020. (poster)
-
-\item \textbf{MIT-Harvard Poster Session} The Coupled Thermal Evolution of sub-Neptune Atmospheres. 2018. (poster)
-
-\item \textbf{The US Naval Academy.} The Coupled Thermal Evolution of sub-Neptune Atmospheres. 2018. (poster)
-
-\end{cSection}
-
+\cvsection{Selected\\Research}{%
+  {\small
+  \InputIfFileExists{generated/selected_research.tex}{
+    \input{generated/selected_research.tex}
+  }{
+    \contline{\emph{Run \texttt{python scripts/generate\_cv.py} with a valid ADS token to populate the automated research list.}}
+  }
+  }
+}
 
 \end{document}
