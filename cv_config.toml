@@ -1,0 +1,14 @@
+display_name = "Isaac Malsky"
+orcid_id = "0000-0003-0217-3880"
+name_aliases = [
+  "Malsky, Isaac",
+  "Malsky, I.",
+  "Isaac Malsky",
+]
+ads_query_suffix = "database:astronomy"
+exclude_bibcodes = []
+
+[section_overrides]
+# Add per-paper overrides when the default author-position buckets are not what you want.
+# Example:
+# "2024ApJ...123..456M" = "Contributing Author"

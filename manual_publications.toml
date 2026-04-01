@@ -1,0 +1,11 @@
+[[entries]]
+section = "First Author"
+sort_date = "2026-03-01"
+status = "Submitted to PNAS."
+text = '''\textbf{Malsky, I.}, Zhang, X., Kataria, T., Graham, M., Huang, Z., Bonev, B., Tsai, S.-M., Lee, E. K. H. Accelerating Chemical Kinetics for Exoplanet Atmospheres using Neural Networks.'''
+
+[[entries]]
+section = "First Author"
+sort_date = "2026-02-01"
+status = "Submitted to ApJ."
+text = '''\textbf{Malsky, I.}, Kataria, T. Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model.'''
