@@ -1,0 +1,20 @@
+[[entries]]
+sort_date = "2026-03-01"
+review_state = "submitted"
+category = "first_author"
+status_label = "Submitted to \\emph{PNAS}"
+text = '''\textbf{Malsky, I.}, Zhang, X., Kataria, T., Graham, M., et al. Accelerating Chemical Kinetics for Exoplanet Atmospheres using Neural Networks'''
+
+[[entries]]
+sort_date = "2026-02-01"
+review_state = "submitted"
+category = "first_author"
+status_label = "Submitted to \\emph{ApJ}"
+text = '''\textbf{Malsky, I.} and Kataria, T. Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model'''
+
+[[entries]]
+sort_date = "2025-04-01"
+review_state = "submitted"
+category = "contributing"
+status_label = "Submitted to \\emph{ApJ}"
+text = '''Sluijs, L., et al. (incl. \textbf{Malsky, I.}) Assessing Robustness and Bias in 1D Retrievals of 3D Global Circulation Models at High Spectral Resolution: a WASP-76 b Simulation Case Study in Emission'''

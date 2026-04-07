@@ -1,0 +1,91 @@
+\documentclass[11pt,letterpaper,sans]{moderncv}
+\moderncvstyle{classic}
+\moderncvcolor{burgundy}
+
+\usepackage[utf8]{inputenc}
+\usepackage[scale=0.87]{geometry}
+
+\setlength{\hintscolumnwidth}{1.18in}
+\nopagenumbers{}
+
+\name{Isaac}{Malsky}
+\email{isaacmalsky@gmail.com}
+\social[github]{imalsky}
+\extrainfo{\href{https://scholar.google.com/citations?user=8UH3LhoAAAAJ}{Google Scholar}}
+
+\begin{document}
+
+\makecvtitle
+
+\section{Appointments}
+\cventry{2024--present}{Postdoctoral Researcher}{NASA Jet Propulsion Laboratory}{Pasadena, California}{}{NASA Postdoctoral Program Fellow, Science Division}
+\cventry{2019--2024}{Graduate Researcher}{University of Michigan}{Ann Arbor, Michigan}{}{Rauscher Lab}
+\cventry{2015--2019}{Research Assistant}{University of Chicago}{Chicago, Illinois}{}{Rogers Lab}
+\cventry{2018--2019}{Post-baccalaureate Researcher}{Argonne National Laboratory}{Lemont, Illinois}{}{Chan Lab, Center for Nanoscale Materials}
+
+\section{Education}
+\cventry{2019--2024}{Ph.D., Astronomy and Astrophysics}{University of Michigan}{Ann Arbor, Michigan}{}{Advisor: Prof. Emily Rauscher.\\ Dissertation: \emph{Modeling the 3D Atmospheric Structure of Hot Gaseous Planets}.}
+\cventry{2014--2018}{B.A., Physics, with Honors}{University of Chicago}{Chicago, Illinois}{}{Thesis: \emph{The Coupled Thermal and Compositional Evolution of Planet Envelopes}.}
+
+\section{Publications}
+{\small
+\IfFileExists{generated/publications.tex}{
+  \input{generated/publications.tex}
+}{
+  \cvitem{}{Run \texttt{python src/generate\_cv.py} with a valid ADS token to populate the automated publications list.}
+}
+}
+
+\section{Grants and Awards}
+\cvitem{2024--2026}{NASA Postdoctoral Program Fellowship}
+\cvitem{2023--2024}{Rackham Predoctoral Fellowship}
+\cvitem{2023}{Rackham Professional Development Grant}
+\cvitem{2023}{Rackham Graduate Student Research Grant}
+\cvitem{2021}{NSF Graduate Research Fellowship Program Honorable Mention}
+\cvitem{2021}{Michigan Space Grant}
+\cvitem{2015}{Jeff Metcalf Fellowship}
+\cvitem{2014}{National Merit Scholarship}
+\cvitem{2014--2018}{University of Chicago Dean's List}
+
+\section{Mentoring}
+\cvitem{2024--present}{Elijah Mullens, graduate research}
+\cvitem{2023--present}{Thomas Kennedy, graduate research}
+\cvitem{2022--2024}{Alex Wingate, undergraduate research}
+\cvitem{2022--2024}{Eli Cinque, undergraduate research}
+
+\section{Teaching}
+\cvitem{Spring 2021}{ASTRO 105: Cosmos Constellations, Graduate Student Instructor, University of Michigan}
+\cvitem{Fall 2020}{ASTRO 101: Introductory Astronomy: The Solar System and the Search for a New Earth, Graduate Student Instructor, University of Michigan}
+
+\section{Service, Outreach, and Skills}
+\cvitem{Peer review}{\emph{The Astrophysical Journal}; \emph{The Astrophysical Journal Letters}; \emph{The Journal of Open Source Software}.}
+\cvitem{Service}{Intro2Astro Course Volunteer Summer (2021)\newline Scarlett Middle School Teaching Assistant (2020)\newline Science Olympiad Mentor at Slauson Middle School (2020)\newline Ann Arbor Astronomy on Tap (2019)\newline Invisible Institute Volunteer Infographic Designer (2018).}
+\cvitem{Training}{Exoclimes Summer School (2023)\newline SC23 Supercomputing Workshops (2023)\newline University of Chicago Supercomputer Workshops (2018).}
+\cvitem{Computing}{Python, FORTRAN 77, FORTRAN 95, git, HPC systems. Basic: C, OpenMP, Julia, SQL.}
+
+\section{Observing Proposals}
+\cvitem{JWST}{\textbf{[Co-I]} Cloudy with a Chance of Disequilibrium Chemistry: A Comprehensive View of Silicate Clouds in a Hot Jupiter with a MIRI/LRS Phase Curve, Splinter et al., GO 11301, Cycle 5, 69.6 hours.}
+\cvitem{JWST}{\textbf{[Co-I]} Meeting their Match: Measuring Cloudy Hot Jupiter Counterparts to Understand the Silicate Cloud Regime with JWST/MIRI, Moran et al., GO 7849, Cycle 4, 46.3 hours.}
+\cvitem{Magellan}{\textbf{[Co-I]} The Beginning of a High-Resolution Emission Spectroscopy Program at Magellan for the Characterization of Hot Jupiter Atmospheres with the WINERED Instrument, Sluijs et al., 3 nights (2023).}
+\cvitem{Gemini South}{\textbf{[Co-I]} Tracing the Day-Night Structure of WASP-121b with Multi-Phase High-Resolution Spectroscopy, Rauscher et al., 12 hours (2023).}
+\cvitem{Gemini South}{\textbf{[Co-I]} Tracing the Day-Night Structure of WASP-76b with Multi-Phase High-Resolution Spectroscopy, Rauscher et al., 20 hours (2023).}
+\cvitem{Magellan}{\textbf{[Co-I]} The First High-Resolution Emission Spectrum of an Exoplanet with WINERED at Magellan, Rauscher et al., 12 hours (2022).}
+
+\section{Selected Presentations}
+\cvitem{2026}{\textbf{MIT Monday Afternoon Talks.} AI for Exoplanet Modeling/Analysis. (invited talk)}
+\cvitem{2026}{\textbf{ExoPAG 33.} AI for Exoplanet Modeling/Analysis. (invited talk)}
+\cvitem{2025}{\textbf{ExSoCal.} Breaking the Accuracy-Speed Trade-off in Radiative Transfer Calculations with Transformer-Based Emulation. (talk)}
+\cvitem{2025}{\textbf{Aspen Rocky Worlds Conference.} Clouds and Hazes in Trappist 1214 b's Metal-Rich Atmosphere. (talk)}
+\cvitem{2025}{\textbf{NASA AMES.} Machine Learning Emulation of Atmospheric Radiative Transfer. (talk)}
+\cvitem{2024}{\textbf{Cornell.} Clouds and Hazes in GJ 1214b's Metal-Rich Atmosphere. (talk)}
+\cvitem{2024}{\textbf{NASA Jet Propulsion Laboratory.} Characterizing Exoplanet Atmospheres: 1D and 3D. (talk)}
+\cvitem{2024}{\textbf{Los Alamos National Laboratory.} Characterizing Exoplanet Atmospheres: 1D and 3D. (talk)}
+\cvitem{2023}{\textbf{Exoclimes VI.} Clouds and Hazes in Polychromatic General Circulation Models. (talk)}
+\cvitem{2022}{\textbf{Bay Area Exoplanets Meeting.} Clouds and Hazes in Polychromatic GCMs. (talk)}
+\cvitem{2022}{\textbf{The Other Worlds Laboratory.} A Direct Comparison between Double Gray and Multiwavelength GCMs. (talk)}
+\cvitem{2021}{\textbf{Great Lakes Exoplanet Area Meeting.} Modeling the Three-Dimensional Atmospheric Structure of Hot Gaseous Planets. (talk)}
+\cvitem{2020}{\textbf{Exoplanets IV.} Modeling the High-resolution Emission Spectra of Clear and Cloudy Nontransiting Hot Jupiters. (poster)}
+\cvitem{2018}{\textbf{MIT-Harvard Poster Session.} The Coupled Thermal Evolution of Sub-Neptune Atmospheres. (poster)}
+\cvitem{2018}{\textbf{The US Naval Academy.} The Coupled Thermal Evolution of Sub-Neptune Atmospheres. (poster)}
+
+\end{document}

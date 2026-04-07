@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate ADS-backed LaTeX fragments and a minimal GitHub Pages site."""
+"""Generate ADS-backed LaTeX fragments and compiled CV site assets."""
 
 from __future__ import annotations
 
@@ -16,12 +16,18 @@ from typing import Any, Iterable, Sequence
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG_PATH = ROOT / "cv_config.toml"
-DEFAULT_MANUAL_PATH = ROOT / "manual_publications.toml"
-DEFAULT_GENERATED_DIR = ROOT / "generated"
-DEFAULT_SITE_DIR = ROOT / "site"
-REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
+DEFAULT_CONFIG_PATH = ROOT / "src" / "cv_config.toml"
+DEFAULT_MANUAL_PATH = ROOT / "src" / "manual_publications.toml"
+DEFAULT_GENERATED_DIR = ROOT / "latex" / "generated"
+DEFAULT_SITE_DIR = ROOT / "compiled"
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
+REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
+CATEGORY_ORDER = ("first_author", "middle_author", "contributing")
+CATEGORY_TITLES = {
+    "first_author": "First Author",
+    "middle_author": "Second, Third or Fourth Author",
+    "contributing": "Contributing Author",
+}
 LATEX_ESCAPE_MAP = {
     "\\": r"\textbackslash{}",
     "&": r"\&",
@@ -44,6 +50,7 @@ JOURNAL_ABBREVIATIONS = {
     "Nature": "Nature",
     "The Planetary Science Journal": "PSJ",
     "Publications of the Astronomical Society of the Pacific": "PASP",
+    "Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series": "SPIE",
 }
 
 
@@ -83,7 +90,7 @@ class ManualPublication:
     text: str
     status_label: str
     review_state: str
-    include_in_selected_research: bool
+    category: str
 
 
 @dataclass(frozen=True)
@@ -92,11 +99,12 @@ class RenderedPublication:
 
     sort_date: str
     text: str
+    category: str
 
 
 @dataclass(frozen=True)
 class Metrics:
-    """Computed ADS metrics for the CV header and site."""
+    """Computed ADS metrics for the CV header and compiled site."""
 
     h_index: int
     total_citations: int
@@ -207,12 +215,16 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
         text = str(entry.get("text", "")).strip()
         status_label = str(entry.get("status_label", "")).strip()
         review_state = str(entry.get("review_state", "")).strip().lower()
-        include_in_selected_research = bool(entry.get("include_in_selected_research", True))
+        category = str(entry.get("category", "")).strip()
 
         if not sort_date:
             raise RuntimeError(f"Manual publication entries in {path} require `sort_date`.")
         if not text:
             raise RuntimeError(f"Manual publication entries in {path} require `text`.")
+        if category not in CATEGORY_ORDER:
+            raise RuntimeError(
+                f"Manual publication entries in {path} require `category` in {CATEGORY_ORDER}."
+            )
 
         entries.append(
             ManualPublication(
@@ -220,7 +232,7 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
                 text=text,
                 status_label=status_label,
                 review_state=review_state,
-                include_in_selected_research=include_in_selected_research,
+                category=category,
             )
         )
 
@@ -310,23 +322,85 @@ def find_author_position(authors: Sequence[str], config: CvConfig) -> int | None
     return None
 
 
-def format_authors_for_tex(authors: Sequence[str], config: CvConfig) -> str:
-    """Render an ADS author list with the CV owner highlighted in bold."""
+def format_single_author(author: str, config: CvConfig) -> str:
+    """Render one author name and bold the CV owner."""
 
-    rendered_authors: list[str] = []
-    for author in authors:
-        escaped_author = escape_tex(author)
-        if author_matches(author, config):
-            rendered_authors.append(f"\\textbf{{{escaped_author}}}")
-        else:
-            rendered_authors.append(escaped_author)
-    return ", ".join(rendered_authors)
+    escaped_author = escape_tex(compact_author_name(author))
+    if author_matches(author, config):
+        return f"\\textbf{{{escaped_author}}}"
+    return escaped_author
+
+
+def compact_author_name(author: str) -> str:
+    """Shorten an ADS author string to surname plus initials."""
+
+    stripped = author.strip()
+    if not stripped:
+        return ""
+
+    if "," in stripped:
+        surname, given_names = stripped.split(",", 1)
+    else:
+        parts = stripped.split()
+        if len(parts) == 1:
+            return parts[0]
+        surname = parts[-1]
+        given_names = " ".join(parts[:-1])
+
+    initials = " ".join(f"{token[0]}." for token in re.findall(r"[A-Za-z]+", given_names))
+    surname = surname.strip()
+    return f"{surname}, {initials}".strip().rstrip(",")
 
 
 def abbreviate_journal(journal: str) -> str:
     """Return a concise journal label for CV rendering."""
 
     return JOURNAL_ABBREVIATIONS.get(journal, journal)
+
+
+def classify_category(author_position: int | None) -> str:
+    """Map author position to a publication category."""
+
+    if author_position == 1:
+        return "first_author"
+    if author_position is not None and 2 <= author_position <= 4:
+        return "middle_author"
+    return "contributing"
+
+
+def format_authors_compact(authors: Sequence[str], config: CvConfig, author_position: int | None) -> str:
+    """Render a shortened author list with the CV owner still visible."""
+
+    if not authors:
+        return ""
+
+    if author_position == 1:
+        visible = [format_single_author(author, config) for author in authors[:3]]
+        if len(authors) > 3:
+            visible.append("et al.")
+        return ", ".join(visible)
+
+    if author_position is not None and 2 <= author_position <= 4:
+        visible_count = min(len(authors), max(3, author_position))
+        visible = [format_single_author(author, config) for author in authors[:visible_count]]
+        if len(authors) > visible_count:
+            visible.append("et al.")
+        return ", ".join(visible)
+
+    visible = [format_single_author(author, config) for author in authors[:2]]
+    if len(authors) > 2:
+        visible.append("et al.")
+    self_author = next(
+        (format_single_author(author, config) for author in authors if author_matches(author, config)),
+        "\\textbf{Malsky, I.}",
+    )
+    return f"{', '.join(visible)} (incl. {self_author})"
+
+
+def is_ads_proposal_record(journal: str) -> bool:
+    """Return True when an ADS result is a proposal rather than a publication."""
+
+    return "proposal" in journal.casefold()
 
 
 def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
@@ -338,7 +412,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
         import ads
     except ImportError as exc:
         raise RuntimeError(
-            "The `ads` package is not installed. Run `pip install -r requirements.txt` first."
+            "The `ads` package is not installed. Run `pip install -r src/requirements.txt` first."
         ) from exc
 
     field_list = [
@@ -353,7 +427,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
     query = ads.SearchQuery(
         q=build_ads_query(config),
         fl=field_list,
-        rows=200,
+        rows=300,
         sort="date desc, bibcode desc",
     )
 
@@ -363,6 +437,10 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
     for result in query:
         bibcode = first_text(getattr(result, "bibcode", ""))
         if not bibcode or bibcode in seen_bibcodes or bibcode in config.exclude_bibcodes:
+            continue
+
+        journal = first_text(getattr(result, "pub", ""))
+        if is_ads_proposal_record(journal):
             continue
 
         authors = list_text(getattr(result, "author", ()))
@@ -376,7 +454,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
                 bibcode=bibcode,
                 title=first_text(getattr(result, "title", "")),
                 authors=authors,
-                journal=first_text(getattr(result, "pub", "")),
+                journal=journal,
                 year=first_text(getattr(result, "year", "")),
                 sort_date=parse_sort_date(
                     first_text(getattr(result, "pubdate", "")),
@@ -415,20 +493,14 @@ def compute_metrics(publications: Sequence[AdsPublication]) -> Metrics:
 
 
 def format_ads_publication(publication: AdsPublication, config: CvConfig) -> str:
-    """Render an ADS publication in the compact selected-research style."""
+    """Render one ADS publication in the CV publication style."""
 
-    authors_tex = format_authors_for_tex(publication.authors, config)
-    title_tex = escape_tex(publication.title)
+    authors_tex = format_authors_compact(publication.authors, config, publication.author_position)
+    title_tex = escape_tex(publication.title.replace("─", "-"))
     journal_tex = escape_tex(abbreviate_journal(publication.journal))
-
-    fragments = [authors_tex]
-    if publication.year:
-        fragments.append(publication.year)
-    fragments.append(f"\\textsc{{{title_tex}}}")
-    if journal_tex:
-        fragments.append(f"\\emph{{{journal_tex}}}")
-
-    return ", ".join(fragment for fragment in fragments if fragment) + "."
+    year_tex = f"({publication.year})." if publication.year else ""
+    journal_fragment = f" \\emph{{{journal_tex}}}." if journal_tex else ""
+    return f"{authors_tex}. {title_tex}. {year_tex}{journal_fragment}".strip()
 
 
 def format_manual_publication(publication: ManualPublication) -> str:
@@ -436,59 +508,72 @@ def format_manual_publication(publication: ManualPublication) -> str:
 
     text = publication.text.strip()
     if publication.status_label:
-        text = f"{text}, {publication.status_label}"
+        text = f"{text}. {publication.status_label}"
     return text if text.endswith(".") else f"{text}."
 
 
-def build_selected_research_entries(
+def build_publication_entries(
     ads_publications: Sequence[AdsPublication],
     manual_publications: Sequence[ManualPublication],
     config: CvConfig,
 ) -> list[RenderedPublication]:
-    """Build the selected-research publication list."""
+    """Build publication entries across author-role categories."""
 
     rendered: list[RenderedPublication] = []
 
     for publication in ads_publications:
-        if publication.author_position != 1:
-            continue
         rendered.append(
             RenderedPublication(
                 sort_date=publication.sort_date,
                 text=format_ads_publication(publication, config),
+                category=classify_category(publication.author_position),
             )
         )
 
     for publication in manual_publications:
-        if not publication.include_in_selected_research:
-            continue
         rendered.append(
             RenderedPublication(
                 sort_date=publication.sort_date,
                 text=format_manual_publication(publication),
+                category=publication.category,
             )
         )
 
-    rendered.sort(key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
+    rendered.sort(key=lambda item: (CATEGORY_ORDER.index(item.category), item.sort_date, item.text.casefold()))
     return rendered
 
 
-def render_selected_research_tex(
+def render_publications_tex(
     publications: Sequence[RenderedPublication],
     metrics: Metrics,
     in_review_count: int,
 ) -> str:
-    """Render the selected research TeX fragment."""
+    """Render the full publications TeX fragment."""
+
+    ordered = sorted(publications, key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
+    first_author_entries = [publication for publication in ordered if publication.category == "first_author"]
+    other_entries = [publication for publication in ordered if publication.category != "first_author"]
 
     summary = (
-        f"\\contline{{\\emph{{{metrics.first_author_count} published first-author papers, "
-        f"{in_review_count} in review, and an ADS h-index of {metrics.h_index}.}}}}"
+        f"\\cvitem{{}}{{\\emph{{{metrics.first_author_count} published first-author papers, "
+        f"{in_review_count} in review, {metrics.total_citations} total citations, "
+        f"and an ADS h-index of {metrics.h_index}.}}}}"
     )
-    lines = [summary, "\\begin{itemize}"]
-    for publication in sorted(publications, key=lambda item: (item.sort_date, item.text.casefold()), reverse=True):
-        lines.append(f"  \\item {publication.text}")
-    lines.append("\\end{itemize}")
-    return "\n".join(lines) + "\n"
+
+    lines = [summary]
+    rendered_sections = (
+        ("First Author", first_author_entries),
+        ("Other Papers", other_entries),
+    )
+
+    for section_title, entries in rendered_sections:
+        if not entries:
+            continue
+        lines.append(f"\\subsection{{{section_title}}}")
+        for publication in entries:
+            lines.append(f"\\cvlistitem{{{publication.text}}}")
+
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def render_index_html(display_name: str, metrics: Metrics, generated_at: datetime, scholar_url: str) -> str:
@@ -667,27 +752,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     manual_publications = load_manual_publications(args.manual)
     ads_publications = fetch_ads_publications(config)
 
-    if not ads_publications and not args.allow_empty:
+    if not ads_publications and not args.allow-empty:
         raise RuntimeError(
             "The ADS query returned zero indexed papers. Verify the ADS token, ORCID settings, "
-            "or switch to ADS-only alias queries in cv_config.toml."
+            "or switch to ADS-only alias queries in src/cv_config.toml."
         )
 
     metrics = compute_metrics(ads_publications)
     generated_at = datetime.now(timezone.utc)
-    selected_research_publications = build_selected_research_entries(
-        ads_publications,
-        manual_publications,
-        config,
-    )
-    in_review_count = sum(
-        publication.include_in_selected_research and publication.review_state in REVIEW_STATES
-        for publication in manual_publications
-    )
+    publication_entries = build_publication_entries(ads_publications, manual_publications, config)
+    in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
 
     write_text(
-        args.generated_dir / "selected_research.tex",
-        render_selected_research_tex(selected_research_publications, metrics, in_review_count),
+        args.generated_dir / "publications.tex",
+        render_publications_tex(publication_entries, metrics, in_review_count),
     )
     write_text(
         args.site_dir / "index.html",

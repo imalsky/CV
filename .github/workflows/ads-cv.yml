@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r src/requirements.txt
 
       - name: Run unit tests
         run: python -m unittest discover -s tests
@@ -36,17 +36,17 @@ jobs:
       - name: Generate ADS-backed TeX fragments
         env:
           ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
-        run: python scripts/generate_cv.py
+        run: python src/generate_cv.py
 
       - name: Build PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: academic_cv.tex
+          root_file: latex/academic_cv.tex
 
       - name: Assemble Pages artifact
         run: |
-          mkdir -p site
-          cp academic_cv.pdf site/academic_cv.pdf
+          mkdir -p compiled
+          cp academic_cv.pdf compiled/academic_cv.pdf
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -54,7 +54,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: compiled
 
   deploy:
     needs: build

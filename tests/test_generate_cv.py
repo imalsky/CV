@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "scripts" / "generate_cv.py"
+MODULE_PATH = ROOT / "src" / "generate_cv.py"
 SPEC = importlib.util.spec_from_file_location("generate_cv", MODULE_PATH)
 MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -60,25 +60,53 @@ class GenerateCvTests(unittest.TestCase):
         self.assertIn('author:"Malsky, Isaac"', query)
         self.assertIn("database:astronomy", query)
 
-    def test_render_selected_research_orders_entries_newest_first(self) -> None:
+    def test_format_authors_compact_keeps_middle_author_visible(self) -> None:
+        config = build_config()
+        authors = (
+            "Kennedy, T.",
+            "Rauscher, E.",
+            "Malsky, Isaac",
+            "Roman, M.",
+            "Beltz, H.",
+        )
+        rendered = MODULE.format_authors_compact(authors, config, author_position=3)
+        self.assertIn("\\textbf{Malsky, I.}", rendered)
+        self.assertIn("et al.", rendered)
+
+    def test_render_publications_includes_citation_summary_and_categories(self) -> None:
         publications = [
             MODULE.RenderedPublication(
-                sort_date="2024-01-01",
-                text="Older paper.",
+                sort_date="2025-01-01",
+                text="First author paper.",
+                category="first_author",
             ),
             MODULE.RenderedPublication(
-                sort_date="2025-01-01",
-                text="Newer paper.",
+                sort_date="2024-01-01",
+                text="Middle author paper.",
+                category="middle_author",
+            ),
+            MODULE.RenderedPublication(
+                sort_date="2023-01-01",
+                text="Contributing paper.",
+                category="contributing",
             ),
         ]
 
-        rendered = MODULE.render_selected_research_tex(
+        rendered = MODULE.render_publications_tex(
             publications,
             MODULE.Metrics(17, 400, 22, 5),
             in_review_count=2,
         )
-        self.assertIn("5 published first-author papers, 2 in review, and an ADS h-index of 17.", rendered)
-        self.assertLess(rendered.find("Newer paper."), rendered.find("Older paper."))
+        self.assertIn("400 total citations", rendered)
+        self.assertIn("\\subsection{First Author}", rendered)
+        self.assertIn("\\subsection{Other Papers}", rendered)
+
+    def test_compact_author_name_uses_initials(self) -> None:
+        self.assertEqual(MODULE.compact_author_name("Malsky, Isaac"), "Malsky, I.")
+
+    def test_is_ads_proposal_record(self) -> None:
+        self.assertTrue(MODULE.is_ads_proposal_record("JWST Proposal. Cycle 4"))
+        self.assertFalse(MODULE.is_ads_proposal_record("The Astrophysical Journal"))
 
 
 if __name__ == "__main__":

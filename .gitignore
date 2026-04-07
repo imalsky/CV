@@ -1,8 +1,9 @@
 __pycache__/
+.env.local
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.out
-generated/
-site/
+compiled/
+latex/generated/

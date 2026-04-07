@@ -1,0 +1,11 @@
+display_name = "Marianne Cowherd"
+scholar_url = "https://scholar.google.com/citations?user=RN_5PCcAAAAJ"
+scholar_user_id = "RN_5PCcAAAAJ"
+name_aliases = [
+  "Cowherd, Marianne",
+  "Cowherd, M.",
+  "Marianne Cowherd",
+]
+exclude_titles = [
+  "emily-rauscher/RM-GCM: First public version of RM-GCM",
+]
