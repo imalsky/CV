@@ -8,6 +8,23 @@
 \setlength{\hintscolumnwidth}{1.18in}
 \nopagenumbers{}
 
+\makeatletter
+\renewcommand*{\namefont}{\fontsize{34}{36}\mdseries\upshape}
+\renewcommand*{\makecvhead}{%
+  \recomputecvlengths%
+  \begin{minipage}[b]{\textwidth}%
+    {\namefont\color{color2} \@firstname~\@lastname}%
+    \hfill%
+    \begin{minipage}[b]{.35\textwidth}%
+      \raggedleft\addressfont\color{color2}%
+      \ifthenelse{\isundefined{\@email}}{}{\emailsymbol\emaillink{\@email}\\}%
+      \collectionloop{socials}{\makenewline\csname\collectionloopid socialsymbol\endcsname\collectionloopitem}%
+      \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}%
+    \end{minipage}%
+  \end{minipage}%
+  \par\vspace{2ex}}
+\makeatother
+
 \name{Isaac}{Malsky}
 \email{isaacmalsky@gmail.com}
 \social[github]{imalsky}
@@ -29,11 +46,7 @@
 
 \section{Publications}
 {\small
-\IfFileExists{generated/publications.tex}{
-  \input{generated/publications.tex}
-}{
-  \cvitem{}{Run \texttt{python src/generate\_cv.py} with a valid ADS token to populate the automated publications list.}
-}
+\input{generated/publications.tex}
 }
 
 \section{Grants and Awards}

@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-"""Generate ADS-backed LaTeX fragments and compiled CV site assets."""
+"""Generate ADS-backed LaTeX fragments for the CV."""
 
 from __future__ import annotations
 
 import argparse
-import html
 import os
 import re
 import sys
 import tomllib
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
@@ -19,7 +17,6 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG_PATH = ROOT / "src" / "cv_config.toml"
 DEFAULT_MANUAL_PATH = ROOT / "src" / "manual_publications.toml"
 DEFAULT_GENERATED_DIR = ROOT / "latex" / "generated"
-DEFAULT_SITE_DIR = ROOT / "compiled"
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
 REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
 CATEGORY_ORDER = ("first_author", "middle_author", "contributing")
@@ -63,7 +60,6 @@ class CvConfig:
     name_aliases: tuple[str, ...]
     ads_query_suffix: str
     exclude_bibcodes: frozenset[str]
-    scholar_url: str
     normalized_aliases: frozenset[str]
     alias_signatures: frozenset[tuple[str, str]]
 
@@ -119,7 +115,6 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG_PATH)
     parser.add_argument("--manual", type=Path, default=DEFAULT_MANUAL_PATH)
     parser.add_argument("--generated-dir", type=Path, default=DEFAULT_GENERATED_DIR)
-    parser.add_argument("--site-dir", type=Path, default=DEFAULT_SITE_DIR)
     parser.add_argument(
         "--allow-empty",
         action="store_true",
@@ -182,8 +177,6 @@ def load_config(path: Path) -> CvConfig:
     exclude_bibcodes = frozenset(
         str(bibcode).strip() for bibcode in raw_config.get("exclude_bibcodes", []) if str(bibcode).strip()
     )
-    scholar_url = str(raw_config.get("scholar_url", "")).strip()
-
     if not display_name:
         raise RuntimeError(f"`display_name` must be set in {path}")
     if not name_aliases:
@@ -198,7 +191,6 @@ def load_config(path: Path) -> CvConfig:
         name_aliases=name_aliases,
         ads_query_suffix=ads_query_suffix,
         exclude_bibcodes=exclude_bibcodes,
-        scholar_url=scholar_url,
         normalized_aliases=normalized_aliases,
         alias_signatures=alias_signatures,
     )
@@ -576,167 +568,6 @@ def render_publications_tex(
     return "\n".join(lines).rstrip() + "\n"
 
 
-def render_index_html(display_name: str, metrics: Metrics, generated_at: datetime, scholar_url: str) -> str:
-    """Render the GitHub Pages landing page."""
-
-    safe_name = html.escape(display_name)
-    generated_label = generated_at.strftime("%Y-%m-%d %H:%M UTC")
-    scholar_link = (
-        f'<a class="secondary" href="{html.escape(scholar_url)}">Google Scholar</a>'
-        if scholar_url
-        else ""
-    )
-
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{safe_name} | CV</title>
-  <style>
-    :root {{
-      color-scheme: light;
-      --bg: #f4efe8;
-      --panel: rgba(255, 250, 244, 0.88);
-      --ink: #1d2433;
-      --muted: #596377;
-      --accent: #b40f00;
-      --line: rgba(29, 36, 51, 0.12);
-    }}
-
-    * {{
-      box-sizing: border-box;
-    }}
-
-    body {{
-      margin: 0;
-      color: var(--ink);
-      font-family: "Georgia", "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top left, rgba(180, 15, 0, 0.09), transparent 28%),
-        linear-gradient(180deg, #f7f1ea 0%, var(--bg) 100%);
-    }}
-
-    main {{
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 40px 20px 56px;
-    }}
-
-    .hero {{
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      align-items: start;
-      margin-bottom: 24px;
-    }}
-
-    .panel {{
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 18px 48px rgba(29, 36, 51, 0.08);
-      backdrop-filter: blur(8px);
-    }}
-
-    h1 {{
-      margin: 0 0 12px;
-      color: var(--accent);
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.04;
-    }}
-
-    p {{
-      margin: 0 0 10px;
-      color: var(--muted);
-      line-height: 1.6;
-    }}
-
-    .links {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }}
-
-    a {{
-      color: var(--ink);
-      text-decoration: none;
-    }}
-
-    .cta, .secondary {{
-      display: inline-block;
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-    }}
-
-    .cta {{
-      background: var(--ink);
-      color: #fffaf4;
-    }}
-
-    .metrics {{
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }}
-
-    .metrics li {{
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }}
-
-    .metrics li:last-child {{
-      border-bottom: 0;
-      padding-bottom: 0;
-    }}
-
-    .viewer {{
-      width: 100%;
-      min-height: 78vh;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: #ffffff;
-    }}
-  </style>
-</head>
-<body>
-  <main>
-    <section class="hero">
-      <div class="panel">
-        <h1>{safe_name}</h1>
-        <p>Automated daily CV build powered by NASA ADS.</p>
-        <p>Last updated {generated_label}</p>
-        <div class="links">
-          <a class="cta" href="academic_cv.pdf">Download PDF</a>
-          {scholar_link}
-        </div>
-      </div>
-      <div class="panel">
-        <ul class="metrics">
-          <li><strong>ADS h-index</strong><span>{metrics.h_index}</span></li>
-          <li><strong>Total citations</strong><span>{metrics.total_citations}</span></li>
-          <li><strong>Indexed papers</strong><span>{metrics.indexed_papers}</span></li>
-          <li><strong>First-author papers</strong><span>{metrics.first_author_count}</span></li>
-        </ul>
-      </div>
-    </section>
-    <object class="viewer" data="academic_cv.pdf" type="application/pdf">
-      <p>Your browser could not embed the PDF. Use the download link above.</p>
-    </object>
-  </main>
-</body>
-</html>
-"""
-
-
 def write_text(path: Path, content: str) -> None:
     """Write UTF-8 text to disk, creating parent directories as needed."""
 
@@ -759,7 +590,6 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
 
     metrics = compute_metrics(ads_publications)
-    generated_at = datetime.now(timezone.utc)
     publication_entries = build_publication_entries(ads_publications, manual_publications, config)
     in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
 
@@ -767,11 +597,6 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.generated_dir / "publications.tex",
         render_publications_tex(publication_entries, metrics, in_review_count),
     )
-    write_text(
-        args.site_dir / "index.html",
-        render_index_html(config.display_name, metrics, generated_at, config.scholar_url),
-    )
-    write_text(args.site_dir / ".nojekyll", "")
 
     return 0
 

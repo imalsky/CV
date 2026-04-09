@@ -27,7 +27,6 @@ def build_config() -> object:
         name_aliases=aliases,
         ads_query_suffix="database:astronomy",
         exclude_bibcodes=frozenset(),
-        scholar_url="https://scholar.google.com/citations?user=8UH3LhoAAAAJ",
         normalized_aliases=frozenset(MODULE.normalize_name(alias) for alias in aliases),
         alias_signatures=frozenset(MODULE.build_author_signature(alias) for alias in aliases),
     )
@@ -35,6 +34,19 @@ def build_config() -> object:
 
 class GenerateCvTests(unittest.TestCase):
     """Unit tests for deterministic CV helper logic."""
+
+    def test_latex_template_uses_generated_publications_fragment(self) -> None:
+        template = (ROOT / "latex" / "academic_cv.tex").read_text(encoding="utf-8")
+        self.assertIn("\\input{generated/publications.tex}", template)
+        self.assertNotIn("Run \\texttt{python src/generate\\_cv.py}", template)
+        self.assertIn("{\\namefont\\color{color2} \\@firstname~\\@lastname}", template)
+
+    def test_pdf_only_generator_removes_site_surface(self) -> None:
+        self.assertFalse(hasattr(MODULE, "DEFAULT_SITE_DIR"))
+        self.assertFalse(hasattr(MODULE, "render_index_html"))
+        self.assertNotIn("scholar_url", MODULE.CvConfig.__annotations__)
+        config_text = (ROOT / "src" / "cv_config.toml").read_text(encoding="utf-8")
+        self.assertNotIn("scholar_url", config_text)
 
     def test_compute_h_index(self) -> None:
         self.assertEqual(MODULE.compute_h_index([12, 10, 8, 5, 1]), 4)
@@ -52,7 +64,6 @@ class GenerateCvTests(unittest.TestCase):
             name_aliases=config.name_aliases,
             ads_query_suffix=config.ads_query_suffix,
             exclude_bibcodes=config.exclude_bibcodes,
-            scholar_url=config.scholar_url,
             normalized_aliases=config.normalized_aliases,
             alias_signatures=config.alias_signatures,
         )
