@@ -40,6 +40,11 @@ class GenerateCvTests(unittest.TestCase):
         self.assertIn("\\input{generated/publications.tex}", template)
         self.assertNotIn("Run \\texttt{python src/generate\\_cv.py}", template)
         self.assertIn("{\\namefont\\color{color2} \\@firstname~\\@lastname}", template)
+        self.assertIn("\\usepackage{newtxtext,newtxmath}", template)
+        self.assertIn("\\newcommand{\\pubheading}[1]", template)
+        self.assertIn("\\newcommand{\\pubitem}[1]", template)
+        self.assertIn("\\cvitem{}{Yashnil Mohanty}", template)
+        self.assertNotIn("\\documentclass[11pt,letterpaper,sans]{moderncv}", template)
 
     def test_pdf_only_generator_removes_site_surface(self) -> None:
         self.assertFalse(hasattr(MODULE, "DEFAULT_SITE_DIR"))
@@ -108,9 +113,12 @@ class GenerateCvTests(unittest.TestCase):
             MODULE.Metrics(17, 400, 22, 5),
             in_review_count=2,
         )
-        self.assertIn("400 total citations", rendered)
-        self.assertIn("\\subsection{First Author}", rendered)
-        self.assertIn("\\subsection{Other Papers}", rendered)
+        self.assertIn("5 published first-author papers, 2 in review.", rendered)
+        self.assertIn("\\pubheading{First Author}", rendered)
+        self.assertIn("\\pubheading{Contributing Author}", rendered)
+        self.assertNotIn("\\cvlistitem{", rendered)
+        self.assertIn("\\pubitem{First author paper.}", rendered)
+        self.assertNotIn("400 total citations", rendered)
 
     def test_compact_author_name_uses_initials(self) -> None:
         self.assertEqual(MODULE.compact_author_name("Malsky, Isaac"), "Malsky, I.")

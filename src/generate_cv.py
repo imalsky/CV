@@ -544,26 +544,25 @@ def render_publications_tex(
 
     ordered = sorted(publications, key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
     first_author_entries = [publication for publication in ordered if publication.category == "first_author"]
-    other_entries = [publication for publication in ordered if publication.category != "first_author"]
+    contributing_entries = [publication for publication in ordered if publication.category != "first_author"]
 
     summary = (
         f"\\cvitem{{}}{{\\emph{{{metrics.first_author_count} published first-author papers, "
-        f"{in_review_count} in review, {metrics.total_citations} total citations, "
-        f"and an ADS h-index of {metrics.h_index}.}}}}"
+        f"{in_review_count} in review.}}}}"
     )
 
     lines = [summary]
     rendered_sections = (
         ("First Author", first_author_entries),
-        ("Other Papers", other_entries),
+        ("Contributing Author", contributing_entries),
     )
 
     for section_title, entries in rendered_sections:
         if not entries:
             continue
-        lines.append(f"\\subsection{{{section_title}}}")
+        lines.append(f"\\pubheading{{{section_title}}}")
         for publication in entries:
-            lines.append(f"\\cvlistitem{{{publication.text}}}")
+            lines.append(f"\\pubitem{{{publication.text}}}")
 
     return "\n".join(lines).rstrip() + "\n"
 

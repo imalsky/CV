@@ -1,8 +1,9 @@
-\documentclass[11pt,letterpaper,sans]{moderncv}
+\documentclass[11pt,letterpaper]{moderncv}
 \moderncvstyle{classic}
 \moderncvcolor{burgundy}
 
 \usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
 \usepackage[scale=0.87]{geometry}
 
 \setlength{\hintscolumnwidth}{1.18in}
@@ -29,6 +30,9 @@
 \email{isaacmalsky@gmail.com}
 \social[github]{imalsky}
 \extrainfo{\href{https://scholar.google.com/citations?user=8UH3LhoAAAAJ}{Google Scholar}}
+
+\newcommand{\pubheading}[1]{\vspace{0.4em}{\normalsize\textbf{#1}}\par\vspace{0.2em}}
+\newcommand{\pubitem}[1]{\cvitem{}{#1}}
 
 \begin{document}
 
@@ -63,6 +67,7 @@
 \section{Mentoring}
 \cvitem{2024--present}{Elijah Mullens, graduate research}
 \cvitem{2023--present}{Thomas Kennedy, graduate research}
+\cvitem{}{Yashnil Mohanty}
 \cvitem{2022--2024}{Alex Wingate, undergraduate research}
 \cvitem{2022--2024}{Eli Cinque, undergraduate research}
 
