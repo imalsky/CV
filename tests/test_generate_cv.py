@@ -44,7 +44,7 @@ class GenerateCvTests(unittest.TestCase):
         self.assertIn("\\usepackage{enumitem}", template)
         self.assertIn("\\newcommand{\\pubheading}[1]", template)
         self.assertIn("\\newcommand{\\pubitem}[1]", template)
-        self.assertIn("\\cvitem{}{Yashnil Mohanty}", template)
+        self.assertIn("\\cvitem{2025--present}{Yashnil Mohanty, high school project}", template)
         self.assertNotIn("\\usepackage{newtxtext,newtxmath}", template)
 
     def test_pdf_only_generator_removes_site_surface(self) -> None:
