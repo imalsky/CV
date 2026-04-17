@@ -40,11 +40,12 @@ class GenerateCvTests(unittest.TestCase):
         self.assertIn("\\input{generated/publications.tex}", template)
         self.assertNotIn("Run \\texttt{python src/generate\\_cv.py}", template)
         self.assertIn("{\\namefont\\color{color2} \\@firstname~\\@lastname}", template)
-        self.assertIn("\\usepackage{newtxtext,newtxmath}", template)
+        self.assertIn("\\documentclass[11pt,letterpaper,sans]{moderncv}", template)
+        self.assertIn("\\usepackage{enumitem}", template)
         self.assertIn("\\newcommand{\\pubheading}[1]", template)
         self.assertIn("\\newcommand{\\pubitem}[1]", template)
         self.assertIn("\\cvitem{}{Yashnil Mohanty}", template)
-        self.assertNotIn("\\documentclass[11pt,letterpaper,sans]{moderncv}", template)
+        self.assertNotIn("\\usepackage{newtxtext,newtxmath}", template)
 
     def test_pdf_only_generator_removes_site_surface(self) -> None:
         self.assertFalse(hasattr(MODULE, "DEFAULT_SITE_DIR"))
