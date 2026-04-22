@@ -7,7 +7,7 @@ This repo builds an academic CV PDF from NASA ADS data daily via GitHub Actions.
 - `latex/academic_cv.tex`: the LaTeX CV layout.
 - `src/cv_config.toml`: display name, optional ORCID ID, and ADS aliases.
 - `src/manual_publications.toml`: manual `submitted` entries that ADS cannot keep up to date for you.
-- `src/generate_cv.py`: fetches ADS records, computes metrics, and renders `latex/generated/publications.tex`.
+- `src/generate_cv.py`: fetches ADS records, computes metrics, and renders `latex/generated/publications.tex` plus `latex/generated/software.tex`.
 - `.github/workflows/ads-cv.yml`: scheduled GitHub Actions workflow that regenerates the TeX fragment and builds the PDF.
 
 ## Setup
@@ -48,7 +48,7 @@ export ADS_DEV_KEY=your_ads_token
 python src/generate_cv.py
 ```
 
-The generator writes `latex/generated/publications.tex`.
+The generator writes `latex/generated/publications.tex` and `latex/generated/software.tex`.
 
 Then compile the PDF with your LaTeX toolchain:
 

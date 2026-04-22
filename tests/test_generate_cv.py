@@ -38,6 +38,7 @@ class GenerateCvTests(unittest.TestCase):
     def test_latex_template_uses_generated_publications_fragment(self) -> None:
         template = (ROOT / "latex" / "academic_cv.tex").read_text(encoding="utf-8")
         self.assertIn("\\input{generated/publications.tex}", template)
+        self.assertIn("\\IfFileExists{generated/software.tex}{\\input{generated/software.tex}}{}", template)
         self.assertNotIn("Run \\texttt{python src/generate\\_cv.py}", template)
         self.assertIn("{\\namefont\\color{color2} \\@firstname~\\@lastname}", template)
         self.assertIn("\\documentclass[11pt,letterpaper,sans]{moderncv}", template)
@@ -57,6 +58,10 @@ class GenerateCvTests(unittest.TestCase):
     def test_compute_h_index(self) -> None:
         self.assertEqual(MODULE.compute_h_index([12, 10, 8, 5, 1]), 4)
 
+    def test_sanitize_ads_text_strips_markup_and_normalizes_symbols(self) -> None:
+        cleaned = MODULE.sanitize_ads_text("TOI-431 and ν<SUP>2</SUP> Lupi &amp; friends")
+        self.assertEqual(cleaned, "TOI-431 and nu2 Lupi & friends")
+
     def test_find_author_position(self) -> None:
         config = build_config()
         authors = ("Rauscher, Eliza", "Kataria, Tiffany", "Malsky, Isaac")
@@ -74,6 +79,12 @@ class GenerateCvTests(unittest.TestCase):
             alias_signatures=config.alias_signatures,
         )
         query = MODULE.build_ads_query(config)
+        self.assertIn('author:"Malsky, Isaac"', query)
+        self.assertIn("database:astronomy", query)
+
+    def test_build_ads_query_includes_orcid_and_aliases(self) -> None:
+        query = MODULE.build_ads_query(build_config())
+        self.assertIn('orcid:"0000-0003-0217-3880"', query)
         self.assertIn('author:"Malsky, Isaac"', query)
         self.assertIn("database:astronomy", query)
 
@@ -114,12 +125,121 @@ class GenerateCvTests(unittest.TestCase):
             MODULE.Metrics(17, 400, 22, 5),
             in_review_count=2,
         )
-        self.assertIn("5 published first-author papers, 2 in review.", rendered)
+        self.assertIn("5 published first-author papers, 2 in review,", rendered)
+        self.assertIn("400 total citations", rendered)
+        self.assertIn("ADS h-index of 17", rendered)
         self.assertIn("\\pubheading{First Author}", rendered)
         self.assertIn("\\pubheading{Contributing Author}", rendered)
         self.assertNotIn("\\cvlistitem{", rendered)
         self.assertIn("\\pubitem{First author paper.}", rendered)
-        self.assertNotIn("400 total citations", rendered)
+
+    def test_compute_metrics_counts_only_article_first_author_papers(self) -> None:
+        publications = [
+            MODULE.AdsPublication(
+                bibcode="2025ApJ...1M",
+                doctype="article",
+                title="Journal paper",
+                authors=("Malsky, Isaac",),
+                journal="The Astrophysical Journal",
+                year="2025",
+                sort_date="2025-01-01",
+                citation_count=12,
+                author_position=1,
+            ),
+            MODULE.AdsPublication(
+                bibcode="2025arXiv..1M",
+                doctype="eprint",
+                title="Preprint paper",
+                authors=("Malsky, Isaac",),
+                journal="arXiv e-prints",
+                year="2025",
+                sort_date="2025-02-01",
+                citation_count=3,
+                author_position=1,
+            ),
+            MODULE.AdsPublication(
+                bibcode="2024AAS...1M",
+                doctype="abstract",
+                title="Conference abstract",
+                authors=("Malsky, Isaac",),
+                journal="Bulletin of the American Astronomical Society",
+                year="2024",
+                sort_date="2024-01-01",
+                citation_count=1,
+                author_position=1,
+            ),
+        ]
+
+        metrics = MODULE.compute_metrics(publications)
+        self.assertEqual(metrics.first_author_count, 1)
+        self.assertEqual(metrics.total_citations, 16)
+        self.assertEqual(metrics.h_index, 2)
+
+    def test_build_publication_entries_skips_ads_titles_already_present_in_manual_entries(self) -> None:
+        config = build_config()
+        ads_publications = [
+            MODULE.AdsPublication(
+                bibcode="2025arXiv..1M",
+                doctype="eprint",
+                title="Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model",
+                authors=("Malsky, Isaac", "Kataria, Tiffany"),
+                journal="arXiv e-prints",
+                year="2025",
+                sort_date="2025-02-01",
+                citation_count=0,
+                author_position=1,
+            )
+        ]
+        manual_publications = [
+            MODULE.ManualPublication(
+                sort_date="2026-02-01",
+                text="\\textbf{Malsky, I.} and Kataria, T. Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model",
+                status_label="Submitted to \\emph{ApJ}",
+                review_state="submitted",
+                category="first_author",
+            )
+        ]
+
+        rendered = MODULE.build_publication_entries(ads_publications, manual_publications, config)
+        self.assertEqual(len(rendered), 1)
+        self.assertIn("Submitted to \\emph{ApJ}", rendered[0].text)
+
+    def test_build_software_entries_keeps_ads_software_separate(self) -> None:
+        config = build_config()
+        software = [
+            MODULE.AdsPublication(
+                bibcode="2025zndo....1M",
+                doctype="software",
+                title="ExoRT",
+                authors=("Malsky, Isaac", "Kataria, Tiffany"),
+                journal="Zenodo",
+                year="2025",
+                sort_date="2025-02-01",
+                citation_count=3,
+                author_position=1,
+            )
+        ]
+
+        rendered = MODULE.build_software_entries(software, config)
+        self.assertEqual(len(rendered), 1)
+        self.assertEqual(rendered[0].category, "software")
+        self.assertIn("ExoRT", rendered[0].text)
+
+    def test_render_software_tex_only_emits_section_when_needed(self) -> None:
+        empty_rendered = MODULE.render_software_tex([])
+        self.assertEqual(empty_rendered, "")
+
+        rendered = MODULE.render_software_tex(
+            [
+                MODULE.RenderedPublication(
+                    sort_date="2025-02-01",
+                    text="Software entry.",
+                    category="software",
+                )
+            ]
+        )
+        self.assertIn("\\section{Software}", rendered)
+        self.assertIn("\\pubitem{Software entry.}", rendered)
 
     def test_compact_author_name_uses_initials(self) -> None:
         self.assertEqual(MODULE.compact_author_name("Malsky, Isaac"), "Malsky, I.")
@@ -127,6 +247,26 @@ class GenerateCvTests(unittest.TestCase):
     def test_is_ads_proposal_record(self) -> None:
         self.assertTrue(MODULE.is_ads_proposal_record("JWST Proposal. Cycle 4"))
         self.assertFalse(MODULE.is_ads_proposal_record("The Astrophysical Journal"))
+
+    def test_is_ads_meeting_abstract_record(self) -> None:
+        self.assertTrue(
+            MODULE.is_ads_meeting_abstract_record(
+                "American Astronomical Society Meeting Abstracts #245",
+                "abstract",
+            )
+        )
+        self.assertTrue(
+            MODULE.is_ads_meeting_abstract_record(
+                "Bulletin of the American Astronomical Society",
+                "article",
+            )
+        )
+        self.assertFalse(
+            MODULE.is_ads_meeting_abstract_record(
+                "The Astrophysical Journal",
+                "article",
+            )
+        )
 
 
 if __name__ == "__main__":

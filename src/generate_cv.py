@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import os
 import re
 import sys
@@ -17,9 +18,23 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG_PATH = ROOT / "src" / "cv_config.toml"
 DEFAULT_MANUAL_PATH = ROOT / "src" / "manual_publications.toml"
 DEFAULT_GENERATED_DIR = ROOT / "latex" / "generated"
+HTML_TAG_PATTERN = re.compile(r"</?[A-Za-z][^>]*>")
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
 REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
 CATEGORY_ORDER = ("first_author", "middle_author", "contributing")
+ARTICLE_DOCTYPE = "article"
+SOFTWARE_DOCTYPE = "software"
+ABSTRACT_DOCTYPE = "abstract"
+ADS_TEXT_REPLACEMENTS = (
+    ("─", "-"),
+    ("ν", "nu"),
+)
+MEETING_ABSTRACT_JOURNAL_MARKERS = (
+    "meeting abstracts",
+    "joint meeting",
+    "division for extreme solar systems abstracts",
+    "bulletin of the american astronomical society",
+)
 CATEGORY_TITLES = {
     "first_author": "First Author",
     "middle_author": "Second, Third or Fourth Author",
@@ -69,6 +84,7 @@ class AdsPublication:
     """A publication record fetched from ADS."""
 
     bibcode: str
+    doctype: str
     title: str
     authors: tuple[str, ...]  # shape: (n_authors,)
     journal: str
@@ -137,6 +153,22 @@ def normalize_name(value: str) -> str:
     """Normalize a name string for robust comparisons."""
 
     return NON_ALPHANUMERIC_PATTERN.sub("", value.casefold())
+
+
+def normalize_text(value: str) -> str:
+    """Normalize free-form text for coarse duplicate detection."""
+
+    return NON_ALPHANUMERIC_PATTERN.sub("", sanitize_ads_text(value).casefold())
+
+
+def sanitize_ads_text(value: str) -> str:
+    """Strip ADS HTML-like markup and normalize text for LaTeX output."""
+
+    text = html.unescape(value)
+    text = HTML_TAG_PATTERN.sub("", text)
+    for source, target in ADS_TEXT_REPLACEMENTS:
+        text = text.replace(source, target)
+    return " ".join(text.split())
 
 
 def escape_tex(value: str) -> str:
@@ -234,11 +266,15 @@ def load_manual_publications(path: Path) -> list[ManualPublication]:
 def build_ads_query(config: CvConfig) -> str:
     """Build the ADS query string from the checked-in config."""
 
+    author_clauses = [f'author:"{alias}"' for alias in config.name_aliases]
+    author_query = "(" + " OR ".join(author_clauses) + ")"
+
     if config.orcid_id:
-        query = f'orcid:"{config.orcid_id}"'
+        # Some ADS software records do not carry ORCID metadata even when
+        # standard journal articles do, so keep alias matching enabled.
+        query = f'(orcid:"{config.orcid_id}" OR {author_query})'
     else:
-        author_clauses = [f'author:"{alias}"' for alias in config.name_aliases]
-        query = "(" + " OR ".join(author_clauses) + ")"
+        query = author_query
 
     if config.ads_query_suffix:
         query = f"{query} {config.ads_query_suffix}"
@@ -275,6 +311,13 @@ def list_text(value: Any) -> tuple[str, ...]:
         return tuple(str(item).strip() for item in value if str(item).strip())
     scalar = str(value).strip()
     return (scalar,) if scalar else ()
+
+
+def normalize_doctype(value: Any) -> str:
+    """Return a normalized ADS document type string."""
+
+    doctypes = list_text(value)
+    return doctypes[0].casefold() if doctypes else ""
 
 
 def parse_sort_date(pubdate: str, year: str) -> str:
@@ -395,6 +438,15 @@ def is_ads_proposal_record(journal: str) -> bool:
     return "proposal" in journal.casefold()
 
 
+def is_ads_meeting_abstract_record(journal: str, doctype: str) -> bool:
+    """Return True when an ADS result is a meeting abstract record."""
+
+    normalized_journal = journal.casefold()
+    return doctype == ABSTRACT_DOCTYPE or any(
+        marker in normalized_journal for marker in MEETING_ABSTRACT_JOURNAL_MARKERS
+    )
+
+
 def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
     """Query ADS and return the publications that belong in the CV."""
 
@@ -411,6 +463,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
         "author",
         "bibcode",
         "citation_count",
+        "doctype",
         "pub",
         "pubdate",
         "title",
@@ -432,7 +485,8 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
             continue
 
         journal = first_text(getattr(result, "pub", ""))
-        if is_ads_proposal_record(journal):
+        doctype = normalize_doctype(getattr(result, "doctype", ""))
+        if is_ads_proposal_record(journal) or is_ads_meeting_abstract_record(journal, doctype):
             continue
 
         authors = list_text(getattr(result, "author", ()))
@@ -444,6 +498,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
         publications.append(
             AdsPublication(
                 bibcode=bibcode,
+                doctype=doctype,
                 title=first_text(getattr(result, "title", "")),
                 authors=authors,
                 journal=journal,
@@ -480,7 +535,10 @@ def compute_metrics(publications: Sequence[AdsPublication]) -> Metrics:
         h_index=compute_h_index(citation_counts),
         total_citations=sum(citation_counts),
         indexed_papers=len(publications),
-        first_author_count=sum(publication.author_position == 1 for publication in publications),
+        first_author_count=sum(
+            publication.author_position == 1 and publication.doctype == ARTICLE_DOCTYPE
+            for publication in publications
+        ),
     )
 
 
@@ -488,8 +546,8 @@ def format_ads_publication(publication: AdsPublication, config: CvConfig) -> str
     """Render one ADS publication in the CV publication style."""
 
     authors_tex = format_authors_compact(publication.authors, config, publication.author_position)
-    title_tex = escape_tex(publication.title.replace("─", "-"))
-    journal_tex = escape_tex(abbreviate_journal(publication.journal))
+    title_tex = escape_tex(sanitize_ads_text(publication.title))
+    journal_tex = escape_tex(abbreviate_journal(sanitize_ads_text(publication.journal)))
     year_tex = f"({publication.year})." if publication.year else ""
     journal_fragment = f" \\emph{{{journal_tex}}}." if journal_tex else ""
     return f"{authors_tex}. {title_tex}. {year_tex}{journal_fragment}".strip()
@@ -504,6 +562,19 @@ def format_manual_publication(publication: ManualPublication) -> str:
     return text if text.endswith(".") else f"{text}."
 
 
+def should_render_ads_publication(
+    publication: AdsPublication,
+    manual_publications: Sequence[ManualPublication],
+) -> bool:
+    """Return True when an ADS publication does not duplicate a manual entry."""
+
+    normalized_title = normalize_text(publication.title)
+    if not normalized_title:
+        return True
+
+    return all(normalized_title not in normalize_text(entry.text) for entry in manual_publications)
+
+
 def build_publication_entries(
     ads_publications: Sequence[AdsPublication],
     manual_publications: Sequence[ManualPublication],
@@ -514,6 +585,8 @@ def build_publication_entries(
     rendered: list[RenderedPublication] = []
 
     for publication in ads_publications:
+        if not should_render_ads_publication(publication, manual_publications):
+            continue
         rendered.append(
             RenderedPublication(
                 sort_date=publication.sort_date,
@@ -535,6 +608,27 @@ def build_publication_entries(
     return rendered
 
 
+def build_software_entries(
+    ads_publications: Sequence[AdsPublication],
+    config: CvConfig,
+) -> list[RenderedPublication]:
+    """Build rendered software entries from ADS software records."""
+
+    rendered: list[RenderedPublication] = []
+
+    for publication in ads_publications:
+        rendered.append(
+            RenderedPublication(
+                sort_date=publication.sort_date,
+                text=format_ads_publication(publication, config),
+                category=SOFTWARE_DOCTYPE,
+            )
+        )
+
+    rendered.sort(key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
+    return rendered
+
+
 def render_publications_tex(
     publications: Sequence[RenderedPublication],
     metrics: Metrics,
@@ -548,7 +642,8 @@ def render_publications_tex(
 
     summary = (
         f"\\cvitem{{}}{{\\emph{{{metrics.first_author_count} published first-author papers, "
-        f"{in_review_count} in review.}}}}"
+        f"{in_review_count} in review, {metrics.total_citations} total citations, "
+        f"and an ADS h-index of {metrics.h_index}.}}}}"
     )
 
     lines = [summary]
@@ -564,6 +659,20 @@ def render_publications_tex(
         for publication in entries:
             lines.append(f"\\pubitem{{{publication.text}}}")
 
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def render_software_tex(publications: Sequence[RenderedPublication]) -> str:
+    """Render the optional software TeX fragment."""
+
+    if not publications:
+        return ""
+
+    ordered = sorted(publications, key=lambda item: (item.sort_date, item.text.casefold()), reverse=True)
+    lines = ["\\section{Software}", "{\\small"]
+    for publication in ordered:
+        lines.append(f"\\pubitem{{{publication.text}}}")
+    lines.append("}")
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -588,13 +697,25 @@ def main(argv: Sequence[str] | None = None) -> int:
             "or switch to ADS-only alias queries in src/cv_config.toml."
         )
 
-    metrics = compute_metrics(ads_publications)
-    publication_entries = build_publication_entries(ads_publications, manual_publications, config)
+    standard_publications = [
+        publication for publication in ads_publications if publication.doctype != SOFTWARE_DOCTYPE
+    ]
+    software_publications = [
+        publication for publication in ads_publications if publication.doctype == SOFTWARE_DOCTYPE
+    ]
+
+    metrics = compute_metrics(standard_publications)
+    publication_entries = build_publication_entries(standard_publications, manual_publications, config)
+    software_entries = build_software_entries(software_publications, config)
     in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
 
     write_text(
         args.generated_dir / "publications.tex",
         render_publications_tex(publication_entries, metrics, in_review_count),
+    )
+    write_text(
+        args.generated_dir / "software.tex",
+        render_software_tex(software_entries),
     )
 
     return 0
