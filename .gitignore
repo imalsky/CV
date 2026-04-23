@@ -8,3 +8,5 @@ __pycache__/
 compiled/*
 !compiled/academic_cv.pdf
 latex/generated/
+
+*.pdf
