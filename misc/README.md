@@ -32,6 +32,8 @@ or double-click:
 misc/build_cv.command
 ```
 
+Local builds write `compiled/academic_cv.local.pdf`, which is ignored by git. The checked-in `compiled/academic_cv.pdf` is the published PDF used by the repository link.
+
 If you want live ADS data locally, create a `.env.local` file first:
 
 ```bash
@@ -53,7 +55,10 @@ The generator writes `latex/generated/publications.tex` and `latex/generated/sof
 Then compile the PDF with your LaTeX toolchain:
 
 ```bash
-latexmk -pdf -interaction=nonstopmode -outdir=compiled latex/academic_cv.tex
+tmpdir="$(mktemp -d)"
+latexmk -pdf -interaction=nonstopmode -outdir="${tmpdir}" latex/academic_cv.tex
+cp "${tmpdir}/academic_cv.pdf" compiled/academic_cv.local.pdf
+rm -rf "${tmpdir}"
 ```
 
 ## Notes

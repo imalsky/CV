@@ -1,3 +1,4 @@
+.DS_Store
 __pycache__/
 .env.local
 *.aux
@@ -6,7 +7,6 @@ __pycache__/
 *.log
 *.out
 compiled/*
-!compiled/academic_cv.pdf
 latex/generated/
-
 *.pdf
+!compiled/academic_cv.pdf

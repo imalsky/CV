@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOCAL_PDF_PATH="${ROOT_DIR}/compiled/academic_cv.local.pdf"
 cd "${ROOT_DIR}"
 
 if [[ -f ".env.local" ]]; then
@@ -25,16 +26,22 @@ PY
 
 build_pdf() {
   mkdir -p compiled
+  local build_dir
+  build_dir="$(mktemp -d "${TMPDIR:-/tmp}/academic-cv-build.XXXXXX")"
 
   if command -v tectonic >/dev/null 2>&1; then
-    echo "Building academic_cv.pdf with tectonic..."
-    tectonic --outdir "${ROOT_DIR}/compiled" "${ROOT_DIR}/latex/academic_cv.tex"
+    echo "Building academic_cv.local.pdf with tectonic..."
+    tectonic --outdir "${build_dir}" "${ROOT_DIR}/latex/academic_cv.tex"
+    cp "${build_dir}/academic_cv.pdf" "${LOCAL_PDF_PATH}"
+    rm -rf "${build_dir}"
     return
   fi
 
   if command -v latexmk >/dev/null 2>&1; then
-    echo "Building academic_cv.pdf with latexmk..."
-    latexmk -pdf -interaction=nonstopmode -outdir="${ROOT_DIR}/compiled" "${ROOT_DIR}/latex/academic_cv.tex"
+    echo "Building academic_cv.local.pdf with latexmk..."
+    latexmk -pdf -interaction=nonstopmode -outdir="${build_dir}" "${ROOT_DIR}/latex/academic_cv.tex"
+    cp "${build_dir}/academic_cv.pdf" "${LOCAL_PDF_PATH}"
+    rm -rf "${build_dir}"
     return
   fi
 
@@ -56,8 +63,8 @@ fi
 
 build_pdf
 
-echo "Built ${ROOT_DIR}/compiled/academic_cv.pdf"
+echo "Built ${LOCAL_PDF_PATH}"
 
 if command -v open >/dev/null 2>&1; then
-  open compiled/academic_cv.pdf
+  open "${LOCAL_PDF_PATH}"
 fi

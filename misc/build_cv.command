@@ -10,7 +10,7 @@ status=$?
 if [ "${status}" -eq 0 ]; then
   echo
   echo "CV build finished."
-  echo "PDF: ${ROOT_DIR}/compiled/academic_cv.pdf"
+  echo "PDF: ${ROOT_DIR}/compiled/academic_cv.local.pdf"
 else
   echo
   echo "CV build failed with status ${status}."
