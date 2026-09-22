@@ -144,9 +144,10 @@ class GenerateCvTests(unittest.TestCase):
             submitted_count=0,
             in_review_count=1,
         )
-        self.assertIn(
-            "5 published first-author papers, 1 accepted, 1 in review, 400 total citations, and an ADS h-index of 17.",
-            rendered,
+        self.assertEqual(
+            rendered.splitlines()[0],
+            "\\cvitem{}{\\emph{5 published first-author papers, 1 accepted, 1 in review, "
+            "400 total citations, and an ADS h-index of 17.}}",
         )
         self.assertNotIn("submitted", rendered)
 

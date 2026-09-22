@@ -663,7 +663,7 @@ def render_publications_tex(
         if count:
             summary_parts.append(f"{count} {label}")
     summary_parts.append(f"{metrics.total_citations} total citations")
-    summary = "\\cvitem{}{\\emph{" + ", ".join(summary_parts) + f", and an ADS h-index of {metrics.h_index}.}}"
+    summary = "\\cvitem{}{\\emph{" + ", ".join(summary_parts) + f", and an ADS h-index of {metrics.h_index}.}}}}"
 
     lines = [summary]
     rendered_sections = (
