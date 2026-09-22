@@ -1,13 +1,13 @@
 [[entries]]
 sort_date = "2026-03-01"
-review_state = "submitted"
+review_state = "accepted"
 category = "first_author"
-status_label = "Submitted to \\emph{PNAS}"
-text = '''\textbf{Malsky, I.}, Zhang, X., Kataria, T., Graham, M., et al. Accelerating Chemical Kinetics for Exoplanet Atmospheres using Neural Networks'''
+status_label = "Accepted, \\emph{ApJ}"
+text = '''\textbf{Malsky, I.}, Zhang, X., Kataria, T., Graham, M., et al. Accelerating Chemical Kinetics for Exoplanet Atmospheres using Neural Networks. arXiv:2609.00428'''
 
 [[entries]]
 sort_date = "2026-02-01"
-review_state = "submitted"
+review_state = "in_review"
 category = "first_author"
-status_label = "Submitted to \\emph{ApJ}"
-text = '''\textbf{Malsky, I.} and Kataria, T. Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model'''
+status_label = "In review, \\emph{ApJ}"
+text = '''\textbf{Malsky, I.}, Kataria, T., Batalha, N. E., and Graham, M. Accelerating Radiative Transfer for Planetary Atmospheres by Orders of Magnitude with a Transformer-Based Machine Learning Model. arXiv:2510.27050'''
