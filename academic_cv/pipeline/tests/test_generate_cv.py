@@ -8,8 +8,9 @@ import unittest
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "src" / "generate_cv.py"
+PIPELINE = Path(__file__).resolve().parents[1]
+CV_DIR = PIPELINE.parent
+MODULE_PATH = PIPELINE / "generate_cv.py"
 SPEC = importlib.util.spec_from_file_location("generate_cv", MODULE_PATH)
 MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -36,7 +37,7 @@ class GenerateCvTests(unittest.TestCase):
     """Unit tests for deterministic CV helper logic."""
 
     def test_latex_template_uses_generated_publications_fragment(self) -> None:
-        template = (ROOT / "latex" / "academic_cv.tex").read_text(encoding="utf-8")
+        template = (CV_DIR / "academic_cv.tex").read_text(encoding="utf-8")
         self.assertIn("\\input{generated/publications.tex}", template)
         self.assertIn("\\IfFileExists{generated/software.tex}{\\input{generated/software.tex}}{}", template)
         self.assertNotIn("Run \\texttt{python src/generate\\_cv.py}", template)
@@ -52,7 +53,7 @@ class GenerateCvTests(unittest.TestCase):
         self.assertFalse(hasattr(MODULE, "DEFAULT_SITE_DIR"))
         self.assertFalse(hasattr(MODULE, "render_index_html"))
         self.assertNotIn("scholar_url", MODULE.CvConfig.__annotations__)
-        config_text = (ROOT / "src" / "cv_config.toml").read_text(encoding="utf-8")
+        config_text = (PIPELINE / "cv_config.toml").read_text(encoding="utf-8")
         self.assertNotIn("scholar_url", config_text)
 
     def test_compute_h_index(self) -> None:
@@ -123,9 +124,10 @@ class GenerateCvTests(unittest.TestCase):
         rendered = MODULE.render_publications_tex(
             publications,
             MODULE.Metrics(17, 400, 22, 5),
-            in_review_count=2,
+            submitted_count=1,
+            in_review_count=1,
         )
-        self.assertIn("5 published first-author papers, 2 in review,", rendered)
+        self.assertIn("5 published first-author papers, 1 submitted, 1 in review,", rendered)
         self.assertIn("400 total citations", rendered)
         self.assertIn("ADS h-index of 17", rendered)
         self.assertIn("\\pubheading{First Author}", rendered)

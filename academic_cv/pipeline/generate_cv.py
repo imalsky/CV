@@ -14,13 +14,15 @@ from pathlib import Path
 from typing import Any, Iterable, Sequence
 
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG_PATH = ROOT / "src" / "cv_config.toml"
-DEFAULT_MANUAL_PATH = ROOT / "src" / "manual_publications.toml"
-DEFAULT_GENERATED_DIR = ROOT / "latex" / "generated"
+PIPELINE_DIR = Path(__file__).resolve().parent
+CV_DIR = PIPELINE_DIR.parent
+DEFAULT_CONFIG_PATH = PIPELINE_DIR / "cv_config.toml"
+DEFAULT_MANUAL_PATH = PIPELINE_DIR / "manual_publications.toml"
+DEFAULT_GENERATED_DIR = CV_DIR / "generated"
 HTML_TAG_PATTERN = re.compile(r"</?[A-Za-z][^>]*>")
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
-REVIEW_STATES = frozenset({"submitted", "under_review", "in_review"})
+SUBMITTED_STATES = frozenset({"submitted"})
+REVIEW_STATES = frozenset({"under_review", "in_review"})
 CATEGORY_ORDER = ("first_author", "middle_author", "contributing")
 ARTICLE_DOCTYPE = "article"
 SOFTWARE_DOCTYPE = "software"
@@ -632,6 +634,7 @@ def build_software_entries(
 def render_publications_tex(
     publications: Sequence[RenderedPublication],
     metrics: Metrics,
+    submitted_count: int,
     in_review_count: int,
 ) -> str:
     """Render the full publications TeX fragment."""
@@ -642,7 +645,7 @@ def render_publications_tex(
 
     summary = (
         f"\\cvitem{{}}{{\\emph{{{metrics.first_author_count} published first-author papers, "
-        f"{in_review_count} in review, {metrics.total_citations} total citations, "
+        f"{submitted_count} submitted, {in_review_count} in review, {metrics.total_citations} total citations, "
         f"and an ADS h-index of {metrics.h_index}.}}}}"
     )
 
@@ -691,7 +694,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     manual_publications = load_manual_publications(args.manual)
     ads_publications = fetch_ads_publications(config)
 
-    if not ads_publications and not args.allow-empty:
+    if not ads_publications and not args.allow_empty:
         raise RuntimeError(
             "The ADS query returned zero indexed papers. Verify the ADS token, ORCID settings, "
             "or switch to ADS-only alias queries in src/cv_config.toml."
@@ -707,11 +710,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     metrics = compute_metrics(standard_publications)
     publication_entries = build_publication_entries(standard_publications, manual_publications, config)
     software_entries = build_software_entries(software_publications, config)
+    submitted_count = sum(publication.review_state in SUBMITTED_STATES for publication in manual_publications)
     in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
 
     write_text(
         args.generated_dir / "publications.tex",
-        render_publications_tex(publication_entries, metrics, in_review_count),
+        render_publications_tex(publication_entries, metrics, submitted_count, in_review_count),
     )
     write_text(
         args.generated_dir / "software.tex",

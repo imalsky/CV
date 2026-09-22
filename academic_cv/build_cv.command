@@ -2,15 +2,14 @@
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-"${ROOT_DIR}/src/build_local_cv.sh"
+"${SCRIPT_DIR}/build.sh"
 status=$?
 
 if [ "${status}" -eq 0 ]; then
   echo
   echo "CV build finished."
-  echo "PDF: ${ROOT_DIR}/compiled/academic_cv.local.pdf"
+  echo "PDF: ${SCRIPT_DIR}/academic_cv.local.pdf"
 else
   echo
   echo "CV build failed with status ${status}."

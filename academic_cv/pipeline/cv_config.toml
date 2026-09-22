@@ -7,4 +7,8 @@ name_aliases = [
   "Isaac Malsky",
 ]
 ads_query_suffix = "database:astronomy"
-exclude_bibcodes = []
+exclude_bibcodes = [
+  "2026arXiv260501589F",
+  # AASTCS 11 conference abstract mislabeled as doctype "article" in ADS
+  "2026ASTCS..1160054F",
+]

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LOCAL_PDF_PATH="${ROOT_DIR}/compiled/academic_cv.local.pdf"
+LOCAL_PDF_PATH="${ROOT_DIR}/academic_cv/academic_cv.local.pdf"
 cd "${ROOT_DIR}"
 
 if [[ -f ".env.local" ]]; then
@@ -20,18 +20,18 @@ PY
     return
   fi
 
-  echo "Installing Python dependencies from src/requirements.txt..."
-  python -m pip install -r src/requirements.txt
+  echo "Installing Python dependencies from academic_cv/pipeline/requirements.txt..."
+  python -m pip install -r academic_cv/pipeline/requirements.txt
 }
 
 build_pdf() {
-  mkdir -p compiled
+  mkdir -p "$(dirname "${LOCAL_PDF_PATH}")"
   local build_dir
   build_dir="$(mktemp -d "${TMPDIR:-/tmp}/academic-cv-build.XXXXXX")"
 
   if command -v tectonic >/dev/null 2>&1; then
     echo "Building academic_cv.local.pdf with tectonic..."
-    tectonic --outdir "${build_dir}" "${ROOT_DIR}/latex/academic_cv.tex"
+    tectonic --outdir "${build_dir}" "${ROOT_DIR}/academic_cv/academic_cv.tex"
     cp "${build_dir}/academic_cv.pdf" "${LOCAL_PDF_PATH}"
     rm -rf "${build_dir}"
     return
@@ -39,7 +39,7 @@ build_pdf() {
 
   if command -v latexmk >/dev/null 2>&1; then
     echo "Building academic_cv.local.pdf with latexmk..."
-    latexmk -pdf -interaction=nonstopmode -outdir="${build_dir}" "${ROOT_DIR}/latex/academic_cv.tex"
+    latexmk -pdf -interaction=nonstopmode -outdir="${build_dir}" "${ROOT_DIR}/academic_cv/academic_cv.tex"
     cp "${build_dir}/academic_cv.pdf" "${LOCAL_PDF_PATH}"
     rm -rf "${build_dir}"
     return
@@ -55,10 +55,10 @@ build_pdf() {
 if [[ -n "${ADS_DEV_KEY:-}" ]]; then
   ensure_python_dependencies
   echo "Generating live ADS-backed publications section..."
-  python src/generate_cv.py
+  python academic_cv/pipeline/generate_cv.py
 else
   echo "ADS_DEV_KEY is not set; building the fallback CV without live ADS data."
-  echo "To enable live ADS data locally, copy misc/.env.local.example to .env.local and paste your ADS token there."
+  echo "To enable live ADS data locally, copy academic_cv/pipeline/.env.local.example to .env.local and paste your ADS token there."
 fi
 
 build_pdf

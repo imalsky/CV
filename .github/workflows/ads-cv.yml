@@ -22,39 +22,34 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install -r src/requirements.txt
+        run: pip install -r academic_cv/pipeline/requirements.txt
 
       - name: Run unit tests
-        run: python -m unittest discover -s tests
+        run: python -m unittest discover -s academic_cv/pipeline/tests
 
       - name: Generate ADS-backed TeX fragments
         env:
           ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
-        run: python src/generate_cv.py
+        run: python academic_cv/pipeline/generate_cv.py
 
       - name: Build PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: latex/academic_cv.tex
+          root_file: academic_cv/academic_cv.tex
           work_in_root_file_dir: true
           latexmk_use_xelatex: true
-
-      - name: Save PDF
-        run: |
-          mkdir -p compiled
-          cp latex/academic_cv.pdf compiled/academic_cv.pdf
 
       - name: Commit updated PDF
         if: github.ref == 'refs/heads/main'
         run: |
-          if ! git status --porcelain -- compiled/academic_cv.pdf | grep -q .; then
+          if ! git status --porcelain -- academic_cv/academic_cv.pdf | grep -q .; then
             echo "No PDF changes to commit."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add compiled/academic_cv.pdf
+          git add academic_cv/academic_cv.pdf
           git commit -m "Update compiled CV PDF"
           git push
 
@@ -62,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: academic-cv
-          path: compiled/academic_cv.pdf
+          path: academic_cv/academic_cv.pdf

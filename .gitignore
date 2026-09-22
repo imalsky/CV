@@ -1,12 +1,24 @@
 .DS_Store
 __pycache__/
 .env.local
+
+# LaTeX build artifacts (anywhere)
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.out
-compiled/*
-latex/generated/
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+
+# Auto-generated CV publication fragments
+academic_cv/generated/
+
+# PDFs are local build output; the published academic CV is the one exception
 *.pdf
-!compiled/academic_cv.pdf
+!academic_cv/academic_cv.pdf
+
+# IDE and editor config
+.idea/
