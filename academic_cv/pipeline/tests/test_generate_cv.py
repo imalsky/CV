@@ -123,16 +123,32 @@ class GenerateCvTests(unittest.TestCase):
         rendered = MODULE.render_publications_tex(
             publications,
             MODULE.Metrics(17, 400, 22, 5),
+            accepted_count=0,
             submitted_count=1,
             in_review_count=1,
         )
         self.assertIn("5 published first-author papers, 1 submitted, 1 in review,", rendered)
+        self.assertNotIn("0 accepted", rendered)
         self.assertIn("400 total citations", rendered)
         self.assertIn("ADS h-index of 17", rendered)
         self.assertIn("\\pubheading{First Author}", rendered)
         self.assertIn("\\pubheading{Contributing Author}", rendered)
         self.assertNotIn("\\cvlistitem{", rendered)
         self.assertIn("\\pubitem{First author paper.}", rendered)
+
+    def test_render_publications_summary_shows_accepted_and_omits_zero_counts(self) -> None:
+        rendered = MODULE.render_publications_tex(
+            [],
+            MODULE.Metrics(17, 400, 22, 5),
+            accepted_count=1,
+            submitted_count=0,
+            in_review_count=1,
+        )
+        self.assertIn(
+            "5 published first-author papers, 1 accepted, 1 in review, 400 total citations, and an ADS h-index of 17.",
+            rendered,
+        )
+        self.assertNotIn("submitted", rendered)
 
     def test_compute_metrics_counts_only_article_first_author_papers(self) -> None:
         publications = [
@@ -248,6 +264,11 @@ class GenerateCvTests(unittest.TestCase):
     def test_is_ads_proposal_record(self) -> None:
         self.assertTrue(MODULE.is_ads_proposal_record("JWST Proposal. Cycle 4"))
         self.assertFalse(MODULE.is_ads_proposal_record("The Astrophysical Journal"))
+
+    def test_is_ads_dataset_record(self) -> None:
+        self.assertTrue(MODULE.is_ads_dataset_record("Jet Propulsion Laboratory Data Set", "article"))
+        self.assertTrue(MODULE.is_ads_dataset_record("Zenodo", "dataset"))
+        self.assertFalse(MODULE.is_ads_dataset_record("The Astrophysical Journal", "article"))
 
     def test_is_ads_meeting_abstract_record(self) -> None:
         self.assertTrue(

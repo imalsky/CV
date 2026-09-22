@@ -65,7 +65,8 @@ into `academic_cv/generated/`.
 - Configure in `cv_config.toml`: `display_name`, `name_aliases`, and an optional
   public `orcid_id` (recommended for clean author matching; leave blank to fall
   back to alias queries).
-- Add in-review papers ADS can't track yet to `manual_publications.toml`.
+- Add papers ADS can't track yet to `manual_publications.toml` (`review_state` is
+  `submitted`, `in_review`, or `accepted`; zero counts are omitted from the summary line).
 - The only secret needed is the `ADS_DEV_KEY` repository secret (used by CI).
 - If ADS returns zero papers the generator fails unless run with `--allow-empty`.
 

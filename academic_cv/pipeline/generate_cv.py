@@ -23,10 +23,13 @@ HTML_TAG_PATTERN = re.compile(r"</?[A-Za-z][^>]*>")
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
 SUBMITTED_STATES = frozenset({"submitted"})
 REVIEW_STATES = frozenset({"under_review", "in_review"})
+ACCEPTED_STATES = frozenset({"accepted"})
 CATEGORY_ORDER = ("first_author", "middle_author", "contributing")
 ARTICLE_DOCTYPE = "article"
 SOFTWARE_DOCTYPE = "software"
 ABSTRACT_DOCTYPE = "abstract"
+DATASET_DOCTYPE = "dataset"
+DATASET_JOURNAL_MARKERS = ("data set", "dataset")
 ADS_TEXT_REPLACEMENTS = (
     ("─", "-"),
     ("ν", "nu"),
@@ -449,6 +452,13 @@ def is_ads_meeting_abstract_record(journal: str, doctype: str) -> bool:
     )
 
 
+def is_ads_dataset_record(journal: str, doctype: str) -> bool:
+    """Return True when an ADS result is a data-set record rather than a paper."""
+
+    normalized_journal = journal.casefold()
+    return doctype == DATASET_DOCTYPE or any(marker in normalized_journal for marker in DATASET_JOURNAL_MARKERS)
+
+
 def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
     """Query ADS and return the publications that belong in the CV."""
 
@@ -488,7 +498,11 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
 
         journal = first_text(getattr(result, "pub", ""))
         doctype = normalize_doctype(getattr(result, "doctype", ""))
-        if is_ads_proposal_record(journal) or is_ads_meeting_abstract_record(journal, doctype):
+        if (
+            is_ads_proposal_record(journal)
+            or is_ads_meeting_abstract_record(journal, doctype)
+            or is_ads_dataset_record(journal, doctype)
+        ):
             continue
 
         authors = list_text(getattr(result, "author", ()))
@@ -634,6 +648,7 @@ def build_software_entries(
 def render_publications_tex(
     publications: Sequence[RenderedPublication],
     metrics: Metrics,
+    accepted_count: int,
     submitted_count: int,
     in_review_count: int,
 ) -> str:
@@ -643,11 +658,12 @@ def render_publications_tex(
     first_author_entries = [publication for publication in ordered if publication.category == "first_author"]
     contributing_entries = [publication for publication in ordered if publication.category != "first_author"]
 
-    summary = (
-        f"\\cvitem{{}}{{\\emph{{{metrics.first_author_count} published first-author papers, "
-        f"{submitted_count} submitted, {in_review_count} in review, {metrics.total_citations} total citations, "
-        f"and an ADS h-index of {metrics.h_index}.}}}}"
-    )
+    summary_parts = [f"{metrics.first_author_count} published first-author papers"]
+    for count, label in ((accepted_count, "accepted"), (submitted_count, "submitted"), (in_review_count, "in review")):
+        if count:
+            summary_parts.append(f"{count} {label}")
+    summary_parts.append(f"{metrics.total_citations} total citations")
+    summary = "\\cvitem{}{\\emph{" + ", ".join(summary_parts) + f", and an ADS h-index of {metrics.h_index}.}}"
 
     lines = [summary]
     rendered_sections = (
@@ -710,12 +726,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     metrics = compute_metrics(standard_publications)
     publication_entries = build_publication_entries(standard_publications, manual_publications, config)
     software_entries = build_software_entries(software_publications, config)
+    accepted_count = sum(publication.review_state in ACCEPTED_STATES for publication in manual_publications)
     submitted_count = sum(publication.review_state in SUBMITTED_STATES for publication in manual_publications)
     in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
 
     write_text(
         args.generated_dir / "publications.tex",
-        render_publications_tex(publication_entries, metrics, submitted_count, in_review_count),
+        render_publications_tex(
+            publication_entries,
+            metrics,
+            accepted_count=accepted_count,
+            submitted_count=submitted_count,
+            in_review_count=in_review_count,
+        ),
     )
     write_text(
         args.generated_dir / "software.tex",
