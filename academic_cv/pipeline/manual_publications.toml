@@ -1,11 +1,4 @@
 [[entries]]
-sort_date = "2026-03-01"
-review_state = "accepted"
-category = "first_author"
-status_label = "Accepted, \\emph{ApJ}"
-text = '''\textbf{Malsky, I.}, Zhang, X., Kataria, T., Graham, M., et al. Accelerating Chemical Kinetics for Exoplanet Atmospheres using Neural Networks. arXiv:2609.00428'''
-
-[[entries]]
 sort_date = "2026-02-01"
 review_state = "in_review"
 category = "first_author"

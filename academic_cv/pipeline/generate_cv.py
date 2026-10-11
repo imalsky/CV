@@ -566,7 +566,9 @@ def format_ads_publication(publication: AdsPublication, config: CvConfig) -> str
     journal_tex = escape_tex(abbreviate_journal(sanitize_ads_text(publication.journal)))
     year_tex = f"({publication.year})." if publication.year else ""
     journal_fragment = f" \\emph{{{journal_tex}}}." if journal_tex else ""
-    return f"{authors_tex}. {title_tex}. {year_tex}{journal_fragment}".strip()
+    # Author lists ending in "et al." or an initial already carry the period.
+    authors_end = "" if authors_tex.endswith((".", ".}")) else "."
+    return f"{authors_tex}{authors_end} {title_tex}. {year_tex}{journal_fragment}".strip()
 
 
 def format_manual_publication(publication: ManualPublication) -> str:

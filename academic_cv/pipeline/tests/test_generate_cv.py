@@ -101,6 +101,23 @@ class GenerateCvTests(unittest.TestCase):
         self.assertIn("\\textbf{Malsky, I.}", rendered)
         self.assertIn("et al.", rendered)
 
+    def test_format_ads_publication_has_no_double_period_after_authors(self) -> None:
+        config = build_config()
+        publication = MODULE.AdsPublication(
+            bibcode="2025AJ....000....1M",
+            doctype="article",
+            title="A Title",
+            authors=("Malsky, Isaac", "Rauscher, E.", "Roman, M.", "Beltz, H.", "Kennedy, T."),
+            journal="The Astronomical Journal",
+            year="2025",
+            sort_date="2025-01-01",
+            citation_count=0,
+            author_position=1,
+        )
+        rendered = MODULE.format_ads_publication(publication, config)
+        self.assertNotIn("..", rendered)
+        self.assertIn(". A Title.", rendered)
+
     def test_render_publications_includes_citation_summary_and_categories(self) -> None:
         publications = [
             MODULE.RenderedPublication(
