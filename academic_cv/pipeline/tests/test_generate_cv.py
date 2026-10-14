@@ -308,6 +308,75 @@ class GenerateCvTests(unittest.TestCase):
             )
         )
 
+    def test_extract_arxiv_ids_from_identifiers_and_bibcodes(self) -> None:
+        found = MODULE.extract_arxiv_ids(
+            ("2025arXiv251027050M", "arXiv:2609.00428", "10.3847/1538-4357/aea15b", "2014arXiv1401.1234M")
+        )
+        self.assertEqual(found, frozenset({"2510.27050", "2609.00428", "1401.1234"}))
+
+    def test_preprint_matching_manual_entry_by_arxiv_id_is_suppressed(self) -> None:
+        # ADS still carries the preprint's old title; the manual entry carries the accepted title.
+        config = build_config()
+        preprint = MODULE.AdsPublication(
+            bibcode="2025arXiv251027050M",
+            doctype="eprint",
+            title="Old Preprint Title",
+            authors=("Malsky, Isaac",),
+            journal="arXiv e-prints",
+            year="2025",
+            sort_date="2025-10-01",
+            citation_count=0,
+            author_position=1,
+            arxiv_ids=frozenset({"2510.27050"}),
+        )
+        manual = MODULE.ManualPublication(
+            sort_date="2026-02-01",
+            text="\\textbf{Malsky, I.} et al. New Accepted Title. arXiv:2510.27050",
+            status_label="Accepted, \\emph{ApJ}",
+            review_state="accepted",
+            category="first_author",
+        )
+        rendered = MODULE.build_publication_entries([preprint], [manual], config)
+        self.assertEqual(len(rendered), 1)
+        self.assertIn("Accepted, \\emph{ApJ}", rendered[0].text)
+
+    def test_published_article_supersedes_manual_entry(self) -> None:
+        config = build_config()
+        article = MODULE.AdsPublication(
+            bibcode="2026ApJ...990..123M",
+            doctype="article",
+            title="New Accepted Title",
+            authors=("Malsky, Isaac", "Kataria, Tiffany"),
+            journal="The Astrophysical Journal",
+            year="2026",
+            sort_date="2026-11-01",
+            citation_count=2,
+            author_position=1,
+            arxiv_ids=frozenset({"2510.27050"}),
+        )
+        manual = MODULE.ManualPublication(
+            sort_date="2026-02-01",
+            text="\\textbf{Malsky, I.} et al. New Accepted Title. arXiv:2510.27050",
+            status_label="Accepted, \\emph{ApJ}",
+            review_state="accepted",
+            category="first_author",
+        )
+        active, superseded = MODULE.partition_manual_publications([article], [manual])
+        self.assertEqual(active, [])
+        self.assertEqual(superseded, [(manual, article)])
+        rendered = MODULE.build_publication_entries([article], [manual], config)
+        self.assertEqual(len(rendered), 1)
+        self.assertIn("(2026). \\emph{ApJ}.", rendered[0].text)
+        self.assertNotIn("Accepted, \\emph{ApJ}", rendered[0].text)
+
+    def test_write_generation_stamp_records_iso_date(self) -> None:
+        import datetime
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = MODULE.write_generation_stamp(Path(tmp), today=datetime.date(2026, 10, 14))
+            self.assertEqual(path.read_text(encoding="utf-8"), "2026-10-14\n")
+
 
 if __name__ == "__main__":
     unittest.main()

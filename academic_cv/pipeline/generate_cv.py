@@ -10,6 +10,7 @@ import re
 import sys
 import tomllib
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
@@ -21,6 +22,11 @@ DEFAULT_MANUAL_PATH = PIPELINE_DIR / "manual_publications.toml"
 DEFAULT_GENERATED_DIR = CV_DIR / "generated"
 HTML_TAG_PATTERN = re.compile(r"</?[A-Za-z][^>]*>")
 NON_ALPHANUMERIC_PATTERN = re.compile(r"[^a-z0-9]+")
+# arXiv identifiers as they appear in ADS `identifier` strings or manual entry text.
+ARXIV_ID_PATTERN = re.compile(r"(?<![\d.])(\d{4}\.\d{4,5})(?:v\d+)?(?![\d.])")
+# arXiv-only bibcodes look like 2025arXiv251027050M (or 2014arXiv1401.1234M).
+ARXIV_BIBCODE_PATTERN = re.compile(r"^\d{4}arXiv(\d{4})\.?(\d{4,5})")
+GENERATION_STAMP_NAME = ".generated_at"
 SUBMITTED_STATES = frozenset({"submitted"})
 REVIEW_STATES = frozenset({"under_review", "in_review"})
 ACCEPTED_STATES = frozenset({"accepted"})
@@ -97,6 +103,7 @@ class AdsPublication:
     sort_date: str
     citation_count: int
     author_position: int | None
+    arxiv_ids: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)
@@ -476,6 +483,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
         "bibcode",
         "citation_count",
         "doctype",
+        "identifier",
         "pub",
         "pubdate",
         "title",
@@ -525,6 +533,7 @@ def fetch_ads_publications(config: CvConfig) -> list[AdsPublication]:
                 ),
                 citation_count=int(getattr(result, "citation_count", 0) or 0),
                 author_position=author_position,
+                arxiv_ids=extract_arxiv_ids((bibcode, *list_text(getattr(result, "identifier", ())))),
             )
         )
 
@@ -580,17 +589,67 @@ def format_manual_publication(publication: ManualPublication) -> str:
     return text if text.endswith(".") else f"{text}."
 
 
+def extract_arxiv_ids(values: Iterable[str]) -> frozenset[str]:
+    """Collect arXiv identifiers from ADS identifier strings, bibcodes, or free text."""
+
+    found: set[str] = set()
+    for value in values:
+        text = str(value)
+        bibcode_match = ARXIV_BIBCODE_PATTERN.match(text)
+        if bibcode_match:
+            found.add(f"{bibcode_match.group(1)}.{bibcode_match.group(2)}")
+            continue
+        found.update(ARXIV_ID_PATTERN.findall(text))
+    return frozenset(found)
+
+
+def manual_entry_matches(publication: AdsPublication, entry: ManualPublication) -> bool:
+    """Return True when an ADS record and a manual entry describe the same paper."""
+
+    if publication.arxiv_ids & extract_arxiv_ids((entry.text,)):
+        return True
+    normalized_title = normalize_text(publication.title)
+    return bool(normalized_title) and normalized_title in normalize_text(entry.text)
+
+
+def find_superseding_article(
+    entry: ManualPublication,
+    ads_publications: Sequence[AdsPublication],
+) -> AdsPublication | None:
+    """Return the ADS journal article that has replaced a manual entry, if any."""
+
+    for publication in ads_publications:
+        if publication.doctype == ARTICLE_DOCTYPE and manual_entry_matches(publication, entry):
+            return publication
+    return None
+
+
+def partition_manual_publications(
+    ads_publications: Sequence[AdsPublication],
+    manual_publications: Sequence[ManualPublication],
+) -> tuple[list[ManualPublication], list[tuple[ManualPublication, AdsPublication]]]:
+    """Split manual entries into still-active ones and ones ADS now lists as published."""
+
+    active: list[ManualPublication] = []
+    superseded: list[tuple[ManualPublication, AdsPublication]] = []
+    for entry in manual_publications:
+        article = find_superseding_article(entry, ads_publications)
+        if article is None:
+            active.append(entry)
+        else:
+            superseded.append((entry, article))
+    return active, superseded
+
+
 def should_render_ads_publication(
     publication: AdsPublication,
     manual_publications: Sequence[ManualPublication],
 ) -> bool:
-    """Return True when an ADS publication does not duplicate a manual entry."""
+    """Render every ADS journal article; drop preprints that duplicate a manual entry."""
 
-    normalized_title = normalize_text(publication.title)
-    if not normalized_title:
+    if publication.doctype == ARTICLE_DOCTYPE:
         return True
-
-    return all(normalized_title not in normalize_text(entry.text) for entry in manual_publications)
+    return not any(manual_entry_matches(publication, entry) for entry in manual_publications)
 
 
 def build_publication_entries(
@@ -601,6 +660,7 @@ def build_publication_entries(
     """Build publication entries across author-role categories."""
 
     rendered: list[RenderedPublication] = []
+    active_manual, _ = partition_manual_publications(ads_publications, manual_publications)
 
     for publication in ads_publications:
         if not should_render_ads_publication(publication, manual_publications):
@@ -613,7 +673,7 @@ def build_publication_entries(
             )
         )
 
-    for publication in manual_publications:
+    for publication in active_manual:
         rendered.append(
             RenderedPublication(
                 sort_date=publication.sort_date,
@@ -704,6 +764,22 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def write_generation_stamp(generated_dir: Path, today: date | None = None) -> Path:
+    """Record when the fragments were generated so stale local builds can be refused."""
+
+    stamp_path = generated_dir / GENERATION_STAMP_NAME
+    write_text(stamp_path, (today or date.today()).isoformat() + "\n")
+    return stamp_path
+
+
+def warn(message: str) -> None:
+    """Print a warning that also surfaces as an annotation in GitHub Actions."""
+
+    print(f"warning: {message}", file=sys.stderr)
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"::warning::{message}")
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """Run the ADS-backed CV generation pipeline."""
 
@@ -728,9 +804,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     metrics = compute_metrics(standard_publications)
     publication_entries = build_publication_entries(standard_publications, manual_publications, config)
     software_entries = build_software_entries(software_publications, config)
-    accepted_count = sum(publication.review_state in ACCEPTED_STATES for publication in manual_publications)
-    submitted_count = sum(publication.review_state in SUBMITTED_STATES for publication in manual_publications)
-    in_review_count = sum(publication.review_state in REVIEW_STATES for publication in manual_publications)
+    active_manual, superseded = partition_manual_publications(standard_publications, manual_publications)
+    for entry, article in superseded:
+        warn(
+            f"manual entry is now a published ADS article ({article.bibcode}) and was dropped from the "
+            f"summary counts; remove it from {args.manual.name}: {entry.text[:70]}..."
+        )
+    accepted_count = sum(publication.review_state in ACCEPTED_STATES for publication in active_manual)
+    submitted_count = sum(publication.review_state in SUBMITTED_STATES for publication in active_manual)
+    in_review_count = sum(publication.review_state in REVIEW_STATES for publication in active_manual)
 
     write_text(
         args.generated_dir / "publications.tex",
@@ -746,6 +828,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.generated_dir / "software.tex",
         render_software_tex(software_entries),
     )
+    write_generation_stamp(args.generated_dir)
 
     return 0
 

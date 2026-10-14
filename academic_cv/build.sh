@@ -59,6 +59,25 @@ if [[ -n "${ADS_DEV_KEY:-}" ]]; then
 else
   echo "ADS_DEV_KEY is not set; building the fallback CV without live ADS data."
   echo "To enable live ADS data locally, copy academic_cv/pipeline/.env.local.example to .env.local and paste your ADS token there."
+  # Refuse to bake stale publication data into a PDF unless explicitly allowed.
+  stamp="academic_cv/generated/.generated_at"
+  max_age_days=7
+  age_days=""
+  if [[ -f "${stamp}" ]]; then
+    age_days="$(python3 -c 'import sys, datetime; print((datetime.date.today() - datetime.date.fromisoformat(open(sys.argv[1]).read().strip())).days)' "${stamp}")"
+    echo "Cached publication fragments were generated ${age_days} day(s) ago."
+  else
+    echo "Cached publication fragments carry no generation date."
+  fi
+  if [[ -z "${age_days}" || "${age_days}" -gt "${max_age_days}" ]]; then
+    if [[ "${ALLOW_STALE_CV:-}" == "1" ]]; then
+      echo "ALLOW_STALE_CV=1 is set; building anyway. The publication list and metrics may be out of date."
+    else
+      echo "error: refusing to build from stale publication data (older than ${max_age_days} days, or undated)." >&2
+      echo "       Add ADS_DEV_KEY to .env.local for live data, or run: ALLOW_STALE_CV=1 $0" >&2
+      exit 1
+    fi
+  fi
 fi
 
 build_pdf

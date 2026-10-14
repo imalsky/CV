@@ -40,7 +40,8 @@ no `.aux/.log/.fls` clutter accumulates. Needs `tectonic` (preferred) or
 
 Without an ADS token the CV builds from whatever fragments are already in
 `academic_cv/generated/` (left over from a previous run; CI regenerates them on
-every build). To pull fresh citations yourself:
+every build), and only if they are under 7 days old: older or undated fragments
+stop the build unless you set `ALLOW_STALE_CV=1`. To pull fresh citations yourself:
 
 ```bash
 cp academic_cv/pipeline/.env.local.example .env.local   # at the repo root
@@ -67,6 +68,14 @@ into `academic_cv/generated/`.
   back to alias queries).
 - Add papers ADS can't track yet to `manual_publications.toml` (`review_state` is
   `submitted`, `in_review`, or `accepted`; zero counts are omitted from the summary line).
+  Put the arXiv ID in the entry text: the generator matches entries to ADS records by
+  arXiv ID (or title), hides the ADS preprint while the entry is active, and once ADS
+  lists the journal article it renders that instead, drops the entry from the summary
+  counts, and prints a warning (a CI annotation) telling you to delete the entry.
+  Update `status_label` yourself when a paper moves from in review to accepted.
+- The generator writes `academic_cv/generated/.generated_at`. A local `build.sh` run
+  without `ADS_DEV_KEY` refuses fragments older than 7 days (or undated) unless
+  `ALLOW_STALE_CV=1`, so a stale snapshot can't silently become the CV.
 - The only secret needed is the `ADS_DEV_KEY` repository secret (used by CI).
 - If ADS returns zero papers the generator fails unless run with `--allow-empty`.
 
